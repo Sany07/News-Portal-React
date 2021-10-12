@@ -1,6 +1,6 @@
 import { FETCH_HOMEPAGE } from "../actions/actionTypes";
 
-export default (data = [], action) => {
+const HomePageReducer =  (data = [], action) => {
     switch (action.type) {
         case FETCH_HOMEPAGE:
             console.log(action.payload.data);
@@ -10,3 +10,5 @@ export default (data = [], action) => {
             return data;
     }
 };
+
+export default HomePageReducer

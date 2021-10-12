@@ -12,10 +12,19 @@ class index extends Component {
 
     componentDidMount() {
         this.props.getHomepageData();
+    
+    }
+
+    strender(){
+
+       return console.log('this.state.props')
+    
     }
     render() {
         return (
             <dir>
+
+            strender()
                             {/* <!-- header_section_wrapper --> */}
 
                 <section id="feature_news_section" className="feature_news_section">
@@ -788,7 +797,9 @@ class index extends Component {
 
 
 const mapStateToProps = (state) => ({
-    homepagedata: state.HomePageReducer
+    homepagedata: state.HomePageReducer,
+    post_catalog_one : state.post_catalog_one
+
 })
 
 export default connect(mapStateToProps, { getHomepageData })(index)

@@ -1,5 +1,5 @@
-import AxiosConfig from "../AxiosConfig"
+import AxiosConfig  from "../AxiosConfig"
+ 
 
 
-
-export const fetchHomePageData = () => AxiosConfig.get('/homepage');
+export const fetchHomePageData = () => AxiosConfig.get('/homepage/');
