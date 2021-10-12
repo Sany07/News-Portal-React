@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link, Redirect } from 'react-router-dom';
 
 export default function Header() {
     return (
@@ -42,7 +43,7 @@ export default function Header() {
                             </div>
                             <div className="col-md-4">
                                 <div className="logo">
-                                    <a href="index.html"><img src="assets/img/logo.png" alt="Tech NewsLogo" /></a>
+                                    <Link exact to="/"><img src="assets/img/logo.png" alt="Tech NewsLogo" /></Link>
                                 </div>
                                 {/* <!-- Logo Section --> */}
                             </div>
