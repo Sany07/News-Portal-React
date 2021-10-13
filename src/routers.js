@@ -1,9 +1,9 @@
 import React from 'react';
 import {Route, Switch } from 'react-router-dom';
-import Index from './components/pages/Index';
-import Category from './components/pages/Category';
-import Single from './components/pages/Single';
-import Tag from './components/pages/Tag';
+import Index from './pages/Index';
+import Category from './pages/Category';
+import Single from './pages/Single';
+import Tag from './pages/Tag';
 
 const BaseRouter = () => {
     return (
