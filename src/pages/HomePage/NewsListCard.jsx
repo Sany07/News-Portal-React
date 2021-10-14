@@ -1,10 +1,16 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom';
+
 import moment from 'moment'
+import newscard from './NewsCard';
 
 
-export default function newscard({news}) {
-    return (
+export default class NewsListCard extends Component {
+
+    renderNews(){
+    const { news } = this.props;
+    return news.map(news => {
+        return(
         <div className="col-md-6" style={{ marginBottom: '15px' }}>
             <div className="category_article_body">
                 <div className="top_article_img">
@@ -33,6 +39,31 @@ export default function newscard({news}) {
                 </div>
             </div>
         </div>
-    )
-}
+          );
+    });
+  }
 
+
+    render() {
+        // const { news } = this.props;
+        // const renserNews = news.map((news, index) => {
+        //     return this.renderNews(news)
+        // })
+        return (
+            <div>
+                <div className="category_section design">
+                    <div className="article_title header_blue">
+                        <h2><a href="category.html" target="_self">Design</a></h2>
+                    </div>
+                    <div className="category_article_wrapper">
+                        <div className="row">
+                            {this.renderNews()}
+                        </div>
+
+                    </div>
+                    <p className="divider"><a href="#">More News&nbsp;&raquo;</a></p>
+                </div>
+            </div>
+        )
+    }
+}
