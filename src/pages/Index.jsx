@@ -17,14 +17,15 @@ class index extends Component {
 
     strender(){
 
-       return console.log('this.state.props')
+    //    return console.log('this.state.props')
+       return console.log(this.props.homepagedata)
     
     }
     render() {
         return (
             <dir>
 
-            strender()
+            {/* { this.strender() } */}
                             {/* <!-- header_section_wrapper --> */}
 
                 <section id="feature_news_section" className="feature_news_section">
@@ -586,11 +587,8 @@ class index extends Component {
 
                                     <p className="divider"><a href="#">More News&nbsp;&raquo;</a></p>
                                 </div>
-                                <NewsCard news={this.props.homepagedata.data}/>
-                                 if (this.props.homepagedata) {
-                                console.log(this.props.homepagedata.data) 
-
-                                }
+                                {/* <NewsCard news={this.props.homepagedata}/> */}
+                             {this.props.homepagedata ? <NewsCard news={this.props.homepagedata}/> : ''}
                             </div>
                             <Sidebar />
                         </div>
@@ -666,9 +664,12 @@ class index extends Component {
 }
 
 
-const mapStateToProps = (state) => ({
-    homepagedata: state.HomePageReducer,
-    post_catalog_one : state.post_catalog_one
+const mapStateToProps = (state) => (
+// console.log(Object.values(state.HomePageReducer.data)),
+console.log(state.HomePageReducer),
+{
+
+    homepagedata: state.HomePageReducer.post_catalog_one,
 
 })
 
