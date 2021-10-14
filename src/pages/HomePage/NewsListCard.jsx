@@ -6,11 +6,13 @@ import newscard from "./NewsCard";
 import { NewsCatalogFive } from "./NewsCatalogFive";
 import { Newscardtest } from "./NewsCard";
 import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
+import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
+
 export default class NewsListCard extends Component {
     renderNews() {
         const { news_catalog_five, news_catalog_four } = this.props;
         console.log(news_catalog_four);
-        return news_catalog_five.map((news) => {
+        return news_catalog_five.map((news, index) => {
             return (
                 <div
                     className="col-md-6"
@@ -57,8 +59,8 @@ export default class NewsListCard extends Component {
                             <span>
                                 <a href="#">
                                     <i className="fa fa-share-alt"></i>
-                                    424{" "}
-                                </a>{" "}
+                                    424
+                                </a>
                                 Shares
                             </span>
                             <span>
@@ -68,6 +70,11 @@ export default class NewsListCard extends Component {
                             </span>
                         </div>
                     </div>
+                    <MoreNewsSkeleton
+                        news={news_catalog_five}
+                        index={index}
+                        slug={news.category.slug}
+                    />
                 </div>
             );
         });
@@ -84,7 +91,7 @@ export default class NewsListCard extends Component {
                             </a>
                         </h2>
                     </div>
-                    <Newscardtest news={this.props.news_catalog_four} />
+                    <Newscardtest newslist={this.props.news_catalog_four} />
                 </div>
 
                 <div className="category_section design">
@@ -98,9 +105,6 @@ export default class NewsListCard extends Component {
                     <div className="category_article_wrapper">
                         <div className="row">{this.renderNews()}</div>
                     </div>
-                    <p className="divider">
-                        <a href="#">More News&nbsp;&raquo;</a>
-                    </p>
                 </div>
             </div>
         );

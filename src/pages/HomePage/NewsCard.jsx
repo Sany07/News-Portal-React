@@ -3,14 +3,17 @@ import { Link } from "react-router-dom";
 import newscard from "./NewsCard";
 import { NewsCatalogFive } from "./NewsCatalogFive";
 import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
+import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
 
 import moment from "moment";
 
 export const Newscardtest = (props) => {
-    const { news } = props;
+    const { newslist } = props;
+    console.log(props);
+
     return (
         <div>
-            {news.map((news, index) => {
+            {newslist.map((news, index) => {
                 return (
                     <div className="category_section camera">
                         <div className="category_article_wrapper">
@@ -74,15 +77,21 @@ export const Newscardtest = (props) => {
                                 </div>
                             </div>
                         </div>
-                        {index === news.length - 1 ? (
+                        {/* {index === news.length - 1 ? (
                             <p className="divider">
                                 <Link to={`/category/${news.category.slug}`}>
                                     More News&nbsp;&raquo;
                                 </Link>
                             </p>
                         ) : (
-                            console.log(Object.values(news).length)
-                        )}
+                            ""
+                        )} */}
+
+                        <MoreNewsSkeleton
+                            news={newslist}
+                            index={index}
+                            slug={news.category.slug}
+                        />
                     </div>
                 );
             })}
