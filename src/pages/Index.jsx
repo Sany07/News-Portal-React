@@ -16,19 +16,9 @@ class index extends Component {
     
     }
 
-    strender(){
-
-    //    return console.log('this.state.props')
-       return console.log(this.props.homepagedata)
-    
-    }
     render() {
         return (
             <dir>
-
-            {/* { this.strender() } */}
-                            {/* <!-- header_section_wrapper --> */}
-
                 <section id="feature_news_section" className="feature_news_section">
                     <div className="container">
                         <div className="row">
@@ -467,129 +457,7 @@ class index extends Component {
                                     <p className="divider"><a href="#">More News&nbsp;&raquo;</a></p>
                                 </div>
 
-                                <div className="category_section camera">
-                                    <div className="article_title header_orange">
-                                        <h2><a href="category.html" target="_self">Camera</a></h2>
-                                    </div>
-
-                                    <div className="category_article_wrapper">
-                                        <div className="row">
-                                            <div className="col-md-5">
-                                                <div className="top_article_img">
-                                                    <a href="single.html" target="_self">
-                                                        <img className="img-responsive" src="assets/img/cam_left1.jpg" alt="feature-top" />
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                            <div className="col-md-7">
-                                                <span className="tag orange">Camera</span>
-
-                                                <div className="category_article_title">
-                                                    <h2><a href="single.html" target="_self">Yasaki camera launches new generic hi-speed </a></h2>
-                                                </div>
-
-                                                <div className="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-
-                                                <div className="category_article_content">
-                                                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                                                    procrastinate.
-                                                </div>
-
-
-                                                <div className="media_social">
-                                                    <span><a href="#"><i className="fa fa-share-alt"></i>424 </a> Shares</span>
-                                                    <span><i className="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <div className="category_article_wrapper">
-                                        <div className="row">
-                                            <div className="col-md-5">
-                                                <div className="top_article_img">
-                                                    <a href="single.html" target="_self">
-                                                        <img className="img-responsive" src="assets/img/cam_left2.jpg" alt="feature-top" />
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                            <div className="col-md-7">
-                                                <span className="tag orange">Camera</span>
-
-                                                <div className="category_article_title">
-                                                    <h2><a href="single.html" target="_self">DSLR is the most old camera at this time </a></h2>
-                                                </div>
-
-                                                <div className="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-
-
-                                                <div className="category_article_content">
-                                                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                                                    procrastinate.
-                                                </div>
-
-                                                <div className="media_social">
-                                                    <span><a href="#"><i className="fa fa-share-alt"></i>424 </a> Shares</span>
-                                                    <span><i className="fa fa-comments-o"></i><a href="#">4</a> Comments</span>
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <div className="category_article_wrapper">
-                                        <div className="row">
-                                            <div className="col-md-5">
-                                                <div className="top_article_img">
-                                                    <a href="single.html" target="_self">
-                                                        <img className="img-responsive" src="assets/img/cam_left3.jpg" alt="feature-top" />
-                                                    </a>
-                                                </div>
-
-                                            </div>
-                                            <div className="col-md-7">
-                                                <span className="tag orange"><a href="single.html" target="_self">Camera</a></span>
-
-                                                <div className="category_article_title">
-                                                    <h2><a href="single.html" target="_self">Canon Camera launches photo centric Android</a></h2>
-                                                </div>
-
-                                                <div className="article_date"><a href="#">10Aug- 2015</a>, by: <a href="#">Eric joan</a></div>
-
-
-                                                <div className="category_article_content">
-                                                    Collaboratively administrate empowered markets via plug-and-play networks. Dynamically
-                                                    procrastinate.
-                                                </div>
-
-                                                <div className="media_social">
-                                                    <span>
-                                                        <a href="#">
-                                                            <i className="fa fa-share-alt"></i>424
-                                                        </a> Shares
-                                                    </span>
-                                                    <span>
-                                                        <a href="#">
-                                                            <i className="fa fa-comments-o"></i>4
-                                                        </a> Comments
-                                                    </span>
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-
-                                    <p className="divider"><a href="#">More News&nbsp;&raquo;</a></p>
-                                </div>
-                                {/* <NewsCard news={this.props.homepagedata}/> */}
-                             {this.props.homepagedata ? <NewsListCard news={this.props.homepagedata}/> : ''}
+                             {this.props.news_catalog_five ? <NewsListCard news_catalog_four={this.props.news_catalog_four} news_catalog_five={this.props.news_catalog_five}/> : ''}
                             </div>
                             <Sidebar />
                         </div>
@@ -597,7 +465,7 @@ class index extends Component {
                     </div>
 
                 </section>
-
+{/* 
                 <section id="video_section" className="video_section">
                     <div className="container">
                         <div className="well">
@@ -638,7 +506,7 @@ class index extends Component {
 
                     </div>
 
-                </section>
+                </section> */}
 
                 <section id="subscribe_section" className="subscribe_section">
                     <div className="row">
@@ -669,8 +537,11 @@ const mapStateToProps = (state) => (
 // console.log(Object.values(state.HomePageReducer.data)),
 // console.log(state.HomePageReducer),
 {
-
-    homepagedata: state.HomePageReducer.post_catalog_one,
+    news_catalog_one: state.HomePageReducer.post_catalog_one,
+    news_catalog_two: state.HomePageReducer.post_catalog_two,
+    news_catalog_three: state.HomePageReducer.post_catalog_three,
+    news_catalog_four: state.HomePageReducer.post_catalog_four,
+    news_catalog_five: state.HomePageReducer.post_catalog_five,
 
 })
 

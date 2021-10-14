@@ -10,7 +10,7 @@ const BaseRouter = () => {
         <div>
             <Switch>
                 <Route exact path='/' component={Index} />
-                <Route path="/category" exact component={Category} />
+                <Route path="/category/:slug" exact component={Category} />
                 <Route path="/post/:slug" exact component={Single} />
                 <Route path="/tag/" exact component={Tag} />
 
