@@ -1,5 +1,5 @@
 import { FETCH_HOMEPAGE } from './actionTypes'
-import * as api from '../../apis/homepageApi'
+import * as api from '../../apis/NewsApi'
 
 
 

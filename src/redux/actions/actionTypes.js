@@ -1,1 +1,2 @@
 export const FETCH_HOMEPAGE = 'FETCH_HOMEPAGE';
+export const FETCH_SINGLE_NEWS = 'FETCH_SINGLE_NEWS';

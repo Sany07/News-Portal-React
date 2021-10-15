@@ -1,9 +1,19 @@
-import React from "react";
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-const NewsDetail = () => {
-    const news = [];
-    return (
-        <div>
+import { getSingleNews } from "../redux/actions/News";
+import Sidebar from "../components/includes/Sidebar";
+import { NewscardTwo } from "./HomePage/NewsCardTwo";
+import NewsListCard from "./HomePage/NewsListCard";
+import { NewsLetter } from "../components/includes/NewsLetter";
+
+class NewsDetail extends Component {
+    componentDidMount() {
+        this.props.getSingleNews(1);
+    }
+    render() {
+        return (
             <div>
                 <section className="breadcrumb_section">
                     <div className="container">
@@ -162,8 +172,9 @@ const NewsDetail = () => {
                     </div>
                 </div>
             </div>
-        </div>
-    );
-};
+        );
+    }
+}
+const mapStateToProps = (state) => ({});
 
-export default NewsDetail;
+export default connect(mapStateToProps, { getSingleNews })(NewsDetail);

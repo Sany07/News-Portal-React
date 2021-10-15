@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getHomepageData } from "../redux/actions/homepage";
+import { getHomepageData } from "../redux/actions/homePage";
 import Sidebar from "../components/includes/Sidebar";
 import { NewscardTwo } from "./HomePage/NewsCardTwo";
 import NewsListCard from "./HomePage/NewsListCard";
