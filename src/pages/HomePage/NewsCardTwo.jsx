@@ -1,32 +1,45 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import newscard from "./NewsCard";
+import newscard from "./NewsCardTwo";
 import { NewsCatalogFive } from "./NewsCatalogFive";
 import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
 import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
 
 import moment from "moment";
 
-export const Newscardtest = (props) => {
+export const NewscardTwo = (props) => {
     const { newslist } = props;
-    console.log(props);
+    // console.log(props);
 
     return (
-        <div>
+        <>
             {newslist.map((news, index) => {
                 return (
-                    <div className="category_section camera">
+                    <>
+                        {index === 0 ? (
+                            <div className="article_title header_blue">
+                                <h2>
+                                    <Link
+                                        to={`/category/${news.category.slug}`}
+                                    >
+                                        {news.category.name}
+                                    </Link>
+                                </h2>
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <div className="category_article_wrapper">
                             <div className="row">
                                 <div className="col-md-5">
                                     <div className="top_article_img">
-                                        <a href="single.html" target="_self">
+                                        <Link to={`/post/${news.slug}`}>
                                             <img
                                                 className="img-responsive"
                                                 src={`http://localhost:8000${news.thumbnail}`}
                                                 alt="feature-top"
                                             />
-                                        </a>
+                                        </Link>
                                     </div>
                                 </div>
                                 <div className="col-md-7">
@@ -36,7 +49,7 @@ export const Newscardtest = (props) => {
                                     />
                                     <div className="category_article_title">
                                         <h2>
-                                            <Link to={`/single/${news.slug}`}>
+                                            <Link to={`/post/${news.slug}`}>
                                                 {news.title}
                                             </Link>
                                         </h2>
@@ -77,24 +90,14 @@ export const Newscardtest = (props) => {
                                 </div>
                             </div>
                         </div>
-                        {/* {index === news.length - 1 ? (
-                            <p className="divider">
-                                <Link to={`/category/${news.category.slug}`}>
-                                    More News&nbsp;&raquo;
-                                </Link>
-                            </p>
-                        ) : (
-                            ""
-                        )} */}
-
                         <MoreNewsSkeleton
                             news={newslist}
                             index={index}
                             slug={news.category.slug}
                         />
-                    </div>
+                    </>
                 );
             })}
-        </div>
+        </>
     );
 };
