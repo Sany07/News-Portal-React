@@ -9,8 +9,6 @@ import moment from "moment";
 export const NewsCardOne = (props) => {
     const { newslist } = props;
 
-    console.log("s", newslist[Object]);
-
     return (
         <>
             {newslist.map((news, index) => {
@@ -40,6 +38,9 @@ export const NewsCardOne = (props) => {
                                 <div className="top_article_img">
                                     <Link to={`/post/${news.slug}`}>
                                         <img
+                                            style={{
+                                                height: 279,
+                                            }}
                                             className="img-responsive"
                                             src={`http://localhost:8000${news.thumbnail}`}
                                             alt="feature-top"

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getHomepageData } from "../redux/actions/homePage";
+import { getHomepageData } from "../redux/actions/homepage";
 import Sidebar from "../components/includes/Sidebar";
 import { NewscardTwo } from "./HomePage/NewsCardTwo";
 import NewsListCard from "./HomePage/NewsListCard";
@@ -303,12 +303,15 @@ class index extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    news_catalog_one: state.HomePageReducer.post_catalog_one,
-    news_catalog_two: state.HomePageReducer.post_catalog_two,
-    news_catalog_three: state.HomePageReducer.post_catalog_three,
-    news_catalog_four: state.HomePageReducer.post_catalog_four,
-    news_catalog_five: state.HomePageReducer.post_catalog_five,
-});
+const mapStateToProps = (state) => (
+    console.log(state),
+    {
+        news_catalog_one: state.HomePageReducer.post_catalog_one,
+        news_catalog_two: state.HomePageReducer.post_catalog_two,
+        news_catalog_three: state.HomePageReducer.post_catalog_three,
+        news_catalog_four: state.HomePageReducer.post_catalog_four,
+        news_catalog_five: state.HomePageReducer.post_catalog_five,
+    }
+);
 
 export default connect(mapStateToProps, { getHomepageData })(index);
