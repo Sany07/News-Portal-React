@@ -1,8 +1,8 @@
 import { FETCH_SINGLE_NEWS } from "../actions/actionTypes";
 
-const ininews =  { loggedIn: true, news:{} } 
+const data =  { loggedIn: true, news:{} } 
 
-export default (news = ininews, action) => {
+export default (news = data, action) => {
     switch (action.type) {
         case 'FETCH_ALL':
             return action.payload.data;
@@ -10,7 +10,7 @@ export default (news = ininews, action) => {
 
             // return action.payload.data;
             return {
-                ...news,
+                // ...news,
                 loggedIn : false,
                 news : action.payload.data
             };

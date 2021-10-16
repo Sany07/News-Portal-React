@@ -7,6 +7,7 @@ import Sidebar from "../components/includes/Sidebar";
 import { NewscardTwo } from "./HomePage/NewsCardTwo";
 import NewsListCard from "./HomePage/NewsListCard";
 import { NewsLetter } from "../components/includes/NewsLetter";
+import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 
 class index extends Component {
     componentDidMount() {
@@ -14,247 +15,56 @@ class index extends Component {
     }
 
     render() {
-        return (
-            <>
-                <section
-                    id="feature_news_section"
-                    className="feature_news_section"
-                >
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-7">
-                                <div className="feature_article_wrapper">
-                                    <div className="feature_article_img">
-                                        <img
-                                            className="img-responsive top_static_article_img"
-                                            src="assets/img/feature-top.jpg"
-                                            alt="feature-top"
+        const { loggedIn } = this.props.news;
+
+        if (loggedIn === true) {
+            return "Loading";
+        } else {
+            return (
+                <>
+                    <section
+                        id="feature_news_section"
+                        className="feature_news_section"
+                    >
+                        <FeatureNewsCard
+                            hot_news={this.props.hot_news}
+                            trending_new={this.props.trending_new}
+                            editor_choice={this.props.editor_choice}
+                        />
+                    </section>
+                    {/* <!-- Feature News Section --> */}
+
+                    <section id="category_section" className="category_section">
+                        <div className="container">
+                            <div className="row">
+                                <div className="col-md-8">
+                                    {this.props.news_catalog_one ? (
+                                        <NewsListCard
+                                            news_catalog_one={
+                                                this.props.news_catalog_one
+                                            }
+                                            news_catalog_two={
+                                                this.props.news_catalog_two
+                                            }
+                                            news_catalog_three={
+                                                this.props.news_catalog_three
+                                            }
+                                            news_catalog_four={
+                                                this.props.news_catalog_four
+                                            }
+                                            news_catalog_five={
+                                                this.props.news_catalog_five
+                                            }
                                         />
-                                    </div>
-                                    {/* <!-- feature_article_img --> */}
-
-                                    <div className="feature_article_inner">
-                                        <div className="tag_lg red">
-                                            <a href="category.html">Hot News</a>
-                                        </div>
-                                        <div className="feature_article_title">
-                                            <h1>
-                                                <a
-                                                    href="single.html"
-                                                    target="_self"
-                                                >
-                                                    Chevrolet car-saving
-                                                    technology delivers{" "}
-                                                </a>
-                                            </h1>
-                                        </div>
-                                        {/* <!-- feature_article_title --> */}
-
-                                        <div className="feature_article_date">
-                                            <a href="#" target="_self">
-                                                Stive Clark
-                                            </a>
-                                            ,
-                                            <a href="#" target="_self">
-                                                Aug 4, 2015
-                                            </a>
-                                        </div>
-                                        {/* <!-- feature_article_date --> */}
-
-                                        <div className="feature_article_content">
-                                            In a move to address mounting
-                                            concerns about security on Android,
-                                            Google and Samsung are now issuing.
-                                        </div>
-                                        {/* <!-- feature_article_content --> */}
-
-                                        <div className="article_social">
-                                            <span>
-                                                <i className="fa fa-share-alt"></i>
-                                                <a href="#">424</a>Shares
-                                            </span>
-                                            <span>
-                                                <i className="fa fa-comments-o"></i>
-                                                <a href="#">4</a>Comments
-                                            </span>
-                                        </div>
-                                        {/* <!-- article_social --> */}
-                                    </div>
-                                    {/* <!-- feature_article_inner --> */}
+                                    ) : (
+                                        ""
+                                    )}
                                 </div>
-                                {/* <!-- feature_article_wrapper --> */}
+                                <Sidebar />
                             </div>
-                            {/* <!-- col-md-7 --> */}
-
-                            <div className="col-md-5">
-                                <div className="feature_static_wrapper">
-                                    <div className="feature_article_img">
-                                        <img
-                                            className="img-responsive"
-                                            src="assets/img/feature-static1.jpg"
-                                            alt="feature-top"
-                                        />
-                                    </div>
-                                    {/* <!-- feature_article_img --> */}
-
-                                    <div className="feature_article_inner">
-                                        <div className="tag_lg purple">
-                                            <a href="category.html">
-                                                Top Viewed
-                                            </a>
-                                        </div>
-                                        <div className="feature_article_title">
-                                            <h1>
-                                                <a
-                                                    href="single.html"
-                                                    target="_self"
-                                                >
-                                                    Alcatel's $180 Idol 3 4.7 is
-                                                    a
-                                                </a>
-                                            </h1>
-                                        </div>
-                                        {/* <!-- feature_article_title --> */}
-
-                                        <div className="feature_article_date">
-                                            <a href="#" target="_self">
-                                                Stive Clark
-                                            </a>
-                                            ,
-                                            <a href="#" target="_self">
-                                                Aug 4, 2015
-                                            </a>
-                                        </div>
-                                        {/* <!-- feature_article_date --> */}
-
-                                        <div className="feature_article_content">
-                                            In a move to address mounting
-                                            concerns about security on
-                                            Android...
-                                        </div>
-                                        {/* <!-- feature_article_content --> */}
-
-                                        <div className="article_social">
-                                            <span>
-                                                <i className="fa fa-share-alt"></i>
-                                                <a href="#">424</a>Shares
-                                            </span>
-                                            <span>
-                                                <i className="fa fa-comments-o"></i>
-                                                <a href="#">4</a>Comments
-                                            </span>
-                                        </div>
-                                        {/* <!-- article_social --> */}
-                                    </div>
-                                    {/* <!-- feature_article_inner --> */}
-                                </div>
-                                {/* <!-- feature_static_wrapper --> */}
-                            </div>
-                            {/* <!-- col-md-5 --> */}
-
-                            <div className="col-md-5">
-                                <div className="feature_static_last_wrapper">
-                                    <div className="feature_article_img">
-                                        <img
-                                            className="img-responsive"
-                                            src="assets/img/feature-static2.jpg"
-                                            alt="feature-top"
-                                        />
-                                    </div>
-                                    {/* <!-- feature_article_img --> */}
-
-                                    <div className="feature_article_inner">
-                                        <div className="tag_lg blue">
-                                            <a href="category.html">
-                                                Top Viewed
-                                            </a>
-                                        </div>
-
-                                        <div className="feature_article_title">
-                                            <h1>
-                                                <a
-                                                    href="single.html"
-                                                    target="_self"
-                                                >
-                                                    Gadget user good news
-                                                </a>
-                                            </h1>
-                                        </div>
-                                        {/* <!-- feature_article_title --> */}
-
-                                        <div className="feature_article_date">
-                                            <a href="#" target="_self">
-                                                Stive Clark
-                                            </a>
-                                            ,
-                                            <a href="#" target="_self">
-                                                Aug 4, 2015
-                                            </a>
-                                        </div>
-                                        {/* <!-- feature_article_date --> */}
-
-                                        <div className="feature_article_content">
-                                            In a move to address mounting
-                                            concerns about security on
-                                            Android...
-                                        </div>
-                                        {/* <!-- feature_article_content --> */}
-
-                                        <div className="article_social">
-                                            <span>
-                                                <i className="fa fa-share-alt"></i>
-                                                <a href="#">424</a>Shares
-                                            </span>
-                                            <span>
-                                                <i className="fa fa-comments-o"></i>
-                                                <a href="#">4</a>Comments
-                                            </span>
-                                        </div>
-                                        {/* <!-- article_social --> */}
-                                    </div>
-                                    {/* <!-- feature_article_inner --> */}
-                                </div>
-                                {/* <!-- feature_static_wrapper --> */}
-                            </div>
-                            {/* <!-- col-md-5 --> */}
                         </div>
-                        {/* <!-- Row --> */}
-                    </div>
-                    {/* <!-- container --> */}
-                </section>
-                {/* <!-- Feature News Section --> */}
-
-                <section id="category_section" className="category_section">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-md-8">
-                                {this.props.news_catalog_five ? (
-                                    <NewsListCard
-                                        news_catalog_one={
-                                            this.props.news_catalog_one
-                                        }
-                                        news_catalog_two={
-                                            this.props.news_catalog_two
-                                        }
-                                        news_catalog_three={
-                                            this.props.news_catalog_three
-                                        }
-                                        news_catalog_four={
-                                            this.props.news_catalog_four
-                                        }
-                                        news_catalog_five={
-                                            this.props.news_catalog_five
-                                        }
-                                    />
-                                ) : (
-                                    ""
-                                )}
-                            </div>
-                            <Sidebar />
-                        </div>
-                    </div>
-                </section>
-                {/* 
+                    </section>
+                    {/* 
                 <section id="video_section" className="video_section">
                     <div className="container">
                         <div className="well">
@@ -297,20 +107,26 @@ class index extends Component {
 
                 </section> */}
 
-                <NewsLetter />
-            </>
-        );
+                    <NewsLetter />
+                </>
+            );
+        }
     }
 }
 
 const mapStateToProps = (state) => (
     console.log(state),
     {
-        news_catalog_one: state.HomePageReducer.post_catalog_one,
-        news_catalog_two: state.HomePageReducer.post_catalog_two,
-        news_catalog_three: state.HomePageReducer.post_catalog_three,
-        news_catalog_four: state.HomePageReducer.post_catalog_four,
-        news_catalog_five: state.HomePageReducer.post_catalog_five,
+        news_catalog_one: state.HomePageReducer.news.post_catalog_one,
+        news_catalog_two: state.HomePageReducer.news.post_catalog_two,
+        news_catalog_three: state.HomePageReducer.news.post_catalog_three,
+        news_catalog_four: state.HomePageReducer.news.post_catalog_four,
+        news_catalog_five: state.HomePageReducer.news.post_catalog_five,
+        hot_news: state.HomePageReducer.news.hot_news,
+        trending_new: state.HomePageReducer.news.trending_new,
+        editor_choice: state.HomePageReducer.news.editor_choice,
+
+        news: state.HomePageReducer.news,
     }
 );
 
