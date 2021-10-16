@@ -3,11 +3,7 @@ import * as api from '../../apis/NewsApi'
 
 export const getSingleNews = (slug) => async (dispatch) => {
 
-const initialstate = {
-    isloading : false
-
-}
-console.log('slugggg', slug);
+// console.log('slugggg--', slug);
     try {
 
     const response = await api.fetchSingleNews(slug);

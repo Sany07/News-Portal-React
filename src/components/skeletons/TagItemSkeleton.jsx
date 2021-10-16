@@ -2,7 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 export const TagItemSkeleton = (props) => {
-    console.log(props.tags);
     return (
         <>
             {props.tag.map((tag) => {
