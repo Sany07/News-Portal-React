@@ -167,15 +167,7 @@ class NewsDetail extends Component {
                                     {/* entity_wrapper */}
                                     <div className="related_news">
                                         <div className="entity_inner__title header_purple">
-                                            <h2>
-                                                <button
-                                                    onClick={
-                                                        this.forceUpdateHandler
-                                                    }
-                                                >
-                                                    Related Post
-                                                </button>
-                                            </h2>
+                                            <h2>Related Post</h2>
                                         </div>
                                         {/* entity_title */}
                                         <div className="row">
