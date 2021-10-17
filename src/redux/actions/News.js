@@ -21,7 +21,7 @@ export const GetSidebarData = (slug) => async (dispatch) => {
     const response = await api.fetchSidebarData();
     dispatch({ type: FETCH_SIDEBAR_DATA, payload: response });
     } catch (error) {
-      console.log(error);
+      console.log('error');
     }
 
 };

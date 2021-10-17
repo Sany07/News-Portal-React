@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getHomepageData } from "../redux/actions/homepage";
+import { GetSidebarData } from "../redux/actions/News";
 import Sidebar from "./Sidebar";
 import { NewscardTwo } from "./HomePage/NewsCardTwo";
 import NewsListCard from "./HomePage/NewsListCard";
@@ -12,11 +13,12 @@ import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 class index extends Component {
     componentDidMount() {
         this.props.getHomepageData();
+        this.props.GetSidebarData();
     }
 
     render() {
-        const { loggedIn } = this.props.news;
-
+        const { loggedIn } = this.props.loggedIn;
+        console.log(this.props.most_commented_news);
         if (loggedIn === true) {
             return "Loading";
         } else {
@@ -60,7 +62,13 @@ class index extends Component {
                                         ""
                                     )}
                                 </div>
-                                <Sidebar />
+
+                                <Sidebar
+                                    popular_news={this.props.popular_news}
+                                    most_commented_news={
+                                        this.props.most_commented_news
+                                    }
+                                />
                             </div>
                         </div>
                     </section>
@@ -115,7 +123,7 @@ class index extends Component {
 }
 
 const mapStateToProps = (state) => (
-    console.log(state),
+    console.log("ss", state.sidebarReducer),
     {
         news_catalog_one: state.HomePageReducer.news.post_catalog_one,
         news_catalog_two: state.HomePageReducer.news.post_catalog_two,
@@ -125,9 +133,13 @@ const mapStateToProps = (state) => (
         hot_news: state.HomePageReducer.news.hot_news,
         trending_new: state.HomePageReducer.news.trending_new,
         editor_choice: state.HomePageReducer.news.editor_choice,
+        loggedIn: state.HomePageReducer.news,
 
-        news: state.HomePageReducer.news,
+        most_commented_news: state.sidebarReducer.news.most_commented,
+        popular_news: state.sidebarReducer.news.popular_news,
     }
 );
 
-export default connect(mapStateToProps, { getHomepageData })(index);
+export default connect(mapStateToProps, { getHomepageData, GetSidebarData })(
+    index
+);

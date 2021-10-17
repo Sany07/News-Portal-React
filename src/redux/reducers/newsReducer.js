@@ -1,6 +1,6 @@
-import { FETCH_SINGLE_NEWS, FETCH_SIDEBAR_DATA } from "../actions/actionTypes";
+import { FETCH_SINGLE_NEWS } from "../actions/actionTypes";
 
-const data =  { isLoading: true, news:{} } 
+const data =  { isLoading: true, news:{}, single_news:{} } 
 
 export default (news = data, action) => {
     switch (action.type) {
@@ -8,12 +8,10 @@ export default (news = data, action) => {
             return action.payload.data;
         case FETCH_SINGLE_NEWS:
             return {
-                // ...news,
-                news : action.payload.data,
+                single_news : action.payload.data,
                 isLoading : false,
             };
-        case FETCH_SIDEBAR_DATA: 
-            return action.payload.data 
+        
         default:
             return news;
     }

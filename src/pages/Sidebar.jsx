@@ -1,16 +1,14 @@
-import React, { Component } from "react";
+import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { GetSidebarData } from "../redux/actions/News";
 import moment from "moment";
 
-class Sidebar extends Component {
-    componentDidMount() {
-        this.props.GetSidebarData();
-    }
-    render() {
-        return (
+const Sidebar = (props) => {
+    const { popular_news, most_commented_news } = props;
+    return (
+        <Fragment>
             <div className="col-md-4">
                 <div className="widget">
                     <div className="widget_title widget_black">
@@ -18,8 +16,8 @@ class Sidebar extends Component {
                             <a href="#">Popular News</a>
                         </h2>
                     </div>
-                    {this.props.popular_news &&
-                        this.props.popular_news.map((popular_news) => {
+                    {popular_news &&
+                        popular_news.map((popular_news) => {
                             return (
                                 <div className="media">
                                     <div className="media-left">
@@ -99,8 +97,8 @@ class Sidebar extends Component {
                             <a href="#">Most Commented</a>
                         </h2>
                     </div>
-                    {this.props.most_commented &&
-                        this.props.most_commented.map((most_commented_news) => {
+                    {most_commented_news &&
+                        most_commented_news.map((most_commented_news) => {
                             return (
                                 <div
                                     className="media"
@@ -147,12 +145,8 @@ class Sidebar extends Component {
                         })}
                 </div>
             </div>
-        );
-    }
-}
+        </Fragment>
+    );
+};
 
-const mapStateToProps = (state) => ({
-    most_commented: state.newsReducer.most_commented,
-    popular_news: state.newsReducer.popular_news,
-});
-export default connect(mapStateToProps, { GetSidebarData })(Sidebar);
+export default Sidebar;

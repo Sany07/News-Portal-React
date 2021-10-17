@@ -1,11 +1,9 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
-import { getSingleNews } from "../redux/actions/News";
+import { getSingleNews, GetSidebarData } from "../redux/actions/News";
 import Sidebar from "./Sidebar";
-import { NewscardTwo } from "./HomePage/NewsCardTwo";
-import NewsListCard from "./HomePage/NewsListCard";
 import { NewsLetter } from "../components/includes/NewsLetter";
 import { TagItemSkeleton } from "../components/skeletons/TagItemSkeleton";
 import { RelatedNews } from "./RelatedNews";
@@ -14,19 +12,21 @@ import moment from "moment";
 class NewsDetail extends Component {
     state = {
         slug: "",
-        isLoading: true,
+        // isLoading: true,
     };
 
     componentDidMount() {
         const { slug } = this.props.match.params;
-        // this.setState({ id: this.props.match.params });
+        console.log("didmount");
         this.props.getSingleNews(slug);
+        this.props.GetSidebarData();
     }
 
     render() {
-        const { news, isLoading } = this.props.news;
-
-        console.log("nn", isLoading);
+        const { single_news, isLoading } = this.props;
+        const news = single_news;
+        console.log("single_news", news);
+        // console.log(" this.props", this.props);
         const slug = this.state.slug;
         // if (slug) {
         //     this.props.getSingleNews(slug);
@@ -471,8 +471,14 @@ class NewsDetail extends Component {
                                         {/*Entity Comments */}
                                     </div>
                                 )}
-                                {news && <Sidebar />}
-
+                                {news && (
+                                    <Sidebar
+                                        popular_news={this.props.popular_news}
+                                        most_commented_news={
+                                            this.props.most_commented_news
+                                        }
+                                    />
+                                )}
                                 {/*Right Section*/}
                             </div>
                         </div>
@@ -484,10 +490,14 @@ class NewsDetail extends Component {
     }
 }
 const mapStateToProps = (state) => (
-    console.log("sany", state.newsReducer.news),
+    console.log("sany", state.newsReducer),
     {
-        news: state.newsReducer,
+        single_news: state.newsReducer.single_news,
+        most_commented_news: state.sidebarReducer.news.most_commented,
+        popular_news: state.sidebarReducer.news.popular_news,
     }
 );
 
-export default connect(mapStateToProps, { getSingleNews })(NewsDetail);
+export default connect(mapStateToProps, { getSingleNews, GetSidebarData })(
+    NewsDetail
+);
