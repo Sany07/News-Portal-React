@@ -25,7 +25,12 @@ export const RelatedNews = (props) => {
                                             Mobile
                                         </a>
                                     </span>
-                                    <h3 className="media-heading" onClick={rr}>
+                                    <h3
+                                        className="media-heading"
+                                        onClick={rr({
+                                            id: news.slug,
+                                        })}
+                                    >
                                         <Link to={`/post/${news.slug}/`}>
                                             {news.title}
                                         </Link>

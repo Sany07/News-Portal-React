@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { getHomepageData } from "../redux/actions/homepage";
-import Sidebar from "../components/includes/Sidebar";
+import Sidebar from "./Sidebar";
 import { NewscardTwo } from "./HomePage/NewsCardTwo";
 import NewsListCard from "./HomePage/NewsListCard";
 import { NewsLetter } from "../components/includes/NewsLetter";
