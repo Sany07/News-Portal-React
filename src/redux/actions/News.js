@@ -2,17 +2,19 @@ import { FETCH_SINGLE_NEWS, FETCH_SIDEBAR_DATA } from './actionTypes'
 import * as api from '../../apis/NewsApi'
 
 export const getSingleNews = (slug) => async (dispatch) => {
-
-// console.log('slugggg--', slug);
+    console.log('slugggg--', slug);
+    
     try {
-
-    const response = await api.fetchSingleNews(slug);
-    dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
-    } catch (error) {
+        const response = await api.fetchSingleNews(slug);
+        dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
+    } 
+    catch (error) {
       console.log(error);
     }
 
 };
+
+
 export const GetSidebarData = (slug) => async (dispatch) => {
 
 // console.log('slugggg--', slug);

@@ -17,7 +17,6 @@ class NewsDetail extends Component {
 
     componentDidMount() {
         const { slug } = this.props.match.params;
-        console.log("didmount");
         this.props.getSingleNews(slug);
         this.props.GetSidebarData();
     }
@@ -25,13 +24,13 @@ class NewsDetail extends Component {
     render() {
         const { single_news, isLoading } = this.props;
         const news = single_news;
-        console.log("single_news", news);
         // console.log(" this.props", this.props);
-        const slug = this.state.slug;
-        // if (slug) {
-        //     this.props.getSingleNews(slug);
-        //     this.setState({ slug: "" });
-        // }
+        const id = this.state.slug;
+        if (id) {
+            console.log("aa");
+            this.props.getSingleNews(id);
+            this.setState({ slug: "" });
+        }
         if (isLoading === true) {
             return "Loading";
         } else {
@@ -187,8 +186,12 @@ class NewsDetail extends Component {
                                                                         <div className="media-left">
                                                                             <a href="#">
                                                                                 <img
+                                                                                    style={{
+                                                                                        height: 100,
+                                                                                        width: 100,
+                                                                                    }}
                                                                                     className="media-object"
-                                                                                    src={`http://localhost:8000${news.thumbnail}`}
+                                                                                    src={`http://localhost:8000/media/${news.thumbnail}`}
                                                                                     alt="Generic placeholder image"
                                                                                 />
                                                                             </a>
@@ -490,9 +493,10 @@ class NewsDetail extends Component {
     }
 }
 const mapStateToProps = (state) => (
-    console.log("sany", state.newsReducer),
+    console.log(state.newsReducer.single_news),
     {
         single_news: state.newsReducer.single_news,
+        isLoading: state.newsReducer.isLoading,
         most_commented_news: state.sidebarReducer.news.most_commented,
         popular_news: state.sidebarReducer.news.popular_news,
     }
