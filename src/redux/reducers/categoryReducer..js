@@ -8,7 +8,7 @@ export default (news = data, action) => {
             return action.payload.data;
         case FETCH_SINGLE_CATEGORY_DATA:
             return {
-                single_category_news : action.payload.data,
+                single_category_data : action.payload.data,
                 isLoading : false,
             };
         

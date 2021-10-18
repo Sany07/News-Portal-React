@@ -474,7 +474,7 @@ class NewsDetail extends Component {
                                         {/*Entity Comments */}
                                     </div>
                                 )}
-                                {news && (
+                                {this.props.popular_news && (
                                     <Sidebar
                                         popular_news={this.props.popular_news}
                                         most_commented_news={

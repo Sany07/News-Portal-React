@@ -1,4 +1,5 @@
-import { FETCH_SINGLE_NEWS, FETCH_SIDEBAR_DATA, FETCH_SINGLE_CATEGORY_DATA } from './actionTypes'
+import { FETCH_SINGLE_NEWS, FETCH_SIDEBAR_DATA, 
+FETCH_SINGLE_CATEGORY_DATA, FETCH_SINGLE_TAG_DATA } from './actionTypes'
 import * as api from '../../apis/NewsApi'
 
 export const getSingleNews = (slug) => async (dispatch) => {
@@ -28,12 +29,22 @@ export const GetSidebarData = (slug) => async (dispatch) => {
 
 };
 
-export const GetSingleCategoryData = (slug) => async (dispatch) => {
-
-// console.log('slugggg--', slug);
+export const GetSingleTagData = (slug) => async (dispatch) => {
+console.log(slug);
     try {
 
-    const response = await api.fetchCategoryNews();
+    const response = await api.fetchTagNews(slug);
+    dispatch({ type: FETCH_SINGLE_TAG_DATA, payload: response });
+    } catch (error) {
+      console.log('error');
+    }
+
+};
+
+export const GetSingleCategoryData = (slug) => async (dispatch) => {
+    try {
+
+    const response = await api.fetchCategoryNews(slug);
     dispatch({ type: FETCH_SINGLE_CATEGORY_DATA, payload: response });
     } catch (error) {
       console.log('error');

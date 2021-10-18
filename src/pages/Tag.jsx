@@ -1,88 +1,94 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-export default class Tag extends Component {
+import { GetSingleTagData } from "../redux/actions/News";
+import { GetSidebarData } from "../redux/actions/News";
+import moment from "moment";
+import { NewsCard } from "../components/skeletons/NewsCard";
+import Sidebar from "./Sidebar";
+
+export class Tag extends Component {
+    componentDidMount() {
+        const { tag } = this.props.match.params;
+        this.props.GetSingleTagData(tag);
+        this.props.GetSidebarData();
+    }
     render() {
-        return (
-            <div>
-                tag
-                <section className="breadcrumb_section">
-                    <div className="container">
-                        <div className="row">
-                            <ol className="breadcrumb">
-                                <li>
-                                    <a href="{% url 'newspaper:home'%}">Home</a>
-                                </li>
-                                <li>
-                                    <a href="#">News</a>
-                                </li>
-                                <li>
-                                    <a href="#">Tech</a>
-                                </li>
-                                <li className="active">
-                                    <a href="{% url 'newspaper:tag' tag %}">
-                                        {" "}
-                                        tag{" "}
-                                    </a>
-                                </li>
-                            </ol>
-                        </div>
-                    </div>
-                </section>
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-8">
-                            <div className="entity_title header_purple">
-                                <h1>
-                                    <a
-                                        href="{% url 'newspaper:tag' tag %}"
-                                        target="_blank"
-                                    >
-                                        title
-                                    </a>
-                                </h1>
+        const { tag, isLoading } = this.props;
+        // console.log("render", tag);
+        if (isLoading === true) {
+            return "Loading";
+        } else {
+            return (
+                <Fragment>
+                    <section class="breadcrumb_section">
+                        <div class="container">
+                            <div class="row">
+                                <ol class="breadcrumb">
+                                    <li>
+                                        <Link to="/">Home</Link>
+                                    </li>
+                                    <li class="active">{tag && tag.tag[0]}</li>
+                                </ol>
                             </div>
                         </div>
+                    </section>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-8">
+                                <div class="entity_title header_purple">
+                                    <h1>
+                                        <a href="" target="_blank">
+                                            {/* {category && category.name} */}
+                                        </a>
+                                    </h1>
+                                </div>
+                                <div class="row">
+                                    {tag &&
+                                        tag.news.map((news, index) => {
+                                            return (
+                                                <NewsCard
+                                                    news={news}
+                                                    index={index}
+                                                    tag={tag.tag}
+                                                />
+                                            );
+                                        })}
+                                </div>
+
+                                {/* {% if is_paginated %}
+                            {% include 'site/includes/_paginator.html' %}
+                        {% endif %} */}
+                                {/* </div>  */}
+                            </div>
+                            {this.props.popular_news && (
+                                <Sidebar
+                                    popular_news={this.props.popular_news}
+                                    most_commented_news={
+                                        this.props.most_commented_news
+                                    }
+                                />
+                            )}
+                        </div>
                     </div>
-                    <nav
-                        aria-label="Page navigation"
-                        className="pagination_section"
-                    >
-                        <ul className="pagination">
-                            <li>
-                                <a href="#" aria-label="Previous">
-                                    {" "}
-                                    <span aria-hidden="true">&laquo;</span>{" "}
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">1</a>
-                            </li>
-                            <li>
-                                <a href="#">2</a>
-                            </li>
-                            <li>
-                                <a href="#">3</a>
-                            </li>
-                            <li>
-                                <a href="#">4</a>
-                            </li>
-                            <li>
-                                <a href="#">5</a>
-                            </li>
-                            <li>
-                                <a
-                                    href="#"
-                                    aria-label="Next"
-                                    className="active"
-                                >
-                                    {" "}
-                                    <span aria-hidden="true">&raquo;</span>{" "}
-                                </a>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            </div>
-        );
+                    ;
+                </Fragment>
+            );
+        }
     }
 }
+const mapStateToProps = (state) => (
+    console.log("sta", state.tagReducer),
+    {
+        tag: state.tagReducer.single_tag_data,
+        isLoading: state.tagReducer.isLoading,
+        most_commented_news: state.sidebarReducer.news.most_commented,
+        popular_news: state.sidebarReducer.news.popular_news,
+    }
+);
+
+export default connect(mapStateToProps, {
+    GetSingleTagData,
+    GetSidebarData,
+})(Tag);
