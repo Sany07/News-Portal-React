@@ -9,7 +9,7 @@ export const FeatureNewsCard = (props) => {
             <div className="container">
                 <div className="row">
                     {hot_news ? (
-                        <div className="col-md-7">
+                        <div className="col-md-7" key={hot_news.id}>
                             <div className="feature_article_wrapper">
                                 <div className="feature_article_img">
                                     <img
@@ -74,7 +74,7 @@ export const FeatureNewsCard = (props) => {
                         ""
                     )}
                     {trending_new ? (
-                        <div className="col-md-5">
+                        <div className="col-md-5" key={trending_new.id}>
                             <div className="feature_static_wrapper">
                                 <div className="feature_article_img">
                                     <img
@@ -151,7 +151,7 @@ export const FeatureNewsCard = (props) => {
                         ""
                     )}
                     {editor_choice ? (
-                        <div className="col-md-5">
+                        <div className="col-md-5" key={editor_choice.id}>
                             <div className="feature_static_last_wrapper">
                                 <div className="feature_article_img">
                                     <img

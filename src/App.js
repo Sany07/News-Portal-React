@@ -12,10 +12,10 @@ function App() {
       <header>
         <Router>
           <div id="main-wrapper">
-                <Header />
-                <BaseRouter />
-                <Footer />
-              </div>
+            <Header />
+            <BaseRouter />
+            <Footer />
+          </div>
         </Router>
       </header>
     </Provider>

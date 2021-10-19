@@ -19,7 +19,7 @@ const Sidebar = (props) => {
                     {popular_news &&
                         popular_news.map((popular_news) => {
                             return (
-                                <div className="media">
+                                <div className="media" key={popular_news.id}>
                                     <div className="media-left">
                                         <Link to={`/post/${popular_news.slug}`}>
                                             <img

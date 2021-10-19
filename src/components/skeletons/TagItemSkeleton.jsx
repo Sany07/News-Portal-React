@@ -6,7 +6,11 @@ export const TagItemSkeleton = (props) => {
         <>
             {props.tag.map((tag) => {
                 return (
-                    <span className={props.css} style={{ marginRight: 5 }}>
+                    <span
+                        className={props.css}
+                        style={{ marginRight: 5 }}
+                        key={tag}
+                    >
                         <Link to={`/tag/${tag}`}>{tag}</Link>
                     </span>
                 );

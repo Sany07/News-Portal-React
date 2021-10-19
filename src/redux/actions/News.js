@@ -30,8 +30,8 @@ export const GetSidebarData = (slug) => async (dispatch) => {
 };
 
 export const GetSingleTagData = (slug) => async (dispatch) => {
-console.log(slug);
     try {
+console.log(slug);
 
     const response = await api.fetchTagNews(slug);
     dispatch({ type: FETCH_SINGLE_TAG_DATA, payload: response });

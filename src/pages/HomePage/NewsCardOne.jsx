@@ -13,7 +13,7 @@ export const NewsCardOne = (props) => {
         <>
             {newslist.map((news, index) => {
                 return (
-                    <>
+                    <div key={index}>
                         {index === 0 ? (
                             <div className="article_title header_pink">
                                 <h2>
@@ -34,12 +34,16 @@ export const NewsCardOne = (props) => {
                                 marginBottom: "15px",
                             }}
                         >
-                            <div className="category_article_body">
+                            <div
+                                className="category_article_body"
+                                key={news.id}
+                            >
                                 <div className="top_article_img">
                                     <Link to={`/post/${news.slug}`}>
                                         <img
                                             style={{
                                                 height: 279,
+                                                width: 345,
                                             }}
                                             className="img-responsive"
                                             src={`http://localhost:8000${news.thumbnail}`}
@@ -97,7 +101,7 @@ export const NewsCardOne = (props) => {
                             index={index}
                             slug={news.category.slug}
                         />
-                    </>
+                    </div>
                 );
             })}
         </>

@@ -15,7 +15,7 @@ export const NewscardTwo = (props) => {
         <>
             {newslist.map((news, index) => {
                 return (
-                    <>
+                    <div key={index}>
                         {index === 0 ? (
                             <div className="article_title header_blue">
                                 <h2>
@@ -35,6 +35,10 @@ export const NewscardTwo = (props) => {
                                     <div className="top_article_img">
                                         <Link to={`/post/${news.slug}`}>
                                             <img
+                                                style={{
+                                                    width: 295,
+                                                    height: 252,
+                                                }}
                                                 className="img-responsive"
                                                 src={`http://localhost:8000${news.thumbnail}`}
                                                 alt="feature-top"
@@ -95,7 +99,7 @@ export const NewscardTwo = (props) => {
                             index={index}
                             slug={news.category.slug}
                         />
-                    </>
+                    </div>
                 );
             })}
         </>

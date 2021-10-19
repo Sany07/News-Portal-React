@@ -21,7 +21,11 @@ export const NewsCard = (props) => {
                                 width: 775,
                                 maxHeight: 450,
                             }}
-                            src={`http://localhost:8000${news.thumbnail}`}
+                            src={
+                                news.thumbnail.startsWith("/media")
+                                    ? `http://localhost:8000${news.thumbnail}`
+                                    : `http://localhost:8000/media/${news.thumbnail}`
+                            }
                             alt="feature-top"
                         />
                     </div>
@@ -37,7 +41,11 @@ export const NewsCard = (props) => {
                             {moment(news.timestamp).format("Do MMM  YYYY")}
                         </a>
                         , by:{" "}
-                        <a href="#">{news && news.author.user.username}</a>
+                        <a href="#">
+                            {news.author.user
+                                ? news.author.user.username
+                                : news.author}
+                        </a>
                     </div>
 
                     <div class="entity_content">
@@ -51,7 +59,7 @@ export const NewsCard = (props) => {
                         </span>
                         <span>
                             <i class="fa fa-comments-o"></i>
-                            {news.get_comment_count} <a href="#">Comments</a>{" "}
+                            {news.total_comment_count} <a href="#"> Comments</a>{" "}
                         </span>
                     </div>
                 </div>
@@ -68,7 +76,11 @@ export const NewsCard = (props) => {
                                     width: 360,
                                     height: 250,
                                 }}
-                                src={`http://localhost:8000${news.thumbnail}`}
+                                src={
+                                    news.thumbnail.startsWith("/media")
+                                        ? `http://localhost:8000${news.thumbnail}`
+                                        : `http://localhost:8000/media/${news.thumbnail}`
+                                }
                                 alt="feature-top"
                             />
                         </div>
@@ -86,7 +98,12 @@ export const NewsCard = (props) => {
                                 {moment(news.timestamp).format("Do MMM  YYYY")}
                             </a>
                             , by:{" "}
-                            <a href="#">{news && news.author.user.username}</a>
+                            <a href="#">
+                                {" "}
+                                {news.author.user
+                                    ? news.author.user.username
+                                    : news.author}
+                            </a>
                         </div>
 
                         <div class="category_article_content">
@@ -103,7 +120,7 @@ export const NewsCard = (props) => {
                             </span>
                             <span>
                                 <i class="fa fa-comments-o"></i>
-                                <a href="#">{news.get_comment_count}</a>{" "}
+                                <a href="#"> {news.total_comment_count}</a>{" "}
                                 Comments
                             </span>
                         </div>
