@@ -1,12 +1,11 @@
 import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
-import { GetSidebarData } from "../redux/actions/News";
 import moment from "moment";
 
-const Sidebar = (props) => {
-    const { popular_news, most_commented_news } = props;
+export const Sidebar = (props) => {
+    const { popular_news, most_commented_news, setSlug } = props;
+
     return (
         <Fragment>
             <div className="col-md-4">
@@ -21,7 +20,17 @@ const Sidebar = (props) => {
                             return (
                                 <div className="media" key={popular_news.id}>
                                     <div className="media-left">
-                                        <Link to={`/post/${popular_news.slug}`}>
+                                        <Link
+                                            onClick={
+                                                setSlug
+                                                    ? () =>
+                                                          setSlug(
+                                                              popular_news.slug
+                                                          )
+                                                    : "ss"
+                                            }
+                                            to={`/post/${popular_news.slug}`}
+                                        >
                                             <img
                                                 style={{
                                                     height: 100,
@@ -36,6 +45,14 @@ const Sidebar = (props) => {
                                     <div className="media-body">
                                         <h3 className="media-heading">
                                             <Link
+                                                onClick={
+                                                    setSlug
+                                                        ? () =>
+                                                              setSlug(
+                                                                  popular_news.slug
+                                                              )
+                                                        : ""
+                                                }
                                                 to={`/post/${popular_news.slug}`}
                                             >
                                                 {popular_news.title}
@@ -106,6 +123,13 @@ const Sidebar = (props) => {
                                 >
                                     <div className="media-left">
                                         <Link
+                                            onClick={() =>
+                                                setSlug
+                                                    ? setSlug(
+                                                          most_commented_news.slug
+                                                      )
+                                                    : ""
+                                            }
                                             to={`/post/${most_commented_news.slug}`}
                                         >
                                             <img
@@ -122,6 +146,13 @@ const Sidebar = (props) => {
                                     <div className="media-body">
                                         <h3 className="media-heading">
                                             <Link
+                                                onClick={() =>
+                                                    setSlug
+                                                        ? setSlug(
+                                                              most_commented_news.slug
+                                                          )
+                                                        : ""
+                                                }
                                                 to={`/post/${most_commented_news.slug}`}
                                             >
                                                 {most_commented_news.title}
@@ -148,5 +179,3 @@ const Sidebar = (props) => {
         </Fragment>
     );
 };
-
-export default Sidebar;

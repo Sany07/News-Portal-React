@@ -1,17 +1,13 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { getSingleNews, GetSidebarData } from "../redux/actions/News";
 import { getNewsComments } from "../redux/actions/NewsComment";
-import Sidebar from "./Sidebar";
-import { NewsLetter } from "../components/includes/NewsLetter";
 import { TagItemSkeleton } from "../components/skeletons/TagItemSkeleton";
 import { RelatedNews } from "./RelatedNews";
-import moment from "moment";
 import { SingleNewsCard } from "../components/skeletons/SingleNewsCard";
-import { Loading } from "../components/includes/Loading";
+import { Sidebar } from "./Sidebar";
 
+import { Loading } from "../components/includes/Loading";
 class NewsDetail extends Component {
     state = {
         slug: "",
@@ -25,9 +21,7 @@ class NewsDetail extends Component {
         window.scrollTo(0, 0);
     }
     render() {
-        const { single_news, isLoading } = this.props;
-        const news = single_news;
-        const id = this.state.slug;
+        const { single_news: news, isLoading } = this.props;
 
         if (this.state.slug) {
             this.props.getSingleNews(this.state.slug);
@@ -73,7 +67,7 @@ class NewsDetail extends Component {
                                         </div>
                                         {/* entity_footer */}
                                     </div>
-                                    +
+
                                     <div className="related_news">
                                         <div className="entity_inner__title header_purple">
                                             <h2>Related Post</h2>
@@ -295,6 +289,11 @@ class NewsDetail extends Component {
                             )}
                             {this.props.popular_news && (
                                 <Sidebar
+                                    setSlug={(slug) =>
+                                        this.setState({
+                                            slug: slug,
+                                        })
+                                    }
                                     popular_news={this.props.popular_news}
                                     most_commented_news={
                                         this.props.most_commented_news

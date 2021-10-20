@@ -4,11 +4,12 @@ import { Link } from "react-router-dom";
 
 import { getHomepageData } from "../redux/actions/homepage";
 import { GetSidebarData } from "../redux/actions/News";
-import Sidebar from "./Sidebar";
-import { NewscardTwo } from "./HomePage/NewsCardTwo";
+import { Sidebar } from "./Sidebar";
 import NewsListCard from "./HomePage/NewsListCard";
 import { NewsLetter } from "../components/includes/NewsLetter";
 import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
+import { Loading } from "../components/includes/Loading";
+import { VideoSection } from "../components/includes/VideoSection";
 
 class index extends Component {
     componentDidMount() {
@@ -17,9 +18,16 @@ class index extends Component {
     }
 
     render() {
-        const { loggedIn } = this.props.loggedIn;
-        if (loggedIn === true) {
-            return "Loading";
+        const { isLoading } = this.props;
+
+        if (isLoading === true) {
+            return (
+                <>
+                    <Loading />
+                    <VideoSection />
+                    <NewsLetter />
+                </>
+            );
         } else {
             return (
                 <>
@@ -58,7 +66,7 @@ class index extends Component {
                                             }
                                         />
                                     ) : (
-                                        ""
+                                        <Loading />
                                     )}
                                 </div>
 
@@ -71,49 +79,7 @@ class index extends Component {
                             </div>
                         </div>
                     </section>
-                    {/* 
-                <section id="video_section" className="video_section">
-                    <div className="container">
-                        <div className="well">
-                            <div className="row">
-                                <div className="col-md-6">
-                                    <div className="embed-responsive embed-responsive-4by3">
-                                        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/MJ-jbFdUPns"
-                                            frameborder="0" allowfullscreen></iframe>
-                                    </div>
-
-                                </div>
-
-                                <div className="col-md-3">
-                                    <div className="embed-responsive embed-responsive-4by3">
-                                        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/h5Jni-vy_5M"></iframe>
-                                    </div>
-
-                                    <div className="embed-responsive embed-responsive-4by3 m16">
-                                        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/wQ5Gj0UB_R8"></iframe>
-                                    </div>
-
-                                </div>
-
-                                <div className="col-md-3">
-                                    <div className="embed-responsive embed-responsive-4by3">
-                                        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/UPvJXBI_3V4"></iframe>
-                                    </div>
-
-                                    <div className="embed-responsive embed-responsive-4by3 m16">
-                                        <iframe className="embed-responsive-item" src="https://www.youtube.com/embed/DTCtj5Wz6BM"></iframe>
-                                    </div>
-
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </section> */}
-
+                    <VideoSection />
                     <NewsLetter />
                 </>
             );
@@ -130,7 +96,7 @@ const mapStateToProps = (state) => ({
     hot_news: state.HomePageReducer.news.hot_news,
     trending_new: state.HomePageReducer.news.trending_new,
     editor_choice: state.HomePageReducer.news.editor_choice,
-    loggedIn: state.HomePageReducer.news,
+    isLoading: state.HomePageReducer.isLoading,
 
     most_commented_news: state.sidebarReducer.news.most_commented,
     popular_news: state.sidebarReducer.news.popular_news,

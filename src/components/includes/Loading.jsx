@@ -5,8 +5,7 @@ export const Loading = () => {
     return (
         <div className="container">
             <div className="row text-center">
-                {/* <Loader type="Puff" color="#00BFFF" height={550} width={80} /> */}
-                <Loader type="Bars" color="#00BFFF" height={480} width={80} />
+                <Loader type="Bars" color="#00BFFF" height={380} width={40} />
             </div>
         </div>
     );

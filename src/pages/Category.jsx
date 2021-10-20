@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 
 import { GetSingleCategoryData } from "../redux/actions/News";
 import { GetSidebarData } from "../redux/actions/News";
-import moment from "moment";
 import { NewsCard } from "../components/skeletons/NewsCard";
-import Sidebar from "./Sidebar";
-
+import { Sidebar } from "./Sidebar";
+import moment from "moment";
+import { Loading } from "../components/includes/Loading";
 class Category extends Component {
     componentDidMount() {
         const { slug } = this.props.match.params;
@@ -17,9 +17,9 @@ class Category extends Component {
     }
     render() {
         const { category, isLoading } = this.props;
-        console.log("render", isLoading);
+
         if (isLoading === true) {
-            return "Loading";
+            return <Loading />;
         } else {
             return (
                 <Fragment>

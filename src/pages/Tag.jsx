@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 
 import { GetSingleTagData } from "../redux/actions/News";
 import { GetSidebarData } from "../redux/actions/News";
-import moment from "moment";
 import { NewsCard } from "../components/skeletons/NewsCard";
-import Sidebar from "./Sidebar";
+import { Sidebar } from "./Sidebar";
+import { Loading } from "../components/includes/Loading";
+import moment from "moment";
 
 export class Tag extends Component {
     componentDidMount() {
@@ -16,9 +17,8 @@ export class Tag extends Component {
     }
     render() {
         const { tag, isLoading } = this.props;
-        // console.log("render", tag);
         if (isLoading === true) {
-            return "Loading";
+            return <Loading />;
         } else {
             return (
                 <Fragment>
