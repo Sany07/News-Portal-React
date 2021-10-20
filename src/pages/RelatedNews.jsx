@@ -2,19 +2,23 @@ import React from "react";
 import moment from "moment";
 import { Link } from "react-router-dom";
 export const RelatedNews = (props) => {
-    const { related_post, rr } = props;
+    const { related_post, setSlug } = props;
     return (
         <>
             {related_post &&
                 related_post.map((news) => {
                     return (
-                        <div className="col-md-6 s">
+                        <div className="col-md-6 s" key={news.id}>
                             <div className="media">
                                 <div className="media-left">
                                     <a href="#">
                                         <img
+                                            style={{
+                                                height: 100,
+                                                width: 100,
+                                            }}
                                             className="media-object"
-                                            src={`http://localhost:8000${news.thumbnail}`}
+                                            src={`http://localhost:8000/media/${news.thumbnail}`}
                                             alt="Generic placeholder image"
                                         />
                                     </a>
@@ -25,13 +29,11 @@ export const RelatedNews = (props) => {
                                             Mobile
                                         </a>
                                     </span>
-                                    <h3
-                                        className="media-heading"
-                                        onClick={rr({
-                                            id: news.slug,
-                                        })}
-                                    >
-                                        <Link to={`/post/${news.slug}/`}>
+                                    <h3 className="media-heading">
+                                        <Link
+                                            onClick={() => setSlug(news.slug)}
+                                            to={`/post/${news.slug}/`}
+                                        >
                                             {news.title}
                                         </Link>
                                     </h3>

@@ -24,15 +24,13 @@ class NewsDetail extends Component {
         this.props.GetSidebarData();
         window.scrollTo(0, 0);
     }
-
     render() {
         const { single_news, isLoading } = this.props;
         const news = single_news;
         const id = this.state.slug;
 
-        if (id) {
-            // console.log("state", this.state.id);
-            this.props.getSingleNews(id);
+        if (this.state.slug) {
+            this.props.getSingleNews(this.state.slug);
             this.setState({ slug: "" });
             window.scrollTo(0, 200);
         }
@@ -82,100 +80,14 @@ class NewsDetail extends Component {
                                         </div>
                                         {/* entity_title */}
                                         <div className="row">
-                                            {/* <RelatedNews
+                                            <RelatedNews
                                                 related_post={news.related_post}
-                                                rr={this.setState}
-                                            /> */}
-
-                                            {news.related_post &&
-                                                news.related_post.map(
-                                                    (news) => {
-                                                        return (
-                                                            <div
-                                                                className="col-md-6 s"
-                                                                key={news.id}
-                                                            >
-                                                                <div className="media">
-                                                                    <div className="media-left">
-                                                                        <a href="#">
-                                                                            <img
-                                                                                style={{
-                                                                                    height: 100,
-                                                                                    width: 100,
-                                                                                }}
-                                                                                className="media-object"
-                                                                                src={`http://localhost:8000/media/${news.thumbnail}`}
-                                                                                alt="Generic placeholder image"
-                                                                            />
-                                                                        </a>
-                                                                    </div>
-                                                                    <div className="media-body">
-                                                                        <span className="tag purple">
-                                                                            <a
-                                                                                href="category.html"
-                                                                                target="_self"
-                                                                            >
-                                                                                Mobile
-                                                                            </a>
-                                                                        </span>
-                                                                        <h3
-                                                                            className="media-heading"
-                                                                            // onClick={rr({
-                                                                            //     id: news.slug,
-                                                                            // })}
-                                                                        >
-                                                                            <Link
-                                                                                onClick={() =>
-                                                                                    this.setState(
-                                                                                        {
-                                                                                            slug: news.slug,
-                                                                                        }
-                                                                                    )
-                                                                                }
-                                                                                to={`/post/${news.slug}/`}
-                                                                            >
-                                                                                {
-                                                                                    news.title
-                                                                                }
-                                                                            </Link>
-                                                                        </h3>
-                                                                        <span className="media-date">
-                                                                            <a href="#">
-                                                                                {moment(
-                                                                                    news.timestamp
-                                                                                ).format(
-                                                                                    "Do MMM  YYYY"
-                                                                                )}
-                                                                            </a>
-                                                                            {/* , by:{" "}
-                                        {/* <a href="#">
-                                            {news.author &&
-                                                news.author.user.username}
-                                        </a> */}
-                                                                        </span>
-                                                                        <div className="media_social">
-                                                                            <span>
-                                                                                <a href="#">
-                                                                                    <i className="fa fa-share-alt" />
-                                                                                    424
-                                                                                </a>{" "}
-                                                                                Shares
-                                                                            </span>
-                                                                            <span>
-                                                                                <a href="#">
-                                                                                    <i className="fa fa-comments-o" />
-
-                                                                                    4
-                                                                                </a>{" "}
-                                                                                Comments
-                                                                            </span>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        );
-                                                    }
-                                                )}
+                                                setSlug={(slug) =>
+                                                    this.setState({
+                                                        slug: slug,
+                                                    })
+                                                }
+                                            />
                                         </div>
                                     </div>
                                     {/* Related news */}
@@ -398,15 +310,13 @@ class NewsDetail extends Component {
         }
     }
 }
-const mapStateToProps = (state) =>
-    // console.log(state.commentReducer.comments),
-    ({
-        single_news: state.newsReducer.single_news,
-        isLoading: state.newsReducer.isLoading,
-        most_commented_news: state.sidebarReducer.news.most_commented,
-        popular_news: state.sidebarReducer.news.popular_news,
-        news_comments: state.commentReducer,
-    });
+const mapStateToProps = (state) => ({
+    single_news: state.newsReducer.single_news,
+    isLoading: state.newsReducer.isLoading,
+    most_commented_news: state.sidebarReducer.news.most_commented,
+    popular_news: state.sidebarReducer.news.popular_news,
+    news_comments: state.commentReducer,
+});
 
 export default connect(mapStateToProps, {
     getSingleNews,
