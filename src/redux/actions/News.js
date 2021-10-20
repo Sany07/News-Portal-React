@@ -19,11 +19,14 @@ import _ from 'lodash';
 // };
 
 
-export const getSingleNews = slug => dispatch => _fetchSingleNews(slug, dispatch);
+export const getSingleNews = slug => dispatch =>{_fetchSingleNews(slug, dispatch)};
+
 const _fetchSingleNews = _.memoize(async (slug, dispatch) => {
         try {
         const response = await api.fetchSingleNews(slug);
+
         dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
+        _fetchSingleNews.cache.delete(slug)
     } 
     catch (error) {
       console.log(error);

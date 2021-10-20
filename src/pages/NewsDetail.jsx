@@ -20,22 +20,21 @@ class NewsDetail extends Component {
 
     componentDidMount() {
         const { slug } = this.props.match.params;
-
         this.props.getSingleNews(slug);
         this.props.GetSidebarData();
+        window.scrollTo(0, 0);
     }
 
     render() {
         const { single_news, isLoading } = this.props;
         const news = single_news;
         const id = this.state.slug;
-        // if (news) {
-        //     this.props.getNewsComments(news.id);
-        // }
+
         if (id) {
+            // console.log("state", this.state.id);
             this.props.getSingleNews(id);
             this.setState({ slug: "" });
-            // this.props.getNewsComments(1);
+            window.scrollTo(0, 200);
         }
         if (isLoading === true || this.state.isLoading == true) {
             return <Loading />;
@@ -399,16 +398,15 @@ class NewsDetail extends Component {
         }
     }
 }
-const mapStateToProps = (state) => (
-    console.log(state.commentReducer.comments),
-    {
+const mapStateToProps = (state) =>
+    // console.log(state.commentReducer.comments),
+    ({
         single_news: state.newsReducer.single_news,
         isLoading: state.newsReducer.isLoading,
         most_commented_news: state.sidebarReducer.news.most_commented,
         popular_news: state.sidebarReducer.news.popular_news,
         news_comments: state.commentReducer,
-    }
-);
+    });
 
 export default connect(mapStateToProps, {
     getSingleNews,

@@ -7,7 +7,6 @@ export default (news = data, action) => {
         case 'FETCH_ALL':
             return action.payload.data;
         case FETCH_SINGLE_NEWS:
-            console.log('single news');
             return {
                 single_news : action.payload.data,
                 isLoading : false,
