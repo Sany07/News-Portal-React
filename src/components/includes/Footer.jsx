@@ -233,12 +233,12 @@ export default function Footer() {
                             <div className="footer">
                                 <div className="col-sm-3">
                                     <div className="social">
-                                        <button
+                                        <a
                                             href="/facebook"
                                             className="icons-sm fb-ic"
                                         >
                                             <i className="fa fa-facebook" />
-                                        </button>
+                                        </a>
                                         {/*Twitter*/}
                                         <a
                                             href="/twitter"

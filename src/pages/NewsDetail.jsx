@@ -10,6 +10,7 @@ import { TagItemSkeleton } from "../components/skeletons/TagItemSkeleton";
 import { RelatedNews } from "./RelatedNews";
 import moment from "moment";
 import { SingleNewsCard } from "../components/skeletons/SingleNewsCard";
+import { Loading } from "../components/includes/Loading";
 
 class NewsDetail extends Component {
     state = {
@@ -19,6 +20,7 @@ class NewsDetail extends Component {
 
     componentDidMount() {
         const { slug } = this.props.match.params;
+
         this.props.getSingleNews(slug);
         this.props.GetSidebarData();
     }
@@ -33,10 +35,10 @@ class NewsDetail extends Component {
         if (id) {
             this.props.getSingleNews(id);
             this.setState({ slug: "" });
-            this.props.getNewsComments(1);
+            // this.props.getNewsComments(1);
         }
         if (isLoading === true || this.state.isLoading == true) {
-            return "Loading";
+            return <Loading />;
         } else {
             return (
                 <section id="entity_section" className="entity_section">
