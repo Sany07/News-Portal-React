@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { getSingleNews, GetSidebarData } from "../redux/actions/News";
 import { getNewsComments } from "../redux/actions/NewsComment";

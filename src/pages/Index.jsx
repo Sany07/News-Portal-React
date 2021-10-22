@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-
 import { getHomepageData } from "../redux/actions/homepage";
 import { GetSidebarData } from "../redux/actions/News";
 import { Sidebar } from "./Sidebar";
-import NewsListCard from "./HomePage/NewsListCard";
 import { NewsLetter } from "../components/includes/NewsLetter";
 import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 import { Loading } from "../components/includes/Loading";
 import { VideoSection } from "../components/includes/VideoSection";
+import NewsListCard from "./HomePage/NewsListCard";
 
 class index extends Component {
     componentDidMount() {

@@ -1,13 +1,6 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
-
-import moment from "moment";
-import newscard from "./NewsCardTwo";
-import { NewsCatalogFive } from "./NewsCatalogFive";
 import { NewsCardOne } from "./NewsCardOne";
 import { NewscardTwo } from "./NewsCardTwo";
-import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
-import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
 
 export default class NewsListCard extends Component {
     render() {

@@ -1,7 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import newscard from "./NewsCardTwo";
-import { NewsCatalogFive } from "./NewsCatalogFive";
 import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
 import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
 import moment from "moment";
