@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getHomepageData } from "../redux/actions/homepage";
+import { getHomepageData } from "../redux/actions/Homepage";
 import { GetSidebarData } from "../redux/actions/News";
 import { Sidebar } from "./Sidebar";
 import { NewsLetter } from "../components/includes/NewsLetter";
@@ -22,7 +22,7 @@ class index extends Component {
             return (
                 <>
                     <Loading />
-                    <VideoSection />
+                    {/* <VideoSection /> */}
                     <NewsLetter />
                 </>
             );
@@ -77,7 +77,7 @@ class index extends Component {
                             </div>
                         </div>
                     </section>
-                    <VideoSection />
+                    {/* <VideoSection /> */}
                     <NewsLetter />
                 </>
             );
@@ -85,20 +85,23 @@ class index extends Component {
     }
 }
 
-const mapStateToProps = (state) => ({
-    news_catalog_one: state.HomePageReducer.news.post_catalog_one,
-    news_catalog_two: state.HomePageReducer.news.post_catalog_two,
-    news_catalog_three: state.HomePageReducer.news.post_catalog_three,
-    news_catalog_four: state.HomePageReducer.news.post_catalog_four,
-    news_catalog_five: state.HomePageReducer.news.post_catalog_five,
-    hot_news: state.HomePageReducer.news.hot_news,
-    trending_new: state.HomePageReducer.news.trending_new,
-    editor_choice: state.HomePageReducer.news.editor_choice,
-    isLoading: state.HomePageReducer.isLoading,
+const mapStateToProps = (state) => (
+    console.log(state),
+    {
+        news_catalog_one: state.HomePageReducer.news.post_catalog_one,
+        news_catalog_two: state.HomePageReducer.news.post_catalog_two,
+        news_catalog_three: state.HomePageReducer.news.post_catalog_three,
+        news_catalog_four: state.HomePageReducer.news.post_catalog_four,
+        news_catalog_five: state.HomePageReducer.news.post_catalog_five,
+        hot_news: state.HomePageReducer.news.hot_news,
+        trending_new: state.HomePageReducer.news.trending_new,
+        editor_choice: state.HomePageReducer.news.editor_choice,
+        isLoading: state.HomePageReducer.isLoading,
 
-    most_commented_news: state.sidebarReducer.news.most_commented,
-    popular_news: state.sidebarReducer.news.popular_news,
-});
+        most_commented_news: state.sidebarReducer.news.most_commented,
+        popular_news: state.sidebarReducer.news.popular_news,
+    }
+);
 
 export default connect(mapStateToProps, { getHomepageData, GetSidebarData })(
     index
