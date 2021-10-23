@@ -36,7 +36,8 @@ export const FeatureNewsCard = (props) => {
 
                                     <div className="feature_article_date">
                                         <a href="#" target="_self">
-                                            {hot_news.author.user.username}
+                                            {hot_news.author &&
+                                                hot_news.author.user.username}
                                         </a>
                                         ,{"         "}
                                         <a>
@@ -106,7 +107,9 @@ export const FeatureNewsCard = (props) => {
 
                                     <div className="feature_article_date">
                                         <a href="#" target="_self">
-                                            {trending_new.author.user.username}
+                                            {trending_new.author &&
+                                                trending_new.author.user
+                                                    .username}
                                         </a>
                                         ,
                                         <a href="#" target="_self">
@@ -184,7 +187,9 @@ export const FeatureNewsCard = (props) => {
 
                                     <div className="feature_article_date">
                                         <a href="#" target="_self">
-                                            {editor_choice.author.user.username}
+                                            {editor_choice.author &&
+                                                editor_choice.author.user
+                                                    .username}
                                         </a>
                                         ,
                                         <a href="#" target="_self">

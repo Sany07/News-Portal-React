@@ -21,20 +21,19 @@ class NewsDetail extends Component {
         this.props.GetSidebarData();
         window.scrollTo(0, 0);
     }
-    
+
     render() {
-        const { single_news: news, isLoading } = this.props;
-        if(news){
-            console.log('nnew', news);
-        
-        }
-        if (this.state.slug) {
-            this.setState({ isLoading: true });
+        const { single_news: news, isLoading, comments } = this.props;
+        if (comments === null && news.id) {
+            this.props.getNewsComments(news.id);
+        } else if (this.state.slug) {
             this.props.getSingleNews(this.state.slug);
+            this.props.getNewsComments(news.id);
             this.setState({ slug: "", isLoading: false });
-            window.scrollTo(0, 200);
+            // window.scrollTo(0, 200);
         }
-        if (isLoading === true || this.state.isLoading == true) {
+
+        if (isLoading === true || this.state.isLoading === true) {
             return <Loading />;
         } else {
             return (
@@ -85,6 +84,7 @@ class NewsDetail extends Component {
                                                 setSlug={(slug) =>
                                                     this.setState({
                                                         slug: slug,
+                                                        isLoading: true,
                                                     })
                                                 }
                                             />
@@ -100,13 +100,17 @@ class NewsDetail extends Component {
                                     </div>
                                     {/*Advertisement*/}
                                     <div className="readers_comment">
-                                        <div className="entity_inner__title header_purple">
-                                            <h2>Readers Comment</h2>
-                                        </div>
                                         {/* entity_title */}
-                                        {news ? 
-                                        <Comments news={news.id}/>
-                                        :''}   
+                                        {news ? (
+                                            <>
+                                                <div className="entity_inner__title header_purple">
+                                                    <h2>Readers Comment</h2>
+                                                </div>
+                                                <Comments comments={comments} />
+                                            </>
+                                        ) : (
+                                            ""
+                                        )}
                                     </div>
                                     {/*Readers Comment*/}
                                     <div className="widget_advertisement">
@@ -188,7 +192,7 @@ const mapStateToProps = (state) => ({
     isLoading: state.newsReducer.isLoading,
     most_commented_news: state.sidebarReducer.news.most_commented,
     popular_news: state.sidebarReducer.news.popular_news,
-    news_comments: state.commentReducer,
+    comments: state.commentReducer.comments,
 });
 
 export default connect(mapStateToProps, {
