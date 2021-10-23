@@ -6,9 +6,9 @@ import { TagItemSkeleton } from "../components/skeletons/TagItemSkeleton";
 import { RelatedNews } from "./RelatedNews";
 import { SingleNewsCard } from "../components/skeletons/SingleNewsCard";
 import { Sidebar } from "./Sidebar";
-
 import { Loading } from "../components/includes/Loading";
 import { Comments } from "../components/includes/Comments";
+
 class NewsDetail extends Component {
     state = {
         slug: "",
@@ -24,6 +24,7 @@ class NewsDetail extends Component {
 
     render() {
         const { single_news: news, isLoading, comments } = this.props;
+
         if (comments === null && news.id) {
             this.props.getNewsComments(news.id);
         } else if (this.state.slug) {
