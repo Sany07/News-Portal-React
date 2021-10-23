@@ -12,7 +12,6 @@ import { Comments } from "../components/includes/Comments";
 class NewsDetail extends Component {
     state = {
         slug: "",
-        isLoading: false,
     };
 
     componentDidMount() {
@@ -25,16 +24,16 @@ class NewsDetail extends Component {
     render() {
         const { single_news: news, isLoading, comments } = this.props;
 
-        if (comments === null && news.id) {
+        if (isLoading === false && comments === null && news.id) {
             this.props.getNewsComments(news.id);
         } else if (this.state.slug) {
             this.props.getSingleNews(this.state.slug);
             this.props.getNewsComments(news.id);
-            this.setState({ slug: "", isLoading: false });
+            this.setState({ slug: "" });
             // window.scrollTo(0, 200);
         }
 
-        if (isLoading === true || this.state.isLoading === true) {
+        if (isLoading === true) {
             return <Loading />;
         } else {
             return (
@@ -85,7 +84,6 @@ class NewsDetail extends Component {
                                                 setSlug={(slug) =>
                                                     this.setState({
                                                         slug: slug,
-                                                        isLoading: true,
                                                     })
                                                 }
                                             />

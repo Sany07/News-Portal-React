@@ -4,10 +4,10 @@ const data = { isLoading: true, news: {}, single_news: {} };
 
 export default (news = data, action) => {
     switch (action.type) {
-        // case LOADING_REQUEST:
-        // return {
-        //     isLoading: true,
-        // };
+        case LOADING_REQUEST:
+            return {
+                isLoading: true,
+            };
         case FETCH_SINGLE_NEWS:
             return {
                 single_news: action.payload.data,
