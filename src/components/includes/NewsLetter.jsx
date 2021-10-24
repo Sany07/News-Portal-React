@@ -1,11 +1,28 @@
 import React from "react";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const NewsLetter = () => {
+    const onChangeEmail = (e) => {
+        const email = e.target.value;
+        // setEmail(email);
+        console.log(email);
+    };
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        toast();
+        console.log(e.target.value);
+    };
     return (
         <>
             <section id="subscribe_section" className="subscribe_section">
                 <div className="row">
-                    <form action="#" method="post" className="form-horizontal">
+                    <ToastContainer />
+                    <form
+                        onSubmit={handleSubmit}
+                        method="post"
+                        className="form-horizontal"
+                    >
                         <div className="form-group form-group-lg">
                             <label
                                 className="col-sm-6 control-label"
@@ -19,6 +36,7 @@ export const NewsLetter = () => {
 
                             <div className="col-sm-3">
                                 <input
+                                    onChange={onChangeEmail}
                                     type="text"
                                     id="subscribe"
                                     name="subscribe"
@@ -28,7 +46,7 @@ export const NewsLetter = () => {
                             <div className="col-sm-1">
                                 <input
                                     type="submit"
-                                    value="Sign Up"
+                                    value="Submit"
                                     className="btn btn-large pink"
                                 />
                             </div>
