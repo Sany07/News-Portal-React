@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getSingleNews, GetSidebarData } from "../redux/actions/News";
 import { getNewsComments } from "../redux/actions/NewsComment";
@@ -12,6 +12,7 @@ import { Comments } from "../components/includes/Comments";
 class NewsDetail extends Component {
     state = {
         slug: "",
+        newsId: "",
     };
 
     componentDidMount() {
@@ -22,15 +23,25 @@ class NewsDetail extends Component {
     }
 
     render() {
-        const { single_news: news, isLoading, comments } = this.props;
+        const {
+            single_news: news,
+            isLoading,
+            comments,
+            popular_news,
+            most_commented_news,
+        } = this.props;
 
-        if (isLoading === false && comments === null && news.id) {
-            this.props.getNewsComments(news.id);
-        } else if (this.state.slug) {
+        if (this.state.slug || this.state.newsId) {
             this.props.getSingleNews(this.state.slug);
+            this.props.getNewsComments(this.state.newsId);
+            this.setState({ slug: "", newsId: "" });
+            window.scrollTo(0, 200);
+        } else if (
+            news.total_comment_count > 0 &&
+            isLoading === false &&
+            comments === null
+        ) {
             this.props.getNewsComments(news.id);
-            this.setState({ slug: "" });
-            // window.scrollTo(0, 200);
         }
 
         if (isLoading === true) {
@@ -81,45 +92,32 @@ class NewsDetail extends Component {
                                         <div className="row">
                                             <RelatedNews
                                                 related_post={news.related_post}
-                                                setSlug={(slug) =>
+                                                setSlug={(slug, newsId) =>
                                                     this.setState({
                                                         slug: slug,
+                                                        newsId: newsId,
                                                     })
                                                 }
                                             />
                                         </div>
                                     </div>
                                     {/* Related news */}
-                                    <div className="widget_advertisement">
-                                        <img
-                                            className="img-responsive"
-                                            src=""
-                                            alt="feature-top"
-                                        />
-                                    </div>
-                                    {/*Advertisement*/}
+
                                     <div className="readers_comment">
                                         {/* entity_title */}
                                         {news ? (
-                                            <>
+                                            <Fragment>
                                                 <div className="entity_inner__title header_purple">
                                                     <h2>Readers Comment</h2>
                                                 </div>
                                                 <Comments comments={comments} />
-                                            </>
+                                            </Fragment>
                                         ) : (
                                             ""
                                         )}
                                     </div>
                                     {/*Readers Comment*/}
-                                    <div className="widget_advertisement">
-                                        <img
-                                            className="img-responsive"
-                                            src="assets/img/category_advertisement.jpg"
-                                            alt="feature-top"
-                                        />
-                                    </div>
-                                    {/*Advertisement*/}
+
                                     <div className="entity_comments">
                                         <div className="entity_inner__title header_black">
                                             <h2>Add a Comment</h2>
@@ -166,15 +164,14 @@ class NewsDetail extends Component {
                             )}
                             {this.props.popular_news && (
                                 <Sidebar
-                                    setSlug={(slug) =>
+                                    setSlug={(slug, newsId) =>
                                         this.setState({
                                             slug: slug,
+                                            newsId: newsId,
                                         })
                                     }
-                                    popular_news={this.props.popular_news}
-                                    most_commented_news={
-                                        this.props.most_commented_news
-                                    }
+                                    popular_news={popular_news}
+                                    most_commented_news={most_commented_news}
                                 />
                             )}
                             {/*Right Section*/}

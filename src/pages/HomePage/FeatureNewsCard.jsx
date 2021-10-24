@@ -15,7 +15,15 @@ export const FeatureNewsCard = (props) => {
                                     <img
                                         style={{ height: 568.45, width: 652.5 }}
                                         className="img-responsive top_static_article_img"
-                                        src={`http://localhost:8000${hot_news.thumbnail}`}
+                                        src={
+                                            hot_news.thumbnail_url
+                                                ? hot_news.thumbnail_url
+                                                : hot_news.thumbnail.startsWith(
+                                                      "/media"
+                                                  )
+                                                ? `http://localhost:8000${hot_news.thumbnail}`
+                                                : `http://localhost:8000/media/${hot_news.thumbnail}`
+                                        }
                                         alt="feature-top"
                                     />
                                 </div>
@@ -84,7 +92,15 @@ export const FeatureNewsCard = (props) => {
                                             width: 457.5,
                                         }}
                                         className="img-responsive"
-                                        src={`http://localhost:8000${trending_new.thumbnail}`}
+                                        src={
+                                            trending_new.thumbnail_url
+                                                ? trending_new.thumbnail_url
+                                                : trending_new.thumbnail.startsWith(
+                                                      "/media"
+                                                  )
+                                                ? `http://localhost:8000${trending_new.thumbnail}`
+                                                : `http://localhost:8000/media/${trending_new.thumbnail}`
+                                        }
                                         alt="feature-top"
                                     />
                                 </div>
@@ -163,7 +179,15 @@ export const FeatureNewsCard = (props) => {
                                             width: 457.5,
                                         }}
                                         className="img-responsive"
-                                        src={`http://localhost:8000${editor_choice.thumbnail}`}
+                                        src={
+                                            editor_choice.thumbnail_url
+                                                ? editor_choice.thumbnail_url
+                                                : editor_choice.thumbnail.startsWith(
+                                                      "/media"
+                                                  )
+                                                ? `http://localhost:8000${editor_choice.thumbnail}`
+                                                : `http://localhost:8000/media/${editor_choice.thumbnail}`
+                                        }
                                         alt="feature-top"
                                     />
                                 </div>

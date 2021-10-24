@@ -1,15 +1,11 @@
-import {
-    FETCH_HOMEPAGE,
-    HOMEPAGE_LOADING_REQUEST,
-} from "../actions/actionTypes";
+import { FETCH_HOMEPAGE, LOADING_REQUEST } from "../actions/actionTypes";
 
 const data = { isLoading: true, news: {} };
-const HomePageReducer = (news = data, action) => {
+const HomePageReducer = (HomePageData = data, action) => {
     switch (action.type) {
-        case HOMEPAGE_LOADING_REQUEST:
-            console.log(action.type);
+        case LOADING_REQUEST:
             return {
-                ...news,
+                ...data,
                 isLoading: true,
             };
         case FETCH_HOMEPAGE:
@@ -18,7 +14,7 @@ const HomePageReducer = (news = data, action) => {
                 isLoading: false,
             };
         default:
-            return news;
+            return HomePageData;
     }
 };
 

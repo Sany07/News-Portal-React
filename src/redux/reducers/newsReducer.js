@@ -6,6 +6,7 @@ export default (news = data, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {
+                ...news,
                 isLoading: true,
             };
         case FETCH_SINGLE_NEWS:

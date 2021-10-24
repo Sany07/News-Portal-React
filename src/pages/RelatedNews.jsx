@@ -14,11 +14,19 @@ export const RelatedNews = (props) => {
                                     <a href="#">
                                         <img
                                             style={{
-                                                height: 100,
+                                                height: 118,
                                                 width: 100,
                                             }}
                                             className="media-object"
-                                            src={`http://localhost:8000/media/${news.thumbnail}`}
+                                            src={
+                                                news.thumbnail_url
+                                                    ? news.thumbnail_url
+                                                    : news.thumbnail.startsWith(
+                                                          "/media"
+                                                      )
+                                                    ? `http://localhost:8000${news.thumbnail}`
+                                                    : `http://localhost:8000/media/${news.thumbnail}`
+                                            }
                                             alt="Generic placeholder image"
                                         />
                                     </a>
@@ -31,7 +39,9 @@ export const RelatedNews = (props) => {
                                     </span>
                                     <h3 className="media-heading">
                                         <Link
-                                            onClick={() => setSlug(news.slug)}
+                                            onClick={() =>
+                                                setSlug(news.slug, news.id)
+                                            }
                                             to={`/post/${news.slug}/`}
                                         >
                                             {news.title}

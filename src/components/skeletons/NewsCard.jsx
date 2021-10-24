@@ -22,7 +22,9 @@ export const NewsCard = (props) => {
                                 maxHeight: 450,
                             }}
                             src={
-                                news.thumbnail.startsWith("/media")
+                                news.thumbnail_url
+                                    ? news.thumbnail_url
+                                    : news.thumbnail.startsWith("/media")
                                     ? `http://localhost:8000${news.thumbnail}`
                                     : `http://localhost:8000/media/${news.thumbnail}`
                             }
@@ -77,7 +79,9 @@ export const NewsCard = (props) => {
                                     height: 250,
                                 }}
                                 src={
-                                    news.thumbnail.startsWith("/media")
+                                    news.thumbnail_url
+                                        ? news.thumbnail_url
+                                        : news.thumbnail.startsWith("/media")
                                         ? `http://localhost:8000${news.thumbnail}`
                                         : `http://localhost:8000/media/${news.thumbnail}`
                                 }

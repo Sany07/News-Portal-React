@@ -25,7 +25,8 @@ export const Sidebar = (props) => {
                                                 setSlug
                                                     ? () =>
                                                           setSlug(
-                                                              popular_news.slug
+                                                              popular_news.slug,
+                                                              popular_news.id
                                                           )
                                                     : "ss"
                                             }
@@ -37,7 +38,15 @@ export const Sidebar = (props) => {
                                                     width: 100,
                                                 }}
                                                 className="media-object"
-                                                src={`http://localhost:8000${popular_news.thumbnail}`}
+                                                src={
+                                                    popular_news.thumbnail_url
+                                                        ? popular_news.thumbnail_url
+                                                        : popular_news.thumbnail.startsWith(
+                                                              "/media"
+                                                          )
+                                                        ? `http://localhost:8000${popular_news.thumbnail}`
+                                                        : `http://localhost:8000/media/${popular_news.thumbnail}`
+                                                }
                                                 alt="Generic placeholder image"
                                             />
                                         </Link>
@@ -49,7 +58,8 @@ export const Sidebar = (props) => {
                                                     setSlug
                                                         ? () =>
                                                               setSlug(
-                                                                  popular_news.slug
+                                                                  popular_news.slug,
+                                                                  popular_news.id
                                                               )
                                                         : ""
                                                 }
@@ -126,7 +136,8 @@ export const Sidebar = (props) => {
                                             onClick={() =>
                                                 setSlug
                                                     ? setSlug(
-                                                          most_commented_news.slug
+                                                          most_commented_news.slug,
+                                                          most_commented_news.id
                                                       )
                                                     : ""
                                             }
@@ -138,7 +149,15 @@ export const Sidebar = (props) => {
                                                     width: 100,
                                                 }}
                                                 className="media-object"
-                                                src={`http://localhost:8000${most_commented_news.thumbnail}`}
+                                                src={
+                                                    most_commented_news.thumbnail_url
+                                                        ? most_commented_news.thumbnail_url
+                                                        : most_commented_news.thumbnail.startsWith(
+                                                              "/media"
+                                                          )
+                                                        ? `http://localhost:8000${most_commented_news.thumbnail}`
+                                                        : `http://localhost:8000/media/${most_commented_news.thumbnail}`
+                                                }
                                                 alt="Generic placeholder image"
                                             />
                                         </Link>
@@ -149,7 +168,8 @@ export const Sidebar = (props) => {
                                                 onClick={() =>
                                                     setSlug
                                                         ? setSlug(
-                                                              most_commented_news.slug
+                                                              most_commented_news.slug,
+                                                              most_commented_news.id
                                                           )
                                                         : ""
                                                 }

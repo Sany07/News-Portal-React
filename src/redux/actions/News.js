@@ -49,8 +49,7 @@ export const GetSidebarData = () => async (dispatch) => {
 
 export const GetSingleTagData = (slug) => async (dispatch) => {
     try {
-        console.log(slug);
-
+        dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchTagNews(slug);
         dispatch({ type: FETCH_SINGLE_TAG_DATA, payload: response });
     } catch (error) {
@@ -60,6 +59,7 @@ export const GetSingleTagData = (slug) => async (dispatch) => {
 
 export const GetSingleCategoryData = (slug) => async (dispatch) => {
     try {
+        dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchCategoryNews(slug);
         dispatch({ type: FETCH_SINGLE_CATEGORY_DATA, payload: response });
     } catch (error) {

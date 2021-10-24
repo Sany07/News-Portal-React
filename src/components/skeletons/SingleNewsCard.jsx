@@ -57,7 +57,7 @@ export const SingleNewsCard = (props) => {
             <div className="entity_thumb">
                 <img
                     className="img-responsive"
-                    src={news.thumbnail_url}
+                    src={news.thumbnail_url ? news.thumbnail_url : news.thumbnail}
                     alt="feature-top"
                 />
             </div>

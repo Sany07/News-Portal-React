@@ -44,7 +44,15 @@ export const NewsCardOne = (props) => {
                                                 width: 345,
                                             }}
                                             className="img-responsive"
-                                            src={`http://localhost:8000${news.thumbnail}`}
+                                            src={
+                                                news.thumbnail_url
+                                                    ? news.thumbnail_url
+                                                    : news.thumbnail.startsWith(
+                                                          "/media"
+                                                      )
+                                                    ? `http://localhost:8000${news.thumbnail}`
+                                                    : `http://localhost:8000/media/${news.thumbnail}`
+                                            }
                                             alt="feature-top"
                                         />
                                     </Link>
