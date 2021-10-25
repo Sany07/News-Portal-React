@@ -3,10 +3,10 @@ import { connect } from "react-redux";
 import { getHomepageData } from "../redux/actions/Homepage";
 import { GetSidebarData } from "../redux/actions/News";
 import { Sidebar } from "./Sidebar";
-import { NewsLetter } from "../components/includes/NewsLetter";
 import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 import { Loading } from "../components/includes/Loading";
 import { VideoSection } from "../components/includes/VideoSection";
+import NewsLetter from "../components/includes/NewsLetter";
 import NewsListCard from "./HomePage/NewsListCard";
 
 class index extends Component {

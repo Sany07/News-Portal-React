@@ -30,7 +30,6 @@ class NewsDetail extends Component {
             popular_news,
             most_commented_news,
         } = this.props;
-
         if (this.state.slug || this.state.newsId) {
             this.props.getSingleNews(this.state.slug);
             this.props.getNewsComments(this.state.newsId);

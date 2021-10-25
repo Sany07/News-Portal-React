@@ -1,4 +1,8 @@
-import { FETCH_HOMEPAGE, LOADING_REQUEST } from "../actions/actionTypes";
+import {
+    FETCH_HOMEPAGE,
+    LOADING_REQUEST,
+    SUCCESS,
+} from "../actions/actionTypes";
 
 const data = { isLoading: true, news: {} };
 const HomePageReducer = (HomePageData = data, action) => {
