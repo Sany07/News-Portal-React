@@ -56,7 +56,7 @@ export const NewsLetter = (props) => {
                                 id="login_button"
                                 type="submit"
                                 className="btn btn-large pink"
-                                disabled={!isLoading}
+                                disabled={!!isLoading}
                             >
                                 {!isLoading ? "Loading" : "SUBMIT"}
                             </button>
