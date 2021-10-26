@@ -17,6 +17,11 @@ const HomePageReducer = (HomePageData = data, action) => {
                 news: action.payload.data,
                 isLoading: false,
             };
+        case SUCCESS:
+            return {
+                isLoading: false,
+            };
+
         default:
             return HomePageData;
     }

@@ -1,13 +1,16 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getHomepageData } from "../redux/actions/Homepage";
-import { GetSidebarData } from "../redux/actions/News";
 import { Sidebar } from "./Sidebar";
 import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 import { Loading } from "../components/includes/Loading";
 import { VideoSection } from "../components/includes/VideoSection";
-import NewsLetter from "../components/includes/NewsLetter";
+import { NewsLetter } from "../components/includes/NewsLetter";
 import NewsListCard from "./HomePage/NewsListCard";
+import { GetSidebarData } from "../redux/actions/News";
+import {
+    getHomepageData,
+    emailNewsLetterSubscription,
+} from "../redux/actions/Homepage";
 
 class index extends Component {
     componentDidMount() {
@@ -23,7 +26,11 @@ class index extends Component {
                 <>
                     <Loading />
                     {/* <VideoSection /> */}
-                    <NewsLetter />
+                    <NewsLetter
+                        emailSubscription={
+                            this.props.emailNewsLetterSubscription
+                        }
+                    />
                 </>
             );
         } else {
@@ -78,7 +85,12 @@ class index extends Component {
                         </div>
                     </section>
                     {/* <VideoSection /> */}
-                    <NewsLetter />
+                    <NewsLetter
+                        emailSubscription={(email) =>
+                            this.props.emailNewsLetterSubscription(email)
+                        }
+                        isLoading={isLoading}
+                    />
                 </>
             );
         }
@@ -97,12 +109,13 @@ const mapStateToProps = (state) => (
         trending_new: state.HomePageReducer.news.trending_new,
         editor_choice: state.HomePageReducer.news.editor_choice,
         isLoading: state.HomePageReducer.isLoading,
-
         most_commented_news: state.sidebarReducer.news.most_commented,
         popular_news: state.sidebarReducer.news.popular_news,
     }
 );
 
-export default connect(mapStateToProps, { getHomepageData, GetSidebarData })(
-    index
-);
+export default connect(mapStateToProps, {
+    getHomepageData,
+    GetSidebarData,
+    emailNewsLetterSubscription,
+})(index);

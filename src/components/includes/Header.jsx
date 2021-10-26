@@ -5,11 +5,11 @@ export default function Header() {
     return (
         <div>
             {/* <!-- Page Preloader --> */}
-            <div id="preloader">
+            {/* <div id="preloader">
                 <div id="status">
                     <div className="status-mes"></div>
                 </div>
-            </div>
+            </div> */}
 
             {/* <!-- preloader --> */}
             <section
