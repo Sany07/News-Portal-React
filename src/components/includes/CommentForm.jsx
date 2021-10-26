@@ -17,14 +17,26 @@ export const CommentForm = (props) => {
         comment: "",
     });
     const dispatch = useDispatch();
-    const { comments, isLoading } = useSelector(
-        (state) => state.commentReducer
-    );
+    // const { comments, isLoading } = useSelector(
+    //     (state) => state.commentReducer
+    // );
 
     const { isCreated, success } = useSelector((state) => state.commentReducer);
 
+    // useEffect(() => {
+    //     if (newsId !== undefined && !isCreated) {
+    //         dispatch(getNewsComments(newsId));
+    //     }
+    // }, []);
+
+    if (isCreated == true) {
+        console.log(isCreated);
+        dispatch(getNewsComments(1));
+        toast.success("Review is posted.");
+        // dispatch({ type: NEW_COMMENT_RESET });
+    }
     const onChangeComment = (e) => {
-        setData({ post: newsId, comment: e.target.value });
+        setData({ post: 1, comment: e.target.value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -33,31 +45,26 @@ export const CommentForm = (props) => {
     };
     return (
         <Fragment>
-            <div className="entity_comments">
-                <div className="entity_inner__title header_black">
-                    <h2>Add a Comment</h2>
-                </div>
-                {/*Entity Title */}
-                <div className="entity_comment_from">
-                    <form onSubmit={handleSubmit} method="post">
-                        <div className="form-group comment">
-                            <textarea
-                                onChange={onChangeComment}
-                                className="form-control"
-                                id="comment"
-                                name="comment"
-                                placeholder="Comment"
-                                value={data.comment}
-                                required
-                            />
-                        </div>
-                        <button type="submit" className="btn btn-submit red">
-                            Submit
-                        </button>
-                    </form>
-                </div>
-                {/*Entity Comments From */}
+            {/*Entity Title */}
+            <div className="entity_comment_from">
+                <form onSubmit={handleSubmit} method="post">
+                    <div className="form-group comment">
+                        <textarea
+                            onChange={onChangeComment}
+                            className="form-control"
+                            id="comment"
+                            name="comment"
+                            placeholder="Comment"
+                            value={data.comment}
+                            required
+                        />
+                    </div>
+                    <button type="submit" className="btn btn-submit red">
+                        Submit
+                    </button>
+                </form>
             </div>
+            {/*Entity Comments From */}
         </Fragment>
     );
 };

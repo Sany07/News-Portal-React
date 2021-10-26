@@ -1,10 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { getSingleNews, GetSidebarData } from "../redux/actions/News";
-import {
-    getNewsComments,
-    createtNewsComment,
-} from "../redux/actions/NewsComment";
+import { getNewsComments } from "../redux/actions/NewsComment";
 import { TagItemSkeleton } from "../components/skeletons/TagItemSkeleton";
 import { RelatedNews } from "./RelatedNews";
 import { SingleNewsCard } from "../components/skeletons/SingleNewsCard";
@@ -34,7 +31,6 @@ class NewsDetail extends Component {
             popular_news,
             most_commented_news,
         } = this.props;
-
         if (this.state.slug || this.state.newsId) {
             this.props.getSingleNews(this.state.slug);
             this.props.getNewsComments(this.state.newsId);
@@ -108,14 +104,27 @@ class NewsDetail extends Component {
                                     {/* Related news */}
 
                                     <div className="readers_comment">
-                                        <div className="entity_inner__title header_purple">
-                                            <h2>Readers Comment</h2>
-                                        </div>
-                                        <Comments comments={comments} />
+                                        {/* entity_title */}
+                                        {news ? (
+                                            <Fragment>
+                                                <div className="entity_inner__title header_purple">
+                                                    <h2>Readers Comment</h2>
+                                                </div>
+                                                <Comments comments={comments} />
+                                            </Fragment>
+                                        ) : (
+                                            ""
+                                        )}
                                     </div>
                                     {/*Readers Comment*/}
 
-                                    <CommentForm newsId={news.id} />
+                                    <div className="entity_comments">
+                                        <div className="entity_inner__title header_black">
+                                            <h2>Add a Comment</h2>
+                                        </div>
+                                        <CommentForm />
+                                    </div>
+                                    {/*Entity Comments */}
                                 </div>
                             )}
                             {this.props.popular_news && (
@@ -144,12 +153,11 @@ const mapStateToProps = (state) => ({
     isLoading: state.newsReducer.isLoading,
     most_commented_news: state.sidebarReducer.news.most_commented,
     popular_news: state.sidebarReducer.news.popular_news,
-    comments: state.commentReducer,
+    comments: state.commentReducer.comments,
 });
 
 export default connect(mapStateToProps, {
     getSingleNews,
     GetSidebarData,
     getNewsComments,
-    createtNewsComment,
 })(NewsDetail);
