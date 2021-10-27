@@ -1,51 +1,64 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
-
+import { useHistory } from "react-router-dom";
 import {
     getNewsComments,
     createtNewsComment,
 } from "../../redux/actions/NewsComment";
 import { Loading } from "./Loading";
-import { NEW_COMMENT_RESET } from "../../redux/actions/actionTypes";
-import { toast } from "react-toastify";
+import { LOADING_REQUEST } from "../../redux/actions/actionTypes";
+import { Comments } from "./Comments";
+
 export const CommentForm = (props) => {
-    const { newsId } = props;
-    console.log(newsId);
+    const { news, slug } = props;
     const [data, setData] = useState({
         User: 1,
         post: "",
         comment: "",
     });
+
     const dispatch = useDispatch();
-    // const { comments, isLoading } = useSelector(
-    //     (state) => state.commentReducer
-    // );
+    let history = useHistory();
+    const { isCreated } = useSelector((state) => state.newCommentReducer);
 
-    const { isCreated, success } = useSelector((state) => state.commentReducer);
+    // dispatch(getNewsComments(news));
+    // history.push(`/post/${slug}`);
+    // let history = useHistory();
+    console.log(news);
 
-    // useEffect(() => {
-    //     if (newsId !== undefined && !isCreated) {
-    //         dispatch(getNewsComments(newsId));
-    //     }
-    // }, []);
-
-    if (isCreated == true) {
-        console.log(isCreated);
-        dispatch(getNewsComments(1));
-        toast.success("Review is posted.");
-        // dispatch({ type: NEW_COMMENT_RESET });
-    }
+    useEffect(() => {
+        if (isCreated !== undefined) {
+            history.push(`/post/${slug}`);
+            // console.log(dispatch(getNewsComments(news)));
+        }
+    }, [isCreated]);
+    // if (isCreated !== undefined) {
+    //     history.push(`/post/${slug}`);
+    //     console.log("useEffect");
+    //     dispatch(getNewsComments(news));
+    // }
     const onChangeComment = (e) => {
-        setData({ post: 1, comment: e.target.value });
+        setData({ post: news, comment: e.target.value });
     };
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(createtNewsComment(data));
-        setData({ comment: "" });
+        setData({ post: "", comment: "" });
     };
     return (
         <Fragment>
             {/*Entity Title */}
+            <div className="readers_comment">
+                {/* entity_title */}
+
+                <Fragment>
+                    <div className="entity_inner__title header_purple">
+                        <h2>Readers Comment</h2>
+                    </div>
+
+                    {/* <Comments comments={comments} /> */}
+                </Fragment>
+            </div>
             <div className="entity_comment_from">
                 <form onSubmit={handleSubmit} method="post">
                     <div className="form-group comment">

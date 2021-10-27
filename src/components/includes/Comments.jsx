@@ -2,7 +2,6 @@ import React, { Fragment } from "react";
 
 export const Comments = (props) => {
     const { comments } = props;
-
     return (
         <Fragment>
             {comments &&
@@ -71,7 +70,7 @@ export const Comments = (props) => {
                                                             }
                                                         </a>
                                                     </h2>
-                                                    {reply.comment}
+
                                                     <div className="entity_vote">
                                                         <a href="#">
                                                             <i

@@ -70,7 +70,7 @@ export const RelatedNews = (props) => {
                                         <span>
                                             <a href="#">
                                                 <i className="fa fa-comments-o" />
-                                                4
+                                                {news.total_comment_count}
                                             </a>{" "}
                                             Comments
                                         </span>

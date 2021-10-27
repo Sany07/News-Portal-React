@@ -31,6 +31,7 @@ class NewsDetail extends Component {
             popular_news,
             most_commented_news,
         } = this.props;
+
         if (this.state.slug || this.state.newsId) {
             this.props.getSingleNews(this.state.slug);
             this.props.getNewsComments(this.state.newsId);
@@ -110,6 +111,7 @@ class NewsDetail extends Component {
                                                 <div className="entity_inner__title header_purple">
                                                     <h2>Readers Comment</h2>
                                                 </div>
+
                                                 <Comments comments={comments} />
                                             </Fragment>
                                         ) : (
@@ -122,7 +124,10 @@ class NewsDetail extends Component {
                                         <div className="entity_inner__title header_black">
                                             <h2>Add a Comment</h2>
                                         </div>
-                                        <CommentForm />
+                                        <CommentForm
+                                            news={news.id}
+                                            slug={this.props.match.params.slug}
+                                        />
                                     </div>
                                     {/*Entity Comments */}
                                 </div>
