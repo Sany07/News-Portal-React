@@ -21,22 +21,12 @@ export const CommentForm = (props) => {
     let history = useHistory();
     const { isCreated } = useSelector((state) => state.newCommentReducer);
 
-    // dispatch(getNewsComments(news));
-    // history.push(`/post/${slug}`);
-    // let history = useHistory();
-    console.log(news);
-
     useEffect(() => {
         if (isCreated !== undefined) {
             history.push(`/post/${slug}`);
-            // console.log(dispatch(getNewsComments(news)));
         }
     }, [isCreated]);
-    // if (isCreated !== undefined) {
-    //     history.push(`/post/${slug}`);
-    //     console.log("useEffect");
-    //     dispatch(getNewsComments(news));
-    // }
+
     const onChangeComment = (e) => {
         setData({ post: news, comment: e.target.value });
     };
