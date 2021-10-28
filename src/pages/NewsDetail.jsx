@@ -9,6 +9,8 @@ import { Sidebar } from "./Sidebar";
 import { Loading } from "../components/includes/Loading";
 import { Comments } from "../components/includes/Comments";
 import { CommentForm } from "../components/includes/CommentForm";
+import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 
 class NewsDetail extends Component {
     state = {
@@ -30,6 +32,7 @@ class NewsDetail extends Component {
             comments,
             popular_news,
             most_commented_news,
+            new_comment,
         } = this.props;
 
         if (this.state.slug || this.state.newsId) {
@@ -37,12 +40,12 @@ class NewsDetail extends Component {
             this.props.getNewsComments(this.state.newsId);
             this.setState({ slug: "", newsId: "" });
             window.scrollTo(0, 200);
-        } else if (
-            news.total_comment_count > 0 &&
-            isLoading === false &&
-            comments === null
-        ) {
+        } else if (news.total_comment_count > 0 && isLoading === false && comments === null) {
             this.props.getNewsComments(news.id);
+        } else if (new_comment.comments != null && new_comment.isCreated == true) {
+            this.props.getNewsComments(news.id);
+        } else if (new_comment.isCreated == true) {
+            toast.success("Review is posted.");
         }
 
         if (isLoading === true) {
@@ -60,10 +63,7 @@ class NewsDetail extends Component {
                                         <div className="entity_footer">
                                             <div className="entity_tag">
                                                 {news.tags ? (
-                                                    <TagItemSkeleton
-                                                        tag={news.tags}
-                                                        css={""}
-                                                    />
+                                                    <TagItemSkeleton tag={news.tags} css={""} />
                                                 ) : (
                                                     ""
                                                 )}
@@ -159,6 +159,7 @@ const mapStateToProps = (state) => ({
     most_commented_news: state.sidebarReducer.news.most_commented,
     popular_news: state.sidebarReducer.news.popular_news,
     comments: state.commentReducer.comments,
+    new_comment: state.newCommentReducer,
 });
 
 export default connect(mapStateToProps, {

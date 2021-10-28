@@ -69,7 +69,9 @@ export const FeatureNewsCard = (props) => {
                                         </span>
                                         <span>
                                             <i className="fa fa-comments-o"></i>
-                                            {hot_news.total_comment_count}
+                                            <a href="#">
+                                                {hot_news.total_comment_count}
+                                            </a>
                                             Comments
                                         </span>
                                     </div>

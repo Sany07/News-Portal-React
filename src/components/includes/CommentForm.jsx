@@ -18,14 +18,6 @@ export const CommentForm = (props) => {
     });
 
     const dispatch = useDispatch();
-    let history = useHistory();
-    const { isCreated } = useSelector((state) => state.newCommentReducer);
-
-    useEffect(() => {
-        if (isCreated !== undefined) {
-            history.push(`/post/${slug}`);
-        }
-    }, [isCreated]);
 
     const onChangeComment = (e) => {
         setData({ post: news, comment: e.target.value });
@@ -38,17 +30,7 @@ export const CommentForm = (props) => {
     return (
         <Fragment>
             {/*Entity Title */}
-            <div className="readers_comment">
-                {/* entity_title */}
 
-                <Fragment>
-                    <div className="entity_inner__title header_purple">
-                        <h2>Readers Comment</h2>
-                    </div>
-
-                    {/* <Comments comments={comments} /> */}
-                </Fragment>
-            </div>
             <div className="entity_comment_from">
                 <form onSubmit={handleSubmit} method="post">
                     <div className="form-group comment">
