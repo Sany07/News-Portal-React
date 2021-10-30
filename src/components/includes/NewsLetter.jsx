@@ -3,17 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { emailNewsLetterSubscription } from "../../redux/actions/Homepage";
+import { EMAIL_SUBMIT_RESET } from "../../redux/actions/actionTypes";
 
 export const NewsLetter = () => {
     // const { emailSubscription, isLoading } = props;
     const [email, setEmail] = useState("");
     const dispatch = useDispatch();
-    const { isLoading, success } = useSelector((state) => state.emailNewsLetterReducer);
-
+    const { isLoading, success, data } = useSelector((state) => state.emailNewsLetterReducer);
+    console.log("use", isLoading, success, data);
     useEffect(() => {
-        console.log(success);
         if (success) {
-            toast.success(success);
+            toast.success("success");
+            dispatch({ type: EMAIL_SUBMIT_RESET });
         }
 
         // if (error) {
@@ -65,9 +66,9 @@ export const NewsLetter = () => {
                                 id="login_button"
                                 type="submit"
                                 className="btn btn-large pink"
-                                // disabled={!!isLoading}
+                                // disabled={!isLoading}
                             >
-                                {!isLoading ? "Loading" : "Submit"}
+                                Submit
                             </button>
                         </div>
                         <div className="col-sm-2"></div>

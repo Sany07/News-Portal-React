@@ -15,7 +15,7 @@ export const emailNewsLetterSubscription = (email) => async (dispatch) => {
     try {
         dispatch({ type: LOADING_REQUEST });
         const response = await api.emailNewsLetterSubscription(email);
-        dispatch({ type: SUCCESS });
+        dispatch({ type: SUCCESS, payload: response });
     } catch (error) {
         console.log("error");
     }
