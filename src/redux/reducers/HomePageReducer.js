@@ -1,8 +1,4 @@
-import {
-    FETCH_HOMEPAGE,
-    LOADING_REQUEST,
-    SUCCESS,
-} from "../actions/actionTypes";
+import { FETCH_HOMEPAGE, LOADING_REQUEST, EMAIL_NEWS_LETTER } from "../actions/actionTypes";
 
 const data = { isLoading: true, news: {} };
 const HomePageReducer = (HomePageData = data, action) => {
@@ -15,10 +11,6 @@ const HomePageReducer = (HomePageData = data, action) => {
         case FETCH_HOMEPAGE:
             return {
                 news: action.payload.data,
-                isLoading: false,
-            };
-        case SUCCESS:
-            return {
                 isLoading: false,
             };
 

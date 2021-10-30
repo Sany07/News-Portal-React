@@ -1,4 +1,4 @@
-import { FETCH_HOMEPAGE, LOADING_REQUEST, SUCCESS } from "./actionTypes";
+import { FETCH_HOMEPAGE, LOADING_REQUEST, EMAIL_NEWS_LETTER } from "./actionTypes";
 import * as api from "../../apis/NewsApi";
 
 export const getHomepageData = () => async (dispatch) => {
@@ -13,9 +13,9 @@ export const getHomepageData = () => async (dispatch) => {
 
 export const emailNewsLetterSubscription = (email) => async (dispatch) => {
     try {
-        dispatch({ type: LOADING_REQUEST });
         const response = await api.emailNewsLetterSubscription(email);
-        dispatch({ type: SUCCESS });
+        console.log(response);
+        dispatch({ type: EMAIL_NEWS_LETTER, payload: response });
     } catch (error) {
         console.log("error");
     }

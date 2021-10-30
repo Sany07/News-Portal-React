@@ -1,33 +1,42 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { emailNewsLetterSubscription } from "../../redux/actions/Homepage";
 
-export const NewsLetter = (props) => {
-    const { emailSubscription, isLoading } = props;
+export const NewsLetter = () => {
+    // const { emailSubscription, isLoading } = props;
     const [email, setEmail] = useState("");
-    console.log(isLoading);
+    const dispatch = useDispatch();
+    const { isLoading, success } = useSelector((state) => state.emailNewsLetterReducer);
+
+    useEffect(() => {
+        console.log(success);
+        if (success) {
+            toast.success(success);
+        }
+
+        // if (error) {
+        //     toast.error(error);
+        //     dispatch(clearErrors())
+        // }
+    }, [success]);
+
     const onChangeEmail = (e) => {
         setEmail(e.target.value);
     };
     const handleSubmit = (e) => {
         e.preventDefault();
-        emailSubscription(email);
-        setEmail("");
+        dispatch(emailNewsLetterSubscription(email));
+        setEmail({ email: "" });
     };
     return (
         <section id="subscribe_section" className="subscribe_section">
             <div className="row">
                 <ToastContainer />
-                <form
-                    onSubmit={handleSubmit}
-                    method="post"
-                    className="form-horizontal"
-                >
+                <form onSubmit={handleSubmit} method="post" className="form-horizontal">
                     <div className="form-group form-group-lg">
-                        <label
-                            className="col-sm-6 control-label"
-                            for="formGroupInputLarge"
-                        >
+                        <label className="col-sm-6 control-label" for="formGroupInputLarge">
                             <h1>
                                 <span className="red-color">Sign up</span>
                                 for the latest news
@@ -56,9 +65,9 @@ export const NewsLetter = (props) => {
                                 id="login_button"
                                 type="submit"
                                 className="btn btn-large pink"
-                                disabled={!!isLoading}
+                                // disabled={!!isLoading}
                             >
-                                {!isLoading ? "Loading" : "SUBMIT"}
+                                {!isLoading ? "Loading" : "Submit"}
                             </button>
                         </div>
                         <div className="col-sm-2"></div>
