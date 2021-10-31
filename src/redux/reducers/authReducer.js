@@ -18,11 +18,13 @@ export const registerReducer = (state = initialState, action) => {
             return {
                 isLoggedIn: false,
                 success: true,
+                message: action.payload.data.message,
             };
         case REGISTER_FAIL:
             return {
-                ...state,
+                success: false,
                 isLoggedIn: false,
+                message: action.payload.data.message,
             };
 
         case LOGOUT:

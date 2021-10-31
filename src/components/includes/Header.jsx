@@ -12,22 +12,15 @@ export default function Header() {
             </div> */}
 
             {/* <!-- preloader --> */}
-            <section
-                id="header_section_wrapper"
-                className="header_section_wrapper"
-            >
+            <section id="header_section_wrapper" className="header_section_wrapper">
                 <div className="container">
                     <div className="header-section">
                         <div className="row">
                             <div className="col-md-4">
                                 <div className="left_section">
-                                    <span className="date">
-                                        {moment().format("dddd")} .
-                                    </span>
+                                    <span className="date">{moment().format("dddd")} .</span>
                                     {/* <!-- Date --> */}
-                                    <span className="time">
-                                        {moment().format("D MMMM , YYYY")}
-                                    </span>
+                                    <span className="time">{moment().format("D MMMM , YYYY")}</span>
                                     {/* <!-- Time --> */}
                                     <div className="social">
                                         <a href="/#" className="icons-sm fb-ic">
@@ -38,24 +31,15 @@ export default function Header() {
                                             <i className="fa fa-twitter"></i>
                                         </a>
                                         {/* <!--Google +--> */}
-                                        <a
-                                            href="/#"
-                                            className="icons-sm inst-ic"
-                                        >
+                                        <a href="/#" className="icons-sm inst-ic">
                                             <i className="fa fa-instagram"> </i>
                                         </a>
                                         {/* <!--Linkedin--> */}
-                                        <a
-                                            href="/#"
-                                            className="icons-sm tmb-ic"
-                                        >
+                                        <a href="/#" className="icons-sm tmb-ic">
                                             <i className="fa fa-tumblr"> </i>
                                         </a>
                                         {/* <!--Pinterest--> */}
-                                        <a
-                                            href="/#"
-                                            className="icons-sm rss-ic"
-                                        >
+                                        <a href="/#" className="icons-sm rss-ic">
                                             <i className="fa fa-rss"> </i>
                                         </a>
                                     </div>
@@ -66,10 +50,7 @@ export default function Header() {
                             <div className="col-md-4">
                                 <div className="logo">
                                     <Link exact to="/">
-                                        <img
-                                            src="assets/img/logo.png"
-                                            alt="Tech NewsLogo"
-                                        />
+                                        <img src="assets/img/logo.png" alt="Tech NewsLogo" />
                                     </Link>
                                 </div>
                                 {/* <!-- Logo Section --> */}
@@ -81,7 +62,7 @@ export default function Header() {
                                             <a href="/#">Login</a>
                                         </li>
                                         <li>
-                                            <a href="/#">Register</a>
+                                            <Link to="/register">Register</Link>
                                         </li>
                                         <li className="dropdown lang">
                                             <button
@@ -92,8 +73,7 @@ export default function Header() {
                                                 aria-haspopup="true"
                                                 aria-expanded="true"
                                             >
-                                                En{" "}
-                                                <i className="fa fa-angle-down"></i>
+                                                En <i className="fa fa-angle-down"></i>
                                             </button>
                                             <ul
                                                 className="dropdown-menu"
@@ -160,18 +140,13 @@ export default function Header() {
                                         data-toggle="collapse"
                                         data-target="#navbar-collapse-1"
                                     >
-                                        <span className="sr-only">
-                                            Toggle navigation
-                                        </span>{" "}
+                                        <span className="sr-only">Toggle navigation</span>{" "}
                                         <span className="icon-bar"></span>{" "}
                                         <span className="icon-bar"></span>{" "}
                                         <span className="icon-bar"></span>
                                     </button>
                                 </div>
-                                <div
-                                    className="collapse navbar-collapse"
-                                    id="#navbar-collapse-1"
-                                >
+                                <div className="collapse navbar-collapse" id="#navbar-collapse-1">
                                     <ul className="nav navbar-nav main-nav">
                                         <li className="active">
                                             <a href="index.html">News</a>
@@ -210,34 +185,22 @@ export default function Header() {
                                                                 Widget Haeder
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Awesome
-                                                                    Features
-                                                                </a>
+                                                                <a href="/#">Awesome Features</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/#">Clean Interface</a>
                                                             </li>
                                                             <li>
                                                                 <a href="/#">
-                                                                    Clean
-                                                                    Interface
+                                                                    Available Possibilities
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Available
-                                                                    Possibilities
-                                                                </a>
+                                                                <a href="/#">Responsive Design</a>
                                                             </li>
                                                             <li>
                                                                 <a href="/#">
-                                                                    Responsive
-                                                                    Design
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Pixel
-                                                                    Perfect
-                                                                    Graphics
+                                                                    Pixel Perfect Graphics
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -246,34 +209,22 @@ export default function Header() {
                                                                 Widget Haeder
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Awesome
-                                                                    Features
-                                                                </a>
+                                                                <a href="/#">Awesome Features</a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/#">Clean Interface</a>
                                                             </li>
                                                             <li>
                                                                 <a href="/#">
-                                                                    Clean
-                                                                    Interface
+                                                                    Available Possibilities
                                                                 </a>
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Available
-                                                                    Possibilities
-                                                                </a>
+                                                                <a href="/#">Responsive Design</a>
                                                             </li>
                                                             <li>
                                                                 <a href="/#">
-                                                                    Responsive
-                                                                    Design
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Pixel
-                                                                    Perfect
-                                                                    Graphics
+                                                                    Pixel Perfect Graphics
                                                                 </a>
                                                             </li>
                                                         </ul>
@@ -282,10 +233,7 @@ export default function Header() {
                                                                 Widget Haeder
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Awesome
-                                                                    Features
-                                                                </a>
+                                                                <a href="/#">Awesome Features</a>
                                                             </li>
                                                         </ul>
                                                         <ul className="col-sm-3">
@@ -293,16 +241,10 @@ export default function Header() {
                                                                 Widget Haeder
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Awesome
-                                                                    Features
-                                                                </a>
+                                                                <a href="/#">Awesome Features</a>
                                                             </li>
                                                             <li>
-                                                                <a href="/#">
-                                                                    Clean
-                                                                    Interface
-                                                                </a>
+                                                                <a href="/#">Clean Interface</a>
                                                             </li>
                                                         </ul>
                                                     </div>
