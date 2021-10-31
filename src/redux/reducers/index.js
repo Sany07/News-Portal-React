@@ -7,6 +7,7 @@ import tagReducer from "./tagReducer";
 import commentReducer from "./commentReducer";
 import { newCommentReducer } from "./commentReducer";
 import emailNewsLetterReducer from "./emailNewsLetterReducer";
+import { registerReducer } from "./authReducer";
 
 export const reducers = combineReducers({
     newsReducer,
@@ -17,4 +18,5 @@ export const reducers = combineReducers({
     commentReducer,
     newCommentReducer,
     emailNewsLetterReducer,
+    registerReducer,
 });
