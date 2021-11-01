@@ -1,6 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Fragment } from "react";
 import { registerUser } from "../redux/actions/Auth";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+<ToastContainer />;
 export const RegisterPage = () => {
     const [userData, setUser] = useState({
         username: "",
@@ -8,7 +11,20 @@ export const RegisterPage = () => {
         password: "",
         password2: "",
     });
+
     const dispatch = useDispatch();
+    const { isLoading, success, message } = useSelector((state) => state.registerReducer);
+    console.log(success, success);
+    useEffect(() => {
+        if (success) {
+            toast.success("success");
+            // dispatch({ type: EMAIL_SUBMIT_RESET });
+        }
+        // console.log(message);
+        // if (message) {
+        //     toast.error("message");
+        // }
+    }, [success, message]);
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser(userData));
@@ -73,11 +89,18 @@ export const RegisterPage = () => {
                                         <input type="checkbox" /> Agree the terms and policy
                                     </label>
                                 </div>
+
                                 <button
                                     type="submit"
                                     className="btn btn-primary btn-flat m-b-30 m-t-30"
                                 >
-                                    Register
+                                    {isLoading ? (
+                                        <Fragment>
+                                            <i className="fa fa-spinner fa-spin" /> Loading
+                                        </Fragment>
+                                    ) : (
+                                        "Register"
+                                    )}
                                 </button>
                                 <div className="register-link m-t-15 text-center">
                                     <p>

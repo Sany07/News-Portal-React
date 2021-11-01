@@ -1754,3 +1754,11 @@ section {
     background-color: rgb(49, 160, 177);
     color: #fff;
 }
+
+.buttonload {
+  background-color: #04AA6D; /* Green background */
+  border: none; /* Remove borders */
+  color: white; /* White text */
+  padding: 12px 16px; /* Some padding */
+  font-size: 16px /* Set a font size */
+}

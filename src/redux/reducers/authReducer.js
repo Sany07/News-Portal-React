@@ -6,24 +6,24 @@ import {
     REGISTER_FAIL,
 } from "../actions/actionTypes";
 
-const initialState = {};
+const initialState = { isLoading: false };
 
 export const registerReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {
-                isLoggedIn: true,
+                isLoading: true,
             };
         case REGISTER_SUCCESS:
             return {
-                isLoggedIn: false,
+                isLoading: false,
                 success: true,
                 message: action.payload.data.message,
             };
         case REGISTER_FAIL:
             return {
                 success: false,
-                isLoggedIn: false,
+                isLoading: false,
                 message: action.payload.data.message,
             };
 
