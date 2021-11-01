@@ -1,6 +1,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { registerUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
+import { REGISTER_RESET } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 <ToastContainer />;
@@ -13,18 +14,24 @@ export const RegisterPage = () => {
     });
 
     const dispatch = useDispatch();
-    const { isLoading, success, message } = useSelector((state) => state.registerReducer);
-    console.log(success, success);
+    const { isLoading, success, error } = useSelector((state) => state.registerReducer);
+
     useEffect(() => {
         if (success) {
             toast.success("success");
-            // dispatch({ type: EMAIL_SUBMIT_RESET });
+            dispatch({ type: REGISTER_RESET });
         }
-        // console.log(message);
-        // if (message) {
-        //     toast.error("message");
-        // }
-    }, [success, message]);
+
+        if (error) {
+            toast.error(error.username[0]);
+
+            error.map((error) => {
+                return console.log(error);
+            });
+
+            dispatch({ type: REGISTER_RESET });
+        }
+    }, [success, error]);
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser(userData));
@@ -36,6 +43,7 @@ export const RegisterPage = () => {
     return (
         <section id="subscribe_section" className="subscribe_section">
             <div className="row">
+                <ToastContainer />
                 <div className="col-md-6 col-md-offset-3">
                     <div className="entity_comment_from">
                         <form onSubmit={handleSubmit}>

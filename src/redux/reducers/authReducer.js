@@ -1,6 +1,6 @@
 import {
     LOADING_REQUEST,
-    LOGIN_FAIL,
+    REGISTER_RESET,
     REGISTER_SUCCESS,
     LOGOUT,
     REGISTER_FAIL,
@@ -15,16 +15,16 @@ export const registerReducer = (state = initialState, action) => {
                 isLoading: true,
             };
         case REGISTER_SUCCESS:
+            console.log(action.payload.data);
             return {
                 isLoading: false,
                 success: true,
-                message: action.payload.data.message,
+                message: action.payload.data,
             };
         case REGISTER_FAIL:
             return {
-                success: false,
                 isLoading: false,
-                message: action.payload.data.message,
+                error: action.payload.data,
             };
 
         case LOGOUT:
@@ -32,6 +32,10 @@ export const registerReducer = (state = initialState, action) => {
                 ...state,
                 isLoggedIn: false,
                 user: null,
+            };
+        case REGISTER_RESET:
+            return {
+                isLoading: false,
             };
         default:
             return state;
