@@ -1,9 +1,9 @@
 import {
     LOADING_REQUEST,
-    REGISTER_RESET,
+    REGISTER_FAIL,
     REGISTER_SUCCESS,
     LOGOUT,
-    REGISTER_FAIL,
+    AUTH_RESET,
 } from "../actions/actionTypes";
 
 const initialState = { isLoading: false };
@@ -15,7 +15,6 @@ export const registerReducer = (state = initialState, action) => {
                 isLoading: true,
             };
         case REGISTER_SUCCESS:
-            console.log(action.payload.data);
             return {
                 isLoading: false,
                 success: true,
@@ -33,7 +32,7 @@ export const registerReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 user: null,
             };
-        case REGISTER_RESET:
+        case AUTH_RESET:
             return {
                 isLoading: false,
             };

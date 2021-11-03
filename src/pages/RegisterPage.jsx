@@ -1,10 +1,12 @@
 import React, { useState, useEffect, Fragment } from "react";
 import { registerUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
-import { REGISTER_RESET } from "../redux/actions/actionTypes";
+import { Loading } from "../components/includes/Loading";
+import { Link } from "react-router-dom";
+import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<ToastContainer />;
+
 export const RegisterPage = () => {
     const [userData, setUser] = useState({
         username: "",
@@ -19,107 +21,114 @@ export const RegisterPage = () => {
     useEffect(() => {
         if (success) {
             toast.success("success");
-            dispatch({ type: REGISTER_RESET });
+            dispatch({ type: AUTH_RESET });
         }
 
         if (error) {
-            toast.error(error.username[0]);
+            console.log(error);
+            toast.error("Something went wrong");
+            // toast.error(error.password[0]);
+            // toast.error(error.email);
 
-            error.map((error) => {
-                return console.log(error);
-            });
-
-            dispatch({ type: REGISTER_RESET });
+            dispatch({ type: AUTH_RESET });
         }
-    }, [success, error]);
+    }, [dispatch, success, error]);
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser(userData));
+        // setUser({ [e.target.name]: "" });
     };
     const onChange = (e) => {
         setUser({ ...userData, [e.target.name]: e.target.value });
     };
+    if (isLoading === true) {
+        return <Loading />;
+    } else {
+        return (
+            <section id="subscribe_section" className="subscribe_section">
+                <div className="row">
+                    <ToastContainer />
+                    <div className="col-md-6 col-md-offset-3">
+                        <div className="entity_comment_from">
+                            <form onSubmit={handleSubmit}>
+                                <div className="form-group comment">
+                                    <div className="form-group">
+                                        <label>User Name</label>
+                                        <input
+                                            onChange={onChange}
+                                            type="text"
+                                            name="username"
+                                            className="form-control"
+                                            placeholder="User Name"
+                                            value={userData.username}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Email address</label>
+                                        <input
+                                            onChange={onChange}
+                                            name="email"
+                                            type="email"
+                                            className="form-control"
+                                            placeholder="Email"
+                                            value={userData.email}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Password</label>
+                                        <input
+                                            onChange={onChange}
+                                            type="password"
+                                            name="password"
+                                            className="form-control"
+                                            placeholder="Password"
+                                            value={userData.password}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="form-group">
+                                        <label>Confirm Password</label>
+                                        <input
+                                            onChange={onChange}
+                                            type="password"
+                                            name="password2"
+                                            className="form-control"
+                                            placeholder="Confirm Password "
+                                            value={userData.password2}
+                                            required
+                                        />
+                                    </div>
+                                    <div className="checkbox">
+                                        <label>
+                                            <input type="checkbox" /> Agree the terms and policy
+                                        </label>
+                                    </div>
 
-    return (
-        <section id="subscribe_section" className="subscribe_section">
-            <div className="row">
-                <ToastContainer />
-                <div className="col-md-6 col-md-offset-3">
-                    <div className="entity_comment_from">
-                        <form onSubmit={handleSubmit}>
-                            <div className="form-group comment">
-                                <div className="form-group">
-                                    <label>User Name</label>
-                                    <input
-                                        onChange={onChange}
-                                        type="text"
-                                        name="username"
-                                        className="form-control"
-                                        placeholder="User Name"
-                                        value={userData.username}
-                                    />
+                                    <button
+                                        type="submit"
+                                        className="btn btn-primary btn-flat m-b-30 m-t-30"
+                                    >
+                                        {isLoading ? (
+                                            <Fragment>
+                                                <i className="fa fa-spinner fa-spin" /> Loading
+                                            </Fragment>
+                                        ) : (
+                                            "Register"
+                                        )}
+                                    </button>
+                                    <div className="register-link m-t-15 text-center">
+                                        <p>
+                                            Already have account ? <Link to="/login">Sign In</Link>
+                                        </p>
+                                    </div>
                                 </div>
-                                <div className="form-group">
-                                    <label>Email address</label>
-                                    <input
-                                        onChange={onChange}
-                                        name="email"
-                                        type="email"
-                                        className="form-control"
-                                        placeholder="Email"
-                                        value={userData.email}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Password</label>
-                                    <input
-                                        onChange={onChange}
-                                        type="password"
-                                        name="password"
-                                        className="form-control"
-                                        placeholder="Password"
-                                        value={userData.password}
-                                    />
-                                </div>
-                                <div className="form-group">
-                                    <label>Confirm Password</label>
-                                    <input
-                                        onChange={onChange}
-                                        type="password"
-                                        name="password2"
-                                        className="form-control"
-                                        placeholder="Confirm Password "
-                                        value={userData.password2}
-                                    />
-                                </div>
-                                <div className="checkbox">
-                                    <label>
-                                        <input type="checkbox" /> Agree the terms and policy
-                                    </label>
-                                </div>
-
-                                <button
-                                    type="submit"
-                                    className="btn btn-primary btn-flat m-b-30 m-t-30"
-                                >
-                                    {isLoading ? (
-                                        <Fragment>
-                                            <i className="fa fa-spinner fa-spin" /> Loading
-                                        </Fragment>
-                                    ) : (
-                                        "Register"
-                                    )}
-                                </button>
-                                <div className="register-link m-t-15 text-center">
-                                    <p>
-                                        Already have account ? <a href="#"> Sign in</a>
-                                    </p>
-                                </div>
-                            </div>
-                        </form>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
-    );
+            </section>
+        );
+    }
 };
