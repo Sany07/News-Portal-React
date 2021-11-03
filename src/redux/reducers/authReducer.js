@@ -6,7 +6,7 @@ import {
     AUTH_RESET,
 } from "../actions/actionTypes";
 
-const initialState = { isLoading: false };
+const initialState = { isLoading: true };
 
 export const registerReducer = (state = initialState, action) => {
     switch (action.type) {

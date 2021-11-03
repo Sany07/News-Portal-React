@@ -89,7 +89,7 @@ export const LoginPage = () => {
                                             <i className="fa fa-spinner fa-spin" /> Loading
                                         </Fragment>
                                     ) : (
-                                        "Register"
+                                        "Login"
                                     )}
                                 </button>
                                 <div className="register-link m-t-15 text-center">

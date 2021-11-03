@@ -42,7 +42,7 @@ export const RegisterPage = () => {
         setUser({ ...userData, [e.target.name]: e.target.value });
     };
     if (isLoading === true) {
-        return <Loading />;
+        return (<Loading />), dispatch({ type: AUTH_RESET });
     } else {
         return (
             <section id="subscribe_section" className="subscribe_section">
