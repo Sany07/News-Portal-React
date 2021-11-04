@@ -59,7 +59,7 @@ export default function Header() {
                                 <div className="right_section">
                                     <ul className="nav navbar-nav">
                                         <li>
-                                            <Link to="/Login">Login</Link>
+                                            <Link to="/login">Login</Link>
                                         </li>
                                         <li>
                                             <Link to="/register">Register</Link>
