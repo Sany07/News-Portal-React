@@ -8,69 +8,78 @@ import { NewsLetter } from "../components/includes/NewsLetter";
 import NewsListCard from "./HomePage/NewsListCard";
 import { GetSidebarData } from "../redux/actions/News";
 import { getHomepageData, emailNewsLetterSubscription } from "../redux/actions/Homepage";
-// import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import LoadingBar from "react-top-loading-bar";
+import { TopLoadingBarProgress } from "../redux/actions/topLoadingBarProgress";
+import store from "../store";
 class index extends Component {
     componentDidMount() {
+        beginTheBar();
         this.props.getHomepageData();
         this.props.GetSidebarData();
     }
 
     render() {
         const { isLoading } = this.props;
+        const { loadingProgress } = store.getState().topProgressBar;
 
-        if (isLoading === true) {
-            return (
-                <>
-                    <Loading />
-                    {/* <VideoSection /> */}
-                    <NewsLetter emailSubscription={this.props.emailNewsLetterSubscription} />
-                </>
-            );
-        } else {
-            return (
-                <>
-                    <section id="feature_news_section" className="feature_news_section">
-                        <FeatureNewsCard
-                            hot_news={this.props.hot_news}
-                            trending_new={this.props.trending_new}
-                            editor_choice={this.props.editor_choice}
-                        />
-                    </section>
-                    {/* <!-- Feature News Section --> */}
-
-                    <section id="category_section" className="category_section">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-md-8">
-                                    {this.props.news_catalog_one ? (
-                                        <NewsListCard
-                                            news_catalog_one={this.props.news_catalog_one}
-                                            news_catalog_two={this.props.news_catalog_two}
-                                            news_catalog_three={this.props.news_catalog_three}
-                                            news_catalog_four={this.props.news_catalog_four}
-                                            news_catalog_five={this.props.news_catalog_five}
-                                        />
-                                    ) : (
-                                        <Loading />
-                                    )}
-                                </div>
-
-                                <Sidebar
-                                    popular_news={this.props.popular_news}
-                                    most_commented_news={this.props.most_commented_news}
-                                />
+        // if (isLoading === true) {
+        //     return (
+        //         <>
+        //             <Loading />
+        //             {/* <VideoSection /> */}
+        //             <NewsLetter emailSubscription={this.props.emailNewsLetterSubscription} />
+        //         </>
+        //     );
+        // } else {
+        return (
+            <>
+                <LoadingBar
+                    color="red"
+                    progress={loadingProgress}
+                    onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
+                />
+                <section id="feature_news_section" className="feature_news_section">
+                    <FeatureNewsCard
+                        hot_news={this.props.hot_news}
+                        trending_new={this.props.trending_new}
+                        editor_choice={this.props.editor_choice}
+                    />
+                </section>
+                {/* <!-- Feature News Section --> */}
+                <section id="category_section" className="category_section">
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-md-8">
+                                {this.props.news_catalog_one ? (
+                                    <NewsListCard
+                                        news_catalog_one={this.props.news_catalog_one}
+                                        news_catalog_two={this.props.news_catalog_two}
+                                        news_catalog_three={this.props.news_catalog_three}
+                                        news_catalog_four={this.props.news_catalog_four}
+                                        news_catalog_five={this.props.news_catalog_five}
+                                    />
+                                ) : (
+                                    <Loading />
+                                )}
                             </div>
+
+                            <Sidebar
+                                popular_news={this.props.popular_news}
+                                most_commented_news={this.props.most_commented_news}
+                            />
                         </div>
-                    </section>
-                    {/* <VideoSection /> */}
-                    {/* <NewsLetter
+                    </div>
+                </section>
+                {/* <VideoSection /> */}
+                {/* <NewsLetter
                         emailSubscription={(email) => this.props.emailNewsLetterSubscription(email)}
                         isLoading={isLoading}
                     /> */}
-                    <NewsLetter />
-                </>
-            );
-        }
+                <NewsLetter />
+            </>
+        );
+        // }
     }
 }
 

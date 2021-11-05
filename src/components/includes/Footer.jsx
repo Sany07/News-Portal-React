@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Footer() {
+export const Footer = () => {
     return (
         <>
             <section id="footer_section" className="footer_section">
@@ -233,38 +233,23 @@ export default function Footer() {
                             <div className="footer">
                                 <div className="col-sm-3">
                                     <div className="social">
-                                        <a
-                                            href="/facebook"
-                                            className="icons-sm fb-ic"
-                                        >
+                                        <a href="/facebook" className="icons-sm fb-ic">
                                             <i className="fa fa-facebook" />
                                         </a>
                                         {/*Twitter*/}
-                                        <a
-                                            href="/twitter"
-                                            className="icons-sm tw-ic"
-                                        >
+                                        <a href="/twitter" className="icons-sm tw-ic">
                                             <i className="fa fa-twitter" />
                                         </a>
                                         {/*Google +*/}
-                                        <a
-                                            href="/instagram"
-                                            className="icons-sm inst-ic"
-                                        >
+                                        <a href="/instagram" className="icons-sm inst-ic">
                                             <i className="fa fa-instagram"> </i>
                                         </a>
                                         {/*Linkedin*/}
-                                        <a
-                                            href="/twitterr"
-                                            className="icons-sm tmb-ic"
-                                        >
+                                        <a href="/twitterr" className="icons-sm tmb-ic">
                                             <i className="fa fa-tumblr"> </i>
                                         </a>
                                         {/*Pinterest*/}
-                                        <a
-                                            href="/twitterrr"
-                                            className="icons-sm rss-ic"
-                                        >
+                                        <a href="/twitterrr" className="icons-sm rss-ic">
                                             <i className="fa fa-rss"> </i>
                                         </a>
                                     </div>
@@ -282,4 +267,4 @@ export default function Footer() {
             </section>
         </>
     );
-}
+};

@@ -3,12 +3,11 @@ import * as api from "../../apis/NewsApi";
 import { beginTheBar, endTheBar } from "../../services/topLoadingBar";
 export const getHomepageData = () => async (dispatch) => {
     try {
-        beginTheBar();
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchHomePageData();
 
-        dispatch({ type: FETCH_HOMEPAGE, payload: response });
         endTheBar();
+        dispatch({ type: FETCH_HOMEPAGE, payload: response });
     } catch (error) {
         console.log("error");
     }

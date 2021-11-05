@@ -11,7 +11,7 @@ import { Comments } from "../components/includes/Comments";
 import { CommentForm } from "../components/includes/CommentForm";
 import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
-
+import { beginTheBar, endTheBar } from "../services/topLoadingBar";
 class NewsDetail extends Component {
     state = {
         slug: "",
@@ -19,6 +19,7 @@ class NewsDetail extends Component {
     };
 
     componentDidMount() {
+        beginTheBar();
         const { slug } = this.props.match.params;
         this.props.getSingleNews(slug);
         this.props.GetSidebarData();

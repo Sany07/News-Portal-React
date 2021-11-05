@@ -2,15 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import LoadingBar from "react-top-loading-bar";
-import { useSelector, useDispatch } from "react-redux";
 import { TopLoadingBarProgress } from "../../redux/actions/topLoadingBarProgress";
 import store from "../../store";
 
-export default function Header() {
+export const Header = () => {
     const [progress, setProgress] = useState(0);
     // const progressBar = useSelector((state) => state.state);
-    const loadingProgress = store.getState().topProgressBar;
-    console.log("va", loadingProgress);
+    const { loadingProgress } = store.getState().topProgressBar;
     return (
         <div>
             <LoadingBar
@@ -273,4 +271,4 @@ export default function Header() {
             </section>
         </div>
     );
-}
+};
