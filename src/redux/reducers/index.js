@@ -8,6 +8,7 @@ import commentReducer from "./commentReducer";
 import { newCommentReducer } from "./commentReducer";
 import emailNewsLetterReducer from "./emailNewsLetterReducer";
 import { registerReducer } from "./authReducer";
+import { topProgressBar } from "./topLoadingReaducer";
 
 export const reducers = combineReducers({
     newsReducer,
@@ -19,4 +20,5 @@ export const reducers = combineReducers({
     newCommentReducer,
     emailNewsLetterReducer,
     registerReducer,
+    topProgressBar,
 });

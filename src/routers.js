@@ -9,16 +9,14 @@ import { LoginPage } from "./pages/loginPage";
 
 const BaseRouter = () => {
     return (
-        <div>
-            <Switch>
-                <Route exact path="/" component={Index} />
-                <Route path="/category/:slug" exact component={Category} />
-                <Route path="/post/:slug" exact component={NewsDetail} />
-                <Route path="/tag/:tag" exact component={Tag} />
-                <Route exact path="/register" component={RegisterPage} />
-                <Route exact path="/login" component={LoginPage} />
-            </Switch>
-        </div>
+        <Switch>
+            <Route exact path="/" component={Index} />
+            <Route path="/category/:slug" exact component={Category} />
+            <Route path="/post/:slug" exact component={NewsDetail} />
+            <Route path="/tag/:tag" exact component={Tag} />
+            <Route exact path="/register" component={RegisterPage} />
+            <Route exact path="/login" component={LoginPage} />
+        </Switch>
     );
 };
 

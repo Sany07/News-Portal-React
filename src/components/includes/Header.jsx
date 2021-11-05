@@ -1,15 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
+import LoadingBar from "react-top-loading-bar";
+import { useSelector, useDispatch } from "react-redux";
+import { TopLoadingBarProgress } from "../../redux/actions/topLoadingBarProgress";
+import store from "../../store";
+
 export default function Header() {
+    const [progress, setProgress] = useState(0);
+    // const progressBar = useSelector((state) => state.state);
+    const loadingProgress = store.getState().topProgressBar;
+    console.log("va", loadingProgress);
     return (
         <div>
-            {/* <!-- Page Preloader --> */}
-            {/* <div id="preloader">
-                <div id="status">
-                    <div className="status-mes"></div>
-                </div>
-            </div> */}
+            <LoadingBar
+                color="red"
+                progress={loadingProgress}
+                onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
+            />
 
             {/* <!-- preloader --> */}
             <section id="header_section_wrapper" className="header_section_wrapper">

@@ -8,7 +8,7 @@ import { NewsLetter } from "../components/includes/NewsLetter";
 import NewsListCard from "./HomePage/NewsListCard";
 import { GetSidebarData } from "../redux/actions/News";
 import { getHomepageData, emailNewsLetterSubscription } from "../redux/actions/Homepage";
-
+// import { beginTheBar, endTheBar } from "../services/topLoadingBar";
 class index extends Component {
     componentDidMount() {
         this.props.getHomepageData();
