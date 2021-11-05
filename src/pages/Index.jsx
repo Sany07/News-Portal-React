@@ -36,6 +36,7 @@ class index extends Component {
             <>
                 <LoadingBar
                     color="red"
+                    height={3}
                     progress={loadingProgress}
                     onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
                 />

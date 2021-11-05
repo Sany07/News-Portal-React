@@ -11,11 +11,13 @@ export const Header = () => {
     const { loadingProgress } = store.getState().topProgressBar;
     return (
         <div>
-            <LoadingBar
+            {/* <LoadingBar
                 color="red"
+                height={2}
+                // loaderSpeed="500000100"
                 progress={loadingProgress}
                 onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
-            />
+            /> */}
 
             {/* <!-- preloader --> */}
             <section id="header_section_wrapper" className="header_section_wrapper">
