@@ -9,15 +9,13 @@ import { Provider } from "react-redux";
 function App() {
     return (
         <Provider store={store}>
-            <header>
-                <Router>
-                    <div id="main-wrapper">
-                        <Header />
-                        <BaseRouter />
-                        <Footer />
-                    </div>
-                </Router>
-            </header>
+            <Router>
+                <div id="main-wrapper">
+                    <Header />
+                    <BaseRouter />
+                    <Footer />
+                </div>
+            </Router>
         </Provider>
     );
 }

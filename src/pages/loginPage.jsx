@@ -14,23 +14,23 @@ export const LoginPage = () => {
     });
 
     const dispatch = useDispatch();
-    const { isLoading, success, error } = useSelector((state) => state.registerReducer);
+    const { isLoading, success, error } = useSelector((state) => state.loginReducer);
+    console.log(isLoading);
+    useEffect(() => {
+        if (success) {
+            toast.success("success");
+            dispatch({ type: AUTH_RESET });
+        }
 
-    // useEffect(() => {
-    //     if (success) {
-    //         toast.success("success");
-    //         dispatch({ type: AUTH_RESET });
-    //     }
+        if (error) {
+            console.log(error);
+            toast.error("Something went wrong");
+            // toast.error(error.password[0]);
+            // toast.error(error.email);
 
-    //     if (error) {
-    //         console.log(error);
-    //         toast.error("Something went wrong");
-    //         // toast.error(error.password[0]);
-    //         // toast.error(error.email);
-
-    //         dispatch({ type: AUTH_RESET });
-    //     }
-    // }, [success, error]);
+            dispatch({ type: AUTH_RESET });
+        }
+    }, [success, error]);
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser(userData));

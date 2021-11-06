@@ -7,7 +7,7 @@ import {
 } from "./actionTypes";
 import * as api from "../../apis/NewsApi";
 import _ from "lodash";
-
+import { beginTheBar, endTheBar } from "../../services/topLoadingBar";
 // export const getSingleNews = (slug) => async (dispatch) => {
 //     console.log('slugggg--', slug);
 
@@ -27,9 +27,10 @@ export const getSingleNews = (slug) => (dispatch) => {
 
 const _fetchSingleNews = _.memoize(async (slug, dispatch) => {
     try {
+        beginTheBar();
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchSingleNews(slug);
-
+        endTheBar();
         dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
         _fetchSingleNews.cache.delete(slug);
     } catch (error) {

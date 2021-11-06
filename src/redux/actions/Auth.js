@@ -7,6 +7,7 @@ import {
 } from "./actionTypes";
 import * as api from "../../apis/AuthApi";
 import jwt_decode from "jwt-decode";
+import setAuthToken from "../../services/setAuthToken";
 
 export const registerUser = (data) => async (dispatch) => {
     try {
@@ -22,10 +23,10 @@ export const loginUser = (data) => async (dispatch) => {
     try {
         dispatch({ type: LOADING_REQUEST });
         const response = await api.login(data);
-        console.log(response.data.access);
-        // localStorage.setItem("ItechJWT", token);
-        // // setAuthToken(token);
-        const decoded = jwt_decode(response.data.access);
+        const token = response.data.access;
+        localStorage.setItem("ItechJWT", token);
+        setAuthToken(token);
+        const decoded = jwt_decode(token);
 
         dispatch({ type: LOGIN_SUCCESS, payload: decoded });
     } catch (error) {
