@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import { registerUser } from "../redux/actions/Auth";
+import { registerUser, loginUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { Loading } from "../components/includes/Loading";
@@ -11,31 +11,29 @@ export const LoginPage = () => {
     const [userData, setUser] = useState({
         username: "",
         email: "",
-        password: "",
-        password2: "",
     });
 
     const dispatch = useDispatch();
     const { isLoading, success, error } = useSelector((state) => state.registerReducer);
 
-    useEffect(() => {
-        if (success) {
-            toast.success("success");
-            dispatch({ type: AUTH_RESET });
-        }
+    // useEffect(() => {
+    //     if (success) {
+    //         toast.success("success");
+    //         dispatch({ type: AUTH_RESET });
+    //     }
 
-        if (error) {
-            console.log(error);
-            toast.error("Something went wrong");
-            // toast.error(error.password[0]);
-            // toast.error(error.email);
+    //     if (error) {
+    //         console.log(error);
+    //         toast.error("Something went wrong");
+    //         // toast.error(error.password[0]);
+    //         // toast.error(error.email);
 
-            dispatch({ type: AUTH_RESET });
-        }
-    }, [success, error]);
+    //         dispatch({ type: AUTH_RESET });
+    //     }
+    // }, [success, error]);
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch(registerUser(userData));
+        dispatch(loginUser(userData));
         // setUser({ [e.target.name]: "" });
     };
     const onChange = (e) => {

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import LoadingBar from "react-top-loading-bar";
+import { useSelector, useDispatch } from "react-redux";
 import { TopLoadingBarProgress } from "../../redux/actions/topLoadingBarProgress";
 import store from "../../store";
 
@@ -13,8 +14,6 @@ export const Header = () => {
         <div>
             {/* <LoadingBar
                 color="red"
-                height={2}
-                // loaderSpeed="500000100"
                 progress={loadingProgress}
                 onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
             /> */}

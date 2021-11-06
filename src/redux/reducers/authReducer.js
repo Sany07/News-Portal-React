@@ -4,9 +4,11 @@ import {
     REGISTER_SUCCESS,
     LOGOUT,
     AUTH_RESET,
+    LOGIN_FAIL,
+    LOGIN_SUCCESS,
 } from "../actions/actionTypes";
 
-const initialState = { isLoading: false };
+const initialState = { isLoading: false, isAuthenticated: false, user: {} };
 
 export const registerReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -32,6 +34,34 @@ export const registerReducer = (state = initialState, action) => {
                 isLoggedIn: false,
                 user: null,
             };
+        case AUTH_RESET:
+            return {
+                isLoading: false,
+            };
+        default:
+            return state;
+    }
+};
+export const loginReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOADING_REQUEST:
+            return {
+                isLoading: true,
+            };
+        case LOGIN_SUCCESS:
+            console.log(action.payload);
+            return {
+                isLoading: false,
+                success: true,
+                user: action.payload,
+            };
+        case LOGIN_FAIL:
+            return {
+                isLoading: false,
+                isAuthenticated: true,
+                user: action.payload.data,
+            };
+
         case AUTH_RESET:
             return {
                 isLoading: false,
