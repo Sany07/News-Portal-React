@@ -27,10 +27,9 @@ export const getSingleNews = (slug) => (dispatch) => {
 
 const _fetchSingleNews = _.memoize(async (slug, dispatch) => {
     try {
-        beginTheBar();
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchSingleNews(slug);
-        endTheBar();
+
         dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
         _fetchSingleNews.cache.delete(slug);
     } catch (error) {
@@ -60,6 +59,7 @@ export const GetSingleTagData = (slug) => async (dispatch) => {
 
 export const GetSingleCategoryData = (slug) => async (dispatch) => {
     try {
+        beginTheBar();
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchCategoryNews(slug);
         dispatch({ type: FETCH_SINGLE_CATEGORY_DATA, payload: response });

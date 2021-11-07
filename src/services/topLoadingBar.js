@@ -3,7 +3,7 @@ import { TopLoadingBarProgress } from "../redux/actions/topLoadingBarProgress";
 
 export const beginTheBar = () => {
     console.log("beginTheBar");
-    let i = Math.floor(Math.random() * 40) + 10;
+    let i = Math.floor(Math.random() * 40) + 1;
     console.log(i);
     store.dispatch(TopLoadingBarProgress(i));
 };

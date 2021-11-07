@@ -12,6 +12,7 @@ import { beginTheBar, endTheBar } from "../services/topLoadingBar";
 import LoadingBar from "react-top-loading-bar";
 import { TopLoadingBarProgress } from "../redux/actions/topLoadingBarProgress";
 import store from "../store";
+
 class index extends Component {
     componentDidMount() {
         beginTheBar();
@@ -22,7 +23,7 @@ class index extends Component {
     render() {
         const { isLoading } = this.props;
         const { loadingProgress } = store.getState().topProgressBar;
-
+        console.log("loadingProgress", loadingProgress);
         // if (isLoading === true) {
         //     return (
         //         <>
@@ -34,12 +35,12 @@ class index extends Component {
         // } else {
         return (
             <>
-                <LoadingBar
+                {/* <LoadingBar
                     color="red"
                     height={3}
                     progress={loadingProgress}
                     onLoaderFinished={() => store.dispatch(TopLoadingBarProgress(0))}
-                />
+                /> */}
                 <section id="feature_news_section" className="feature_news_section">
                     <FeatureNewsCard
                         hot_news={this.props.hot_news}

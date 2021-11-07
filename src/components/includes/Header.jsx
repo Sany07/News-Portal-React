@@ -9,7 +9,7 @@ import store from "../../store";
 export const Header = () => {
     const [progress, setProgress] = useState(0);
     // const progressBar = useSelector((state) => state.state);
-    const { loadingProgress } = store.getState().topProgressBar;
+    // const { loadingProgress } = store.getState().topProgressBar;
     return (
         <div>
             {/* <LoadingBar
@@ -156,6 +156,9 @@ export const Header = () => {
                                 <div className="collapse navbar-collapse" id="#navbar-collapse-1">
                                     <ul className="nav navbar-nav main-nav">
                                         <li className="active">
+                                            <Link to="/">Home</Link>
+                                        </li>
+                                        <li>
                                             <a href="index.html">News</a>
                                         </li>
                                         <li>
@@ -172,91 +175,6 @@ export const Header = () => {
                                         </li>
                                         <li>
                                             <a href="blog.html">Design</a>
-                                        </li>
-                                        <li className="dropdown m-menu-fw">
-                                            <a
-                                                href="/#"
-                                                data-toggle="dropdown"
-                                                className="dropdown-toggle"
-                                            >
-                                                More
-                                                <span>
-                                                    <i className="fa fa-angle-down"></i>
-                                                </span>
-                                            </a>
-                                            <ul className="dropdown-menu">
-                                                <li>
-                                                    <div className="m-menu-content">
-                                                        <ul className="col-sm-3">
-                                                            <li className="dropdown-header">
-                                                                Widget Haeder
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Awesome Features</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Clean Interface</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Available Possibilities
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Responsive Design</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Pixel Perfect Graphics
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <ul className="col-sm-3">
-                                                            <li className="dropdown-header">
-                                                                Widget Haeder
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Awesome Features</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Clean Interface</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Available Possibilities
-                                                                </a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Responsive Design</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">
-                                                                    Pixel Perfect Graphics
-                                                                </a>
-                                                            </li>
-                                                        </ul>
-                                                        <ul className="col-sm-3">
-                                                            <li className="dropdown-header">
-                                                                Widget Haeder
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Awesome Features</a>
-                                                            </li>
-                                                        </ul>
-                                                        <ul className="col-sm-3">
-                                                            <li className="dropdown-header">
-                                                                Widget Haeder
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Awesome Features</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="/#">Clean Interface</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
-                                            </ul>
                                         </li>
                                     </ul>
                                 </div>
