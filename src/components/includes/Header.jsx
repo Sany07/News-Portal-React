@@ -50,7 +50,13 @@ export const Header = () => {
                             <div className="col-md-4">
                                 <div className="logo">
                                     <Link exact to="/">
-                                        <img src="assets/img/logo.png" alt="Tech NewsLogo" />
+                                        <img
+                                            style={{
+                                                width: 280,
+                                            }}
+                                            src="assets/img/logo.png"
+                                            alt="ITech"
+                                        />
                                     </Link>
                                 </div>
                                 {/* <!-- Logo Section --> */}
