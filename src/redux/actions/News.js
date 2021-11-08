@@ -32,6 +32,7 @@ const _fetchSingleNews = _.memoize(async (slug, dispatch) => {
 
         dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
         _fetchSingleNews.cache.delete(slug);
+        endTheBar();
     } catch (error) {
         console.log(error);
     }
@@ -42,6 +43,7 @@ export const GetSidebarData = () => async (dispatch) => {
     try {
         const response = await api.fetchSidebarData();
         dispatch({ type: FETCH_SIDEBAR_DATA, payload: response });
+        endTheBar();
     } catch (error) {
         console.log("error");
     }
@@ -52,6 +54,7 @@ export const GetSingleTagData = (slug) => async (dispatch) => {
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchTagNews(slug);
         dispatch({ type: FETCH_SINGLE_TAG_DATA, payload: response });
+        endTheBar();
     } catch (error) {
         console.log("error");
     }
@@ -59,10 +62,11 @@ export const GetSingleTagData = (slug) => async (dispatch) => {
 
 export const GetSingleCategoryData = (slug) => async (dispatch) => {
     try {
-        beginTheBar();
+        // beginTheBar();
         dispatch({ type: LOADING_REQUEST });
         const response = await api.fetchCategoryNews(slug);
         dispatch({ type: FETCH_SINGLE_CATEGORY_DATA, payload: response });
+        endTheBar();
     } catch (error) {
         console.log("error");
     }

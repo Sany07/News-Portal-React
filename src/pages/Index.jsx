@@ -23,7 +23,6 @@ class index extends Component {
     render() {
         const { isLoading } = this.props;
         const { loadingProgress } = store.getState().topProgressBar;
-        console.log("loadingProgress", loadingProgress);
         // if (isLoading === true) {
         //     return (
         //         <>

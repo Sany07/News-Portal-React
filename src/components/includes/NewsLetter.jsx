@@ -10,7 +10,7 @@ export const NewsLetter = () => {
     const [email, setEmail] = useState("");
     const dispatch = useDispatch();
     const { isLoading, success, data } = useSelector((state) => state.emailNewsLetterReducer);
-    console.log("use", isLoading, success, data);
+    // console.log("use", isLoading, success, data);
     useEffect(() => {
         if (success) {
             toast.success("success");
