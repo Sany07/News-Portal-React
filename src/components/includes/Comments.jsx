@@ -10,34 +10,32 @@ export const Comments = (props) => {
                         <div className="media">
                             <div className="media-left">
                                 <a href="#">
-                                    <img
+                                    <div
+                                        data-initials={
+                                            comment.user &&
+                                            comment.user.username.substring(0, 2).toUpperCase()
+                                        }
+                                    ></div>
+                                    {/* <img
                                         alt="64x64"
                                         className="media-object"
                                         data-src="assets/img/reader_img3.jpg"
                                         src="assets/img/reader_img3.jpg"
                                         data-holder-rendered="true"
-                                    />
+                                    /> */}
                                 </a>
                             </div>
                             <div className="media-body">
                                 <h2 className="media-heading">
-                                    <a href="#">
-                                        {comment.user && comment.user.username}
-                                    </a>
+                                    <a href="#">{comment.user && comment.user.username}</a>
                                 </h2>
                                 {comment.comment}
                                 <div className="entity_vote">
                                     <a href="#">
-                                        <i
-                                            className="fa fa-thumbs-o-up"
-                                            aria-hidden="true"
-                                        />
+                                        <i className="fa fa-thumbs-o-up" aria-hidden="true" />
                                     </a>
                                     <a href="#">
-                                        <i
-                                            className="fa fa-thumbs-o-down"
-                                            aria-hidden="true"
-                                        />
+                                        <i className="fa fa-thumbs-o-down" aria-hidden="true" />
                                     </a>
                                     <a href="#">
                                         <span className="reply_ic">Reply </span>
@@ -46,29 +44,22 @@ export const Comments = (props) => {
                                 {comment.replies &&
                                     comment.replies.map((reply) => {
                                         return (
-                                            <div
-                                                className="media"
-                                                key={reply.id}
-                                            >
+                                            <div className="media" key={reply.id}>
                                                 <div className="media-left">
                                                     <a href="#">
-                                                        <img
+                                                        {/* <img
                                                             alt="64x64"
                                                             className="media-object"
                                                             data-src="/static/assets/img/reader_img2.jpg"
                                                             src="/static/assets/img/reader_img2.jpg"
                                                             data-holder-rendered="true"
-                                                        />
+                                                        /> */}
+                                                        <i class="fa fa-user"></i>
                                                     </a>
                                                 </div>
                                                 <div className="media-body">
                                                     <h2 className="media-heading">
-                                                        <a href="#">
-                                                            {
-                                                                reply.user
-                                                                    .username
-                                                            }
-                                                        </a>
+                                                        <a href="#">{reply.user.username}</a>
                                                     </h2>
 
                                                     <div className="entity_vote">
@@ -84,9 +75,7 @@ export const Comments = (props) => {
                                                                 aria-hidden="true"
                                                             />
                                                         </a>
-                                                        <span className="reply_ic">
-                                                            Reply{" "}
-                                                        </span>
+                                                        <span className="reply_ic">Reply </span>
                                                     </div>
                                                 </div>
                                             </div>

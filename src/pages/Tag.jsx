@@ -7,10 +7,12 @@ import { GetSidebarData } from "../redux/actions/News";
 import { NewsCard } from "../components/skeletons/NewsCard";
 import { Sidebar } from "./Sidebar";
 import { Loading } from "../components/includes/Loading";
+import { beginTheBar } from "../services/topLoadingBar";
 import moment from "moment";
 
 export class Tag extends Component {
     componentDidMount() {
+        beginTheBar();
         const { tag } = this.props.match.params;
         this.props.GetSingleTagData(tag);
         this.props.GetSidebarData();
@@ -48,11 +50,7 @@ export class Tag extends Component {
                                     {tag &&
                                         tag.news.map((news, index) => {
                                             return (
-                                                <NewsCard
-                                                    news={news}
-                                                    index={index}
-                                                    tag={tag.tag}
-                                                />
+                                                <NewsCard news={news} index={index} tag={tag.tag} />
                                             );
                                         })}
                                 </div>
@@ -65,9 +63,7 @@ export class Tag extends Component {
                             {this.props.popular_news && (
                                 <Sidebar
                                     popular_news={this.props.popular_news}
-                                    most_commented_news={
-                                        this.props.most_commented_news
-                                    }
+                                    most_commented_news={this.props.most_commented_news}
                                 />
                             )}
                         </div>

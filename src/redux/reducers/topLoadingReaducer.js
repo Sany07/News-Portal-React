@@ -7,7 +7,6 @@ export const topProgressBar = (state = data, action) => {
         case TOP_LOADING_PROGRESS:
             // state.loadingProgress = action.payload;
             state.loadingProgress = action.payload;
-            console.log(state.loadingProgress);
             return { ...state };
         // return { loadingProgress: action.payload };
 

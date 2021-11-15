@@ -6,7 +6,6 @@ import store from "../../store";
 import { useSelector } from "react-redux";
 export const TopLoader = () => {
     const topProgressBar = useSelector((state) => state.topProgressBar);
-    console.log("loadingProgress", topProgressBar);
     useEffect(() => {
         console.log("loadingProgress");
     }, [0]);

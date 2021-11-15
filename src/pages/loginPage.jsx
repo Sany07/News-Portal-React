@@ -15,7 +15,6 @@ export const LoginPage = () => {
 
     const dispatch = useDispatch();
     const { isLoading, success, error } = useSelector((state) => state.loginReducer);
-    console.log(isLoading);
     useEffect(() => {
         if (success) {
             toast.success("success");

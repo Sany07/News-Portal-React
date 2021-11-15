@@ -27,7 +27,6 @@ export const registerReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload.data,
             };
-
         case LOGOUT:
             return {
                 ...state,
@@ -49,22 +48,31 @@ export const loginReducer = (state = initialState, action) => {
                 isLoading: true,
             };
         case LOGIN_SUCCESS:
-            console.log(action.payload);
             return {
                 isLoading: false,
-                success: true,
+                isAuthenticated: true,
                 user: action.payload,
             };
         case LOGIN_FAIL:
             return {
                 isLoading: false,
-                isAuthenticated: true,
-                user: action.payload.data,
+                isAuthenticated: false,
             };
-
         case AUTH_RESET:
             return {
                 isLoading: false,
+            };
+        default:
+            return state;
+    }
+};
+
+export const logOutReducer = (state = initialState, action) => {
+    switch (action.type) {
+        case LOGOUT:
+            return {
+                ...state,
+                isLoggedIn: false,
             };
         default:
             return state;

@@ -4,11 +4,15 @@ import {
     REGISTER_FAIL,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
+    LOGOUT,
 } from "./actionTypes";
+
 import * as api from "../../apis/AuthApi";
 import jwt_decode from "jwt-decode";
-import setAuthToken from "../../services/setAuthToken";
-
+import setAuthTokenToHeader from "../../services/setAuthToken";
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
+export default history;
 export const registerUser = (data) => async (dispatch) => {
     try {
         dispatch({ type: LOADING_REQUEST });
@@ -25,11 +29,17 @@ export const loginUser = (data) => async (dispatch) => {
         const response = await api.login(data);
         const token = response.data.access;
         localStorage.setItem("ItechJWT", token);
-        setAuthToken(token);
+        setAuthTokenToHeader(token);
         const decoded = jwt_decode(token);
-
         dispatch({ type: LOGIN_SUCCESS, payload: decoded });
     } catch (error) {
         dispatch({ type: REGISTER_FAIL, payload: error.response });
     }
+};
+
+export const logoutUser = () => (dispatch) => {
+    console.log("logout");
+    localStorage.removeItem("ItechJWT");
+    dispatch({ type: LOGOUT });
+    history.push("/");
 };

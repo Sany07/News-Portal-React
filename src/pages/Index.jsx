@@ -15,7 +15,6 @@ import store from "../store";
 
 class index extends Component {
     componentDidMount() {
-        beginTheBar();
         this.props.getHomepageData();
         this.props.GetSidebarData();
     }

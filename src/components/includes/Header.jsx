@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import LoadingBar from "react-top-loading-bar";
 import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../../redux/actions/Auth";
 import { TopLoadingBarProgress } from "../../redux/actions/topLoadingBarProgress";
 import store from "../../store";
+import { authVerify } from "../../services/authVerify";
 
 export const Header = () => {
-    const [progress, setProgress] = useState(0);
-    // const progressBar = useSelector((state) => state.state);
-    // const { loadingProgress } = store.getState().topProgressBar;
+    const { isAuthenticated, user } = useSelector((state) => state.loginReducer);
+    useEffect(() => {
+        authVerify();
+        console.log("authVerify");
+    }, [isAuthenticated]);
+
+    const HandleLogout = (e) => {
+        useDispatch(logoutUser());
+    };
+
     return (
         <div>
             <section id="header_section_wrapper" className="header_section_wrapper">
@@ -64,12 +73,36 @@ export const Header = () => {
                             <div className="col-md-4">
                                 <div className="right_section">
                                     <ul className="nav navbar-nav">
-                                        <li>
-                                            <Link to="/login">Login</Link>
-                                        </li>
-                                        <li>
-                                            <Link to="/register">Register</Link>
-                                        </li>
+                                        {!isAuthenticated && (
+                                            <Fragment>
+                                                <li>
+                                                    <Link to="/login">Login</Link>
+                                                </li>
+                                                <li>
+                                                    <Link to="/register">Register</Link>
+                                                </li>
+                                            </Fragment>
+                                        )}
+                                        {isAuthenticated && user.user && (
+                                            <Fragment>
+                                                <li className="dropdown">
+                                                    <li>Profile</li>
+                                                    <ul className="dropdown-menu">
+                                                        <li
+                                                            onClick={HandleLogout}
+                                                            style={{ cursor: "pointer" }}
+                                                        >
+                                                            <a
+                                                                href="/login"
+                                                                className="dropdown-item"
+                                                            >
+                                                                Logout
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </Fragment>
+                                        )}
                                         <li className="dropdown lang">
                                             <button
                                                 className="btn btn-default dropdown-toggle"
