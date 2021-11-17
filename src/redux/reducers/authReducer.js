@@ -27,12 +27,6 @@ export const registerReducer = (state = initialState, action) => {
                 isLoading: false,
                 error: action.payload.data,
             };
-        case LOGOUT:
-            return {
-                ...state,
-                isLoggedIn: false,
-                user: null,
-            };
         case AUTH_RESET:
             return {
                 isLoading: false,
@@ -70,8 +64,11 @@ export const loginReducer = (state = initialState, action) => {
 export const logOutReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGOUT:
+            console.log('LOGOUT');
+             localStorage.removeItem("ItechJWT");
             return {
                 ...state,
+                isAuthenticated: false,
                 isLoggedIn: false,
             };
         default:

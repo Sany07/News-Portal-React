@@ -6,17 +6,23 @@ import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions/Auth";
 import { TopLoadingBarProgress } from "../../redux/actions/topLoadingBarProgress";
 import store from "../../store";
+import { LOGOUT } from "../../redux/actions/actionTypes";
 import { authVerify } from "../../services/authVerify";
+import { createBrowserHistory } from "history";
+const history = createBrowserHistory();
+
 
 export const Header = () => {
     const { isAuthenticated, user } = useSelector((state) => state.loginReducer);
     useEffect(() => {
         authVerify();
-        console.log("authVerify");
-    }, [isAuthenticated]);
+        console.log("user",user);
+    }, [isAuthenticated,user]);
 
-    const HandleLogout = (e) => {
-        useDispatch(logoutUser());
+  
+    const HandleLogout = () => {
+        store.dispatch({ type: LOGOUT });
+        history.push("/login");
     };
 
     return (
@@ -85,19 +91,16 @@ export const Header = () => {
                                         )}
                                         {isAuthenticated && user.user && (
                                             <Fragment>
-                                                <li className="dropdown">
-                                                    <li>Profile</li>
+                                                <li className="dropdown lang">
+                                                    <li style={{ marginTop:1, marginRight:10}}>Wellcome <span style={{ marginLeft:5}}>{ user.user.username.toUpperCase()}</span></li>
                                                     <ul className="dropdown-menu">
                                                         <li
                                                             onClick={HandleLogout}
                                                             style={{ cursor: "pointer" }}
                                                         >
-                                                            <a
-                                                                href="/login"
-                                                                className="dropdown-item"
-                                                            >
+                                                          
                                                                 Logout
-                                                            </a>
+                                                          
                                                         </li>
                                                     </ul>
                                                 </li>
@@ -179,9 +182,9 @@ export const Header = () => {
                                         data-toggle="collapse"
                                         data-target="#navbar-collapse-1"
                                     >
-                                        <span className="sr-only">Toggle navigation</span>{" "}
-                                        <span className="icon-bar"></span>{" "}
-                                        <span className="icon-bar"></span>{" "}
+                                        <span className="sr-only">Toggle navigation</span>
+                                        <span className="icon-bar"></span>
+                                        <span className="icon-bar"></span>
                                         <span className="icon-bar"></span>
                                     </button>
                                 </div>
@@ -221,5 +224,5 @@ export const Header = () => {
                 {/* <!-- .container --> */}
             </section>
         </div>
-    );
-};
+    )
+}

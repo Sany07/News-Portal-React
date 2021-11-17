@@ -32,14 +32,19 @@ export const loginUser = (data) => async (dispatch) => {
         setAuthTokenToHeader(token);
         const decoded = jwt_decode(token);
         dispatch({ type: LOGIN_SUCCESS, payload: decoded });
+        history.push("/");
     } catch (error) {
         dispatch({ type: REGISTER_FAIL, payload: error.response });
     }
 };
 
 export const logoutUser = () => (dispatch) => {
-    console.log("logout");
-    localStorage.removeItem("ItechJWT");
-    dispatch({ type: LOGOUT });
-    history.push("/");
+      try {
+        localStorage.removeItem("ItechJWT");
+        dispatch({ type: LOGOUT });
+        history.push("/");
+    }
+    catch (error) {
+        console.log('error', error);
+    }
 };
