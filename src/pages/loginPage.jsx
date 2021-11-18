@@ -2,22 +2,29 @@ import React, { useState, useEffect, Fragment } from "react";
 import { registerUser, loginUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Loading } from "../components/includes/Loading";
 import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-<ToastContainer />;
+
+
 export const LoginPage = () => {
     const [userData, setUser] = useState({
         username: "",
         email: "",
     });
 
+    const history = useHistory();
     const dispatch = useDispatch();
+
     const { isLoading, success, error } = useSelector((state) => state.loginReducer);
+    //  const { success } = useSelector((state) => state.logOutReducer);
+    console.log(success);
     useEffect(() => {
         if (success) {
             toast.success("success");
+            history.push('/login');
             dispatch({ type: AUTH_RESET });
         }
 
@@ -45,6 +52,9 @@ export const LoginPage = () => {
     // }
     return (
         <section id="subscribe_section" className="subscribe_section">
+
+<ToastContainer />;
+
             <div className="row">
                 <ToastContainer />
                 <div className="col-md-6 col-md-offset-3">

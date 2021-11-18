@@ -6,12 +6,14 @@ import { Footer } from "./components/includes/Footer";
 import { TopLoader } from "./components/includes/TopLoader";
 import store from "./store";
 import { Provider } from "react-redux";
+import { createBrowserHistory } from 'history';
 
+const history = createBrowserHistory();
 class App extends Component {
     render() {
         return (
             <Provider store={store}>
-                <Router>
+                <Router history={history}>
                     <div id="main-wrapper">
                         <TopLoader />
                         <Header />

@@ -8,7 +8,7 @@ import {
     LOGIN_SUCCESS,
 } from "../actions/actionTypes";
 
-const initialState = { isLoading: false, isAuthenticated: false, user: {} };
+const initialState = {success:false, isLoading: false, isAuthenticated: false, user: {} };
 
 export const registerReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -43,7 +43,9 @@ export const loginReducer = (state = initialState, action) => {
             };
         case LOGIN_SUCCESS:
             return {
+            
                 isLoading: false,
+                success:true,
                 isAuthenticated: true,
                 user: action.payload,
             };
@@ -54,6 +56,7 @@ export const loginReducer = (state = initialState, action) => {
             };
         case AUTH_RESET:
             return {
+                ...state,
                 isLoading: false,
             };
         default:
@@ -65,11 +68,9 @@ export const logOutReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGOUT:
             console.log('LOGOUT');
-             localStorage.removeItem("ItechJWT");
             return {
                 ...state,
-                isAuthenticated: false,
-                isLoggedIn: false,
+                success:true,
             };
         default:
             return state;

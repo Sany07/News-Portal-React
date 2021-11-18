@@ -12,7 +12,11 @@ import jwt_decode from "jwt-decode";
 import setAuthTokenToHeader from "../../services/setAuthToken";
 import { createBrowserHistory } from "history";
 const history = createBrowserHistory();
-export default history;
+
+// import {useHistory} from "react-router-dom";
+
+// const history = useHistory();
+
 export const registerUser = (data) => async (dispatch) => {
     try {
         dispatch({ type: LOADING_REQUEST });
@@ -32,7 +36,7 @@ export const loginUser = (data) => async (dispatch) => {
         setAuthTokenToHeader(token);
         const decoded = jwt_decode(token);
         dispatch({ type: LOGIN_SUCCESS, payload: decoded });
-        history.push("/");
+        
     } catch (error) {
         dispatch({ type: REGISTER_FAIL, payload: error.response });
     }
@@ -42,7 +46,7 @@ export const logoutUser = () => (dispatch) => {
       try {
         localStorage.removeItem("ItechJWT");
         dispatch({ type: LOGOUT });
-        history.push("/");
+        // history.push("/login");
     }
     catch (error) {
         console.log('error', error);
