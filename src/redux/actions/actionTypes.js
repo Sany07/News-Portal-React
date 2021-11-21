@@ -17,4 +17,5 @@ export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAIL = "LOGIN_FAIL";
 export const LOGOUT = "LOGOUT";
 export const AUTH_RESET = "AUTH_RESET";
+export const LOGOUT_RESET = "LOGOUT_RESET";
 export const TOP_LOADING_PROGRESS = "TOP_LOADING_PROGRESS";

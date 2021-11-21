@@ -36,14 +36,13 @@ export const loginUser = (data) => async (dispatch) => {
         setAuthTokenToHeader(token);
         const decoded = jwt_decode(token);
         dispatch({ type: LOGIN_SUCCESS, payload: decoded });
-        
     } catch (error) {
         dispatch({ type: REGISTER_FAIL, payload: error.response });
     }
 };
 
 export const logoutUser = () => (dispatch) => {
-      try {
+    try {
         localStorage.removeItem("ItechJWT");
         dispatch({ type: LOGOUT });
         // history.push("/login");

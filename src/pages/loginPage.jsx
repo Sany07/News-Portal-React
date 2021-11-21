@@ -23,13 +23,16 @@ export const LoginPage = () => {
     console.log(success);
     useEffect(() => {
         if (success) {
-            toast.success("success");
-            history.push('/login');
+            toast.success("Login Success");
             dispatch({ type: AUTH_RESET });
+            setTimeout(() => {
+                // if (isAuthenticated && typeof window !== 'undefined') window.location.href = "/login";
+                history.push('/login');
+               
+            }, 1500);
         }
 
         if (error) {
-            console.log(error);
             toast.error("Something went wrong");
             // toast.error(error.password[0]);
             // toast.error(error.email);

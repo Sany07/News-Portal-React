@@ -1,14 +1,13 @@
 import React, { useEffect, Fragment } from "react";
 import { Link } from "react-router-dom";
-import moment from "moment";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions/Auth";
-import store from "../../store";
-import { LOGOUT } from "../../redux/actions/actionTypes";
 import { authVerify } from "../../services/authVerify";
 import { useHistory } from "react-router-dom";
-
-
+import { LOGOUT_RESET } from "../../redux/actions/actionTypes";
+import moment from "moment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const Header = () => {
     const { isAuthenticated, user } = useSelector((state) => state.loginReducer);
@@ -18,19 +17,19 @@ export const Header = () => {
     const dispatch = useDispatch();
     useEffect(() => {
         authVerify();
-        console.log("user",isAuthenticated, success);
     }, [isAuthenticated,success]);
   
     const HandleLogout = () => {
         if (dispatch) {
             dispatch(logoutUser());
+            dispatch({ type: LOGOUT_RESET });
+            toast.success("Successfuly Logout");
             setTimeout(() => {
                 // if (isAuthenticated && typeof window !== 'undefined') window.location.href = "/login";
-       
                 if (isAuthenticated){
                     history.push('/login');
                 }
-            }, 500);
+            }, 2500);
         }
     };
 

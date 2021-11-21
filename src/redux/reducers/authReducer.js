@@ -6,9 +6,10 @@ import {
     AUTH_RESET,
     LOGIN_FAIL,
     LOGIN_SUCCESS,
+    LOGOUT_RESET
 } from "../actions/actionTypes";
 
-const initialState = {success:false, isLoading: false, isAuthenticated: false, user: {} };
+const initialState = { isLoading: false, isAuthenticated: false, user: {} };
 
 export const registerReducer = (state = initialState, action) => {
     switch (action.type) {
@@ -30,6 +31,7 @@ export const registerReducer = (state = initialState, action) => {
         case AUTH_RESET:
             return {
                 isLoading: false,
+                success: false,
             };
         default:
             return state;
@@ -57,6 +59,7 @@ export const loginReducer = (state = initialState, action) => {
         case AUTH_RESET:
             return {
                 ...state,
+                success: false,
                 isLoading: false,
             };
         default:
@@ -67,10 +70,14 @@ export const loginReducer = (state = initialState, action) => {
 export const logOutReducer = (state = initialState, action) => {
     switch (action.type) {
         case LOGOUT:
-            console.log('LOGOUT');
             return {
                 ...state,
                 success:true,
+            };
+        case LOGOUT_RESET:
+            return {
+                success: false,
+                
             };
         default:
             return state;
