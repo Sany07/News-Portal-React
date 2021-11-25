@@ -15,12 +15,6 @@ export default (state = data, action) => {
                 comments: action.payload.data,
                 isLoading: false,
             };
-        // case CREATE_NEWS_COMMENT:
-        //     return {
-        //         new_comment: action.payload.data,
-        //         isCreated: true,
-        //         isLoading: true,
-        //     };
 
         default:
             return state;
@@ -42,7 +36,6 @@ export const newCommentReducer = (state = data, action) => {
                 comments: action.payload,
             };
         case NEW_COMMENT_RESET:
-            console.log("action.payload.data");
             return {
                 isLoading: false,
                 isCreated: false,

@@ -7,7 +7,9 @@ import { TopLoader } from "./components/includes/TopLoader";
 import store from "./store";
 import { Provider } from "react-redux";
 import { createBrowserHistory } from 'history';
-
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+          
 const history = createBrowserHistory();
 class App extends Component {
     render() {
@@ -16,6 +18,7 @@ class App extends Component {
                 <Router history={history}>
                     <div id="main-wrapper">
                         <TopLoader />
+                        <ToastContainer />;
                         <Header />
                         <BaseRouter />
                         <Footer />

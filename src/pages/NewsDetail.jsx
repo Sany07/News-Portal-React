@@ -9,9 +9,11 @@ import { Sidebar } from "./Sidebar";
 import { Loading } from "../components/includes/Loading";
 import { Comments } from "../components/includes/Comments";
 import { CommentForm } from "../components/includes/CommentForm";
-import "react-toastify/dist/ReactToastify.css";
 import { toast } from "react-toastify";
 import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import { Link } from "react-router-dom";
+import _ from "lodash";
+
 class NewsDetail extends Component {
     state = {
         slug: "",
@@ -24,6 +26,7 @@ class NewsDetail extends Component {
         this.props.getSingleNews(slug);
         this.props.GetSidebarData();
         window.scrollTo(0, 0);
+
     }
 
     render() {
@@ -34,6 +37,7 @@ class NewsDetail extends Component {
             popular_news,
             most_commented_news,
             new_comment,
+            isAuthenticated
         } = this.props;
 
         if (this.state.slug || this.state.newsId) {
@@ -41,14 +45,14 @@ class NewsDetail extends Component {
             this.props.getNewsComments(this.state.newsId);
             this.setState({ slug: "", newsId: "" });
             window.scrollTo(0, 200);
+
         } else if (news.total_comment_count > 0 && isLoading === false && comments === null) {
             this.props.getNewsComments(news.id);
         } else if (new_comment.comments != null && new_comment.isCreated == true) {
+            toast.success("Your comment has been successfully submitted.")
             this.props.getNewsComments(news.id);
-        } else if (new_comment.isCreated == true) {
-            toast.success("Review is posted.");
         }
-
+ 
         if (isLoading === true) {
             return <Loading />;
         } else {
@@ -105,6 +109,18 @@ class NewsDetail extends Component {
                                     </div>
                                     {/* Related news */}
 
+                                    <div className="entity_comments">
+                                        <div className="entity_inner__title header_black">
+                                            <h2>Add a Comment</h2>
+                                        </div>
+                                         {isAuthenticated ? (
+                                        <CommentForm
+                                            news={news.id}
+                                            slug={this.props.match.params.slug}
+                                        />):  <p>
+                                        Want to make comment ? Please <Link to="/login">Sign In</Link>
+                                    </p>}
+                                    </div>
                                     <div className="readers_comment">
                                         {/* entity_title */}
                                         {news ? (
@@ -121,15 +137,7 @@ class NewsDetail extends Component {
                                     </div>
                                     {/*Readers Comment*/}
 
-                                    <div className="entity_comments">
-                                        <div className="entity_inner__title header_black">
-                                            <h2>Add a Comment</h2>
-                                        </div>
-                                        <CommentForm
-                                            news={news.id}
-                                            slug={this.props.match.params.slug}
-                                        />
-                                    </div>
+
                                     {/*Entity Comments */}
                                 </div>
                             )}
@@ -154,13 +162,15 @@ class NewsDetail extends Component {
         }
     }
 }
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state) => (
+{
     single_news: state.newsReducer.single_news,
     isLoading: state.newsReducer.isLoading,
     most_commented_news: state.sidebarReducer.news.most_commented,
     popular_news: state.sidebarReducer.news.popular_news,
     comments: state.commentReducer.comments,
     new_comment: state.newCommentReducer,
+    isAuthenticated: state.loginReducer.isAuthenticated
 });
 
 export default connect(mapStateToProps, {

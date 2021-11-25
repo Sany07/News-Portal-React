@@ -27,9 +27,9 @@ export const LoginPage = () => {
             dispatch({ type: AUTH_RESET });
             setTimeout(() => {
                 // if (isAuthenticated && typeof window !== 'undefined') window.location.href = "/login";
-                history.push('/login');
+                history.push('/');
                
-            }, 1500);
+            }, 1100);
         }
 
         if (error) {
@@ -55,8 +55,6 @@ export const LoginPage = () => {
     // }
     return (
         <section id="subscribe_section" className="subscribe_section">
-
-<ToastContainer />;
 
             <div className="row">
                 <ToastContainer />

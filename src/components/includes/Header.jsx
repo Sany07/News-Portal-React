@@ -5,10 +5,9 @@ import { logoutUser } from "../../redux/actions/Auth";
 import { authVerify } from "../../services/authVerify";
 import { useHistory } from "react-router-dom";
 import { LOGOUT_RESET } from "../../redux/actions/actionTypes";
+import { toast } from "react-toastify";
 import moment from "moment";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-
+     
 export const Header = () => {
     const { isAuthenticated, user } = useSelector((state) => state.loginReducer);
     const { success } = useSelector((state) => state.logOutReducer);
@@ -25,11 +24,9 @@ export const Header = () => {
             dispatch({ type: LOGOUT_RESET });
             toast.success("Successfuly Logout");
             setTimeout(() => {
-                // if (isAuthenticated && typeof window !== 'undefined') window.location.href = "/login";
-                if (isAuthenticated){
-                    history.push('/login');
-                }
-            }, 2500);
+                if (isAuthenticated && typeof window !== 'undefined') window.location.href = "/login";
+         
+            }, 500);
         }
     };
 
@@ -88,10 +85,10 @@ export const Header = () => {
                                 <ul className="nav navbar-nav">
                                     {!isAuthenticated && (
                                         <Fragment>
-                                            <li>
+                                            <li style={{ marginBottom:2}}>
                                                 <Link to="/login">Login</Link>
                                             </li>
-                                            <li>
+                                            <li style={{ marginBottom:2}}>
                                                 <Link to="/register">Register</Link>
                                             </li>
                                         </Fragment>
