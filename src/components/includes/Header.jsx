@@ -192,27 +192,29 @@ export const Header = () => {
                             </div>
                             <div className="collapse navbar-collapse" id="#navbar-collapse-1">
                                 <ul className="nav navbar-nav main-nav">
+                                <li className="">
+                                       
+                                    </li>
                                     <li className="active">
                                         <Link to="/">Home</Link>
                                     </li>
                                     <li>
-                                        <a href="index.html">News</a>
+                                    <Link to="/category/camera">Camera</Link>
                                     </li>
                                     <li>
-                                        <a href="category.html">Mobile</a>
+                                    <Link to="/category/mobile">Mobile</Link>
                                     </li>
                                     <li>
-                                        <a href="blog.html">Tablet</a>
+                                        <Link to="/category/gadgets">Gadgets</Link>
+                                        
                                     </li>
                                     <li>
-                                        <a href="blog.html">Gadgets</a>
-                                    </li>
+                                        <Link to="/category/tablet">Tablet</Link>
+                                    </li>       
                                     <li>
-                                        <a href="blog.html">Camera</a>
+                                        <Link to="/category/ideas">Ideas</Link>
                                     </li>
-                                    <li>
-                                        <a href="blog.html">Design</a>
-                                    </li>
+                                    
                                 </ul>
                             </div>
                             {/* <!-- .navbar-collapse --> */}

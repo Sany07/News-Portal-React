@@ -6,7 +6,8 @@ import { Link } from "react-router-dom";
 import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import { useHistory } from "react-router-dom";
 export const RegisterPage = () => {
     const [userData, setUser] = useState({
         username: "",
@@ -17,11 +18,17 @@ export const RegisterPage = () => {
 
     const dispatch = useDispatch();
     const { isLoading, success, error } = useSelector((state) => state.registerReducer);
-
+    const history = useHistory();
+  
     useEffect(() => {
+        beginTheBar()
         if (success) {
             toast.success("success");
             dispatch({ type: AUTH_RESET });
+            setTimeout(() => {
+                history.push('/login');
+               
+            }, 1100);
         }
 
         if (error) {
@@ -32,6 +39,7 @@ export const RegisterPage = () => {
 
             dispatch({ type: AUTH_RESET });
         }
+        endTheBar()
     }, [dispatch, success, error]);
     const handleSubmit = (e) => {
         e.preventDefault();

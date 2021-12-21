@@ -45,7 +45,7 @@ export const loginReducer = (state = initialState, action) => {
             };
         case LOGIN_SUCCESS:
             return {
-            
+
                 isLoading: false,
                 success:true,
                 isAuthenticated: true,

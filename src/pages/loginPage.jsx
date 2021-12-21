@@ -7,7 +7,7 @@ import { Loading } from "../components/includes/Loading";
 import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import { beginTheBar, endTheBar } from "../services/topLoadingBar";
 
 export const LoginPage = () => {
     const [userData, setUser] = useState({
@@ -22,6 +22,7 @@ export const LoginPage = () => {
     //  const { success } = useSelector((state) => state.logOutReducer);
     console.log(success);
     useEffect(() => {
+        beginTheBar()
         if (success) {
             toast.success("Login Success");
             dispatch({ type: AUTH_RESET });
@@ -39,7 +40,9 @@ export const LoginPage = () => {
 
             dispatch({ type: AUTH_RESET });
         }
+        endTheBar()
     }, [success, error]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(loginUser(userData));
@@ -48,14 +51,10 @@ export const LoginPage = () => {
     const onChange = (e) => {
         setUser({ ...userData, [e.target.name]: e.target.value });
     };
-    // if (isLoading === true) {
-    //     return <Loading />;
-    // } else {
-    //     ("");
-    // }
+
     return (
         <section id="subscribe_section" className="subscribe_section">
-
+         
             <div className="row">
                 <ToastContainer />
                 <div className="col-md-6 col-md-offset-3">
@@ -91,14 +90,14 @@ export const LoginPage = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary btn-flat m-b-30 m-t-30"
-                                >
-                                    {isLoading ? (
+                                >Login
+                                    {/* {isLoading ? (
                                         <Fragment>
                                             <i className="fa fa-spinner fa-spin" /> Loading
                                         </Fragment>
                                     ) : (
                                         "Login"
-                                    )}
+                                    )} */}
                                 </button>
                                 <div className="register-link m-t-15 text-center">
                                     <p>
@@ -112,4 +111,5 @@ export const LoginPage = () => {
             </div>
         </section>
     );
+
 };

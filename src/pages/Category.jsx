@@ -8,10 +8,10 @@ import { NewsCard } from "../components/skeletons/NewsCard";
 import { Sidebar } from "./Sidebar";
 import moment from "moment";
 import { Loading } from "../components/includes/Loading";
+
 class Category extends Component {
     componentDidMount() {
         const { slug } = this.props.match.params;
-        console.log(slug);
         this.props.GetSingleCategoryData(slug);
         this.props.GetSidebarData();
     }
