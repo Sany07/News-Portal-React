@@ -10,17 +10,34 @@ import moment from "moment";
 import { Loading } from "../components/includes/Loading";
 
 class Category extends Component {
-    componentDidMount() {
-        const { slug } = this.props.match.params;
-        this.props.GetSingleCategoryData(slug);
-        this.props.GetSidebarData();
-    }
+        componentDidMount() {
+            const { slug } = this.props.match.params;
+            this.props.GetSingleCategoryData(slug);
+            this.props.GetSidebarData();
+        }
+
+        // componentDidUpdate(){
+        //     const { slug } = this.props.match.params;
+        //     console.log('slug1', slug);
+        //     console.log('slug11', this.props.match.params.slug);
+    
+        //     if (this.props.match.params.slug !== slug) {
+        //         console.log('slug2', slug);
+        //         this.props.GetSingleCategoryData(slug);
+        //         }
+        //     }
+
+
     render() {
         const { category, isLoading } = this.props;
 
         if (isLoading === true) {
             return <Loading />;
         } else {
+            if (category && category.slug !== this.props.match.params.slug) {
+                console.log('slug2', this.props.match.params.slug);
+                this.props.GetSingleCategoryData(this.props.match.params.slug);
+            }
             return (
                 <Fragment>
                     <section class="breadcrumb_section">
@@ -81,7 +98,7 @@ class Category extends Component {
     }
 }
 const mapStateToProps = (state) => (
-    console.log(state.categoryReducer),
+    
     {
         category: state.categoryReducer.single_category_data,
         isLoading: state.categoryReducer.isLoading,

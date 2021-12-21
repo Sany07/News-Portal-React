@@ -117,14 +117,14 @@ export const RegisterPage = () => {
                                 <button
                                     type="submit"
                                     className="btn btn-primary btn-flat m-b-30 m-t-30"
-                                >
-                                    {isLoading ? (
+                                >Register
+                                    {/* {isLoading ? (
                                         <Fragment>
                                             <i className="fa fa-spinner fa-spin" /> Loading
                                         </Fragment>
                                     ) : (
                                         "Register"
-                                    )}
+                                    )} */}
                                 </button>
                                 <div className="register-link m-t-15 text-center">
                                     <p>
