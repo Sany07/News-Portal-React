@@ -37,7 +37,7 @@ export const Header = () => {
                     <div className="row">
                         <div className="col-md-4">
                             <div className="left_section">
-                                <span className="date">{moment().format("dddd")} .</span>
+                                <span className="date">{moment().format("dddd")}.</span>
                                 {/* <!-- Date --> */}
                                 <span className="time">{moment().format("D MMMM , YYYY")}</span>
                                 {/* <!-- Time --> */}
