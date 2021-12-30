@@ -1,23 +1,24 @@
 import React from "react";
 import moment from "moment";
+import { Link } from "react-router-dom";
+
 export const SingleNewsCard = (props) => {
     const { news } = props;
     return (
         <>
             <div className="entity_title">
                 <h1>
-                    <a href="#">{news.title}</a>
+                    {news.title}
                 </h1>
             </div>
             {/* entity_title */}
             <div className="entity_meta">
-                <a href="#" target="_self">
-                    {moment(news.timestamp).format("Do MMM  YYYY")}
-                </a>
+                {moment(news.timestamp).format("Do MMM  YYYY")}
+                
                 , by:
-                <a href="#" target="_self">
+                <Link href="#">
                     {news.author && news.author.user.username}
-                </a>
+                </Link>
             </div>
             {/* entity_meta */}
             <div className="entity_rating">
@@ -29,29 +30,29 @@ export const SingleNewsCard = (props) => {
             </div>
             {/* entity_rating */}
             <div className="entity_social">
-                <a href="#" className="icons-sm sh-ic">
+                <div href="#" className="icons-sm sh-ic">
                     <i className="fa fa-share-alt" />
                     <b>424</b> <span className="share_ic">Shares</span>
-                </a>
-                <a href="#" className="icons-sm fb-ic">
+                </div>
+                <Link to="#" className="icons-sm fb-ic">
                     <i className="fa fa-facebook" />
-                </a>
+                </Link>
                 {/*Twitter*/}
-                <a href="#" className="icons-sm tw-ic">
+                 <Link to="#" className="icons-sm tw-ic">
                     <i className="fa fa-twitter" />
-                </a>
+                </Link>
                 {/*Google +*/}
-                <a href="#" className="icons-sm inst-ic">
+                 <Link to="#" className="icons-sm inst-ic">
                     <i className="fa fa-google-plus"> </i>
-                </a>
+                </Link>
                 {/*Linkedin*/}
-                <a href="#" className="icons-sm tmb-ic">
+                 <Link to="#" className="icons-sm tmb-ic">
                     <i className="fa fa-ge"> </i>
-                </a>
+                </Link>
                 {/*Pinterest*/}
-                <a href="#" className="icons-sm rss-ic">
+                 <Link to="#" className="icons-sm rss-ic">
                     <i className="fa fa-rss"> </i>
-                </a>
+                </Link>
             </div>
             {/* entity_social */}
             <div className="entity_thumb">

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { TagItemSkeleton } from "../../components/skeletons/TagItemSkeleton";
 import { MoreNewsSkeleton } from "../../components/skeletons/MoreNewsButtonSkeleton";
@@ -66,15 +66,13 @@ export const NewscardTwo = (props) => {
                                     </div>
 
                                     <div className="article_date">
-                                        <a href="#">
-                                            {moment(news.timestamp).format(
-                                                "Do MMM  YYYY"
-                                            )}
-                                        </a>
+                                        {moment(news.timestamp).format(
+                                            "Do MMM  YYYY"
+                                        )}
                                         , by:
-                                        <a href="#">
+                                        <Link to="#">
                                             {news.author.user.username}
-                                        </a>
+                                        </Link>
                                     </div>
 
                                     <div className="category_article_content">
@@ -83,17 +81,12 @@ export const NewscardTwo = (props) => {
 
                                     <div className="media_social">
                                         <span>
-                                            <a href="#">
-                                                <i className="fa fa-share-alt"></i>
-                                                424
-                                            </a>
-                                            Shares
+                                            <i className="fa fa-share-alt"></i>
+                                            424 Shares
                                         </span>
                                         <span>
                                             <i className="fa fa-comments-o"></i>
-                                            <a href="#">
                                                 {news.total_comment_count}
-                                            </a>
                                             Comments
                                         </span>
                                     </div>

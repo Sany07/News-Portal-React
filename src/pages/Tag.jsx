@@ -38,13 +38,13 @@ export class Tag extends Component {
                     <div class="container">
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="entity_title header_purple">
+                                {/* <div class="entity_title header_purple">
                                     <h1>
                                         <a href="" target="_blank">
-                                            {/* {category && category.name} */}
+                                          {category && category.name} 
                                         </a>
                                     </h1>
-                                </div>
+                                </div> */}
                                 <div class="row">
                                     {tag &&
                                         tag.news.map((news, index) => {
@@ -74,7 +74,6 @@ export class Tag extends Component {
     }
 }
 const mapStateToProps = (state) => (
-    console.log("sta", state.tagReducer),
     {
         tag: state.tagReducer.single_tag_data,
         isLoading: state.tagReducer.isLoading,

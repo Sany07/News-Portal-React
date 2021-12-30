@@ -70,13 +70,11 @@ export const NewsCardOne = (props) => {
                                 </div>
 
                                 <div className="category_article_date">
-                                    <a href="#">
                                         {moment(news.timestamp).format(
                                             "Do MMM  YYYY"
                                         )}
-                                    </a>
                                     , by:{" "}
-                                    <a href="#">{news.author.user.username}</a>
+                                    <Link to="#">{news.author.user.username}</Link>
                                 </div>
 
                                 <div className="category_article_content">
@@ -86,17 +84,13 @@ export const NewsCardOne = (props) => {
 
                                 <div className="media_social">
                                     <span>
-                                        <a href="#">
-                                            <i className="fa fa-share-alt"></i>
+                                        <i className="fa fa-share-alt"></i>
                                             424
-                                        </a>
                                         Shares
                                     </span>
                                     <span>
                                         <i className="fa fa-comments-o"></i>
-                                        <a href="#">
                                             {news.total_comment_count}
-                                        </a>
                                         Comments
                                     </span>
                                 </div>

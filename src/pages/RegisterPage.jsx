@@ -16,7 +16,7 @@ export const RegisterPage = () => {
     });
 
     const dispatch = useDispatch();
-    const { isLoading, success, error } = useSelector((state) => state.registerReducer);
+    const { success, error } = useSelector((state) => state.registerReducer);
     const history = useHistory();
   
     useEffect(() => {
@@ -39,7 +39,8 @@ export const RegisterPage = () => {
             dispatch({ type: AUTH_RESET });
         }
         endTheBar()
-    }, [dispatch, success, error]);
+    }, [dispatch,history, success, error]);
+    
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch(registerUser(userData));

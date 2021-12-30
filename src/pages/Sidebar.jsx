@@ -1,18 +1,16 @@
 import React, { Fragment } from "react";
-import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import moment from "moment";
 
 export const Sidebar = (props) => {
     const { popular_news, most_commented_news, setSlug } = props;
-
     return (
         <Fragment>
             <div className="col-md-4">
                 <div className="widget">
                     <div className="widget_title widget_black">
                         <h2>
-                            <a href="#">Popular News</a>
+                        <Link to="#">Popular News </Link>
                         </h2>
                     </div>
                     {popular_news &&
@@ -47,7 +45,7 @@ export const Sidebar = (props) => {
                                                         ? `http://localhost:8000${popular_news.thumbnail}`
                                                         : `http://localhost:8000/media/${popular_news.thumbnail}`
                                                 }
-                                                alt="Generic placeholder image"
+                                                alt=""
                                             />
                                         </Link>
                                     </div>
@@ -69,29 +67,27 @@ export const Sidebar = (props) => {
                                             </Link>
                                         </h3>{" "}
                                         <span className="media-date">
-                                            <a href="#">
-                                                {moment(
-                                                    popular_news.timestamp
-                                                ).format("Do MMM  YYYY")}
-                                            </a>
+                                            {moment(
+                                                popular_news.timestamp
+                                            ).format("Do MMM  YYYY")}
                                             , by:{" "}
-                                            <a href="#">
+                                            <Link to="#">
                                                 {
                                                     popular_news.author.user
                                                         .username
                                                 }
-                                            </a>
+                                            </Link>
                                         </span>
                                         <div className="widget_article_social">
                                             <span>
-                                                <a
-                                                    href="single.html"
+                                                <Link 
+                                                    to="#"
                                                     target="_self"
                                                 >
                                                     {" "}
                                                     <i className="fa fa-share-alt"></i>
                                                     424
-                                                </a>{" "}
+                                                </Link>{" "}
                                                 Shares
                                             </span>
                                             <span>
@@ -112,16 +108,16 @@ export const Sidebar = (props) => {
                             );
                         })}
                     <p className="widget_divider">
-                        <a href="#" target="_self">
+                        <Link to="#" target="_self">
                             More News&nbsp;&raquo;
-                        </a>
+                        </Link>
                     </p>
                 </div>
 
                 <div className="widget m30">
                     <div className="widget_title widget_black">
                         <h2>
-                            <a href="#">Most Commented</a>
+                            <Link to="#">Most Commented</Link>
                         </h2>
                     </div>
                     {most_commented_news &&
@@ -158,7 +154,7 @@ export const Sidebar = (props) => {
                                                         ? `http://localhost:8000${most_commented_news.thumbnail}`
                                                         : `http://localhost:8000/media/${most_commented_news.thumbnail}`
                                                 }
-                                                alt="Generic placeholder image"
+                                                alt="i"
                                             />
                                         </Link>
                                     </div>
@@ -178,16 +174,10 @@ export const Sidebar = (props) => {
                                                 {most_commented_news.title}
                                             </Link>
                                         </h3>
-
                                         <div className="media_social">
                                             <span>
                                                 <i className="fa fa-comments-o"></i>
-                                                <a href="#">
-                                                    {
-                                                        most_commented_news.total_comment_count
-                                                    }
-                                                </a>{" "}
-                                                Comments
+                                                { most_commented_news.total_comment_count } Comments
                                             </span>
                                         </div>
                                     </div>

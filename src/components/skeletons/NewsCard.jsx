@@ -39,15 +39,13 @@ export const NewsCard = (props) => {
                     </div>
 
                     <div class="entity_meta">
-                        <a href="#">
-                            {moment(news.timestamp).format("Do MMM  YYYY")}
-                        </a>
+                        {moment(news.timestamp).format("Do MMM  YYYY")}
                         , by:{" "}
-                        <a href="#">
+                        <Link to="#">
                             {news.author.user
                                 ? news.author.user.username
                                 : news.author}
-                        </a>
+                        </Link>
                     </div>
 
                     <div class="entity_content">
@@ -57,11 +55,11 @@ export const NewsCard = (props) => {
                     <div class="entity_social">
                         <span>
                             <i class="fa fa-share-alt"></i>
-                            424 <a href="#">Shares</a>{" "}
+                            424 Shares
                         </span>
                         <span>
                             <i class="fa fa-comments-o"></i>
-                            {news.total_comment_count} <a href="#"> Comments</a>{" "}
+                            {news.total_comment_count} Comments
                         </span>
                     </div>
                 </div>
@@ -98,16 +96,14 @@ export const NewsCard = (props) => {
                         </div>
 
                         <div class="article_date">
-                            <a href="#">
-                                {moment(news.timestamp).format("Do MMM  YYYY")}
-                            </a>
+                            {moment(news.timestamp).format("Do MMM  YYYY")}
                             , by:{" "}
-                            <a href="#">
+                            <Link to="#">
                                 {" "}
                                 {news.author.user
                                     ? news.author.user.username
                                     : news.author}
-                            </a>
+                            </Link>
                         </div>
 
                         <div class="category_article_content">
@@ -116,15 +112,13 @@ export const NewsCard = (props) => {
 
                         <div class="article_social">
                             <span>
-                                <a href="#">
-                                    <i class="fa fa-share-alt"></i>
-                                    424{" "}
-                                </a>{" "}
+                                <i class="fa fa-share-alt"></i>
+                                    424
                                 Shares
                             </span>
                             <span>
                                 <i class="fa fa-comments-o"></i>
-                                <a href="#"> {news.total_comment_count}</a>{" "}
+                                {news.total_comment_count}
                                 Comments
                             </span>
                         </div>

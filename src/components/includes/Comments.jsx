@@ -1,4 +1,5 @@
 import React, { Fragment } from "react";
+import { Link } from "react-router-dom";
 
 export const Comments = (props) => {
     const { comments } = props;
@@ -9,7 +10,7 @@ export const Comments = (props) => {
                     return (
                         <div className="media">
                             <div className="media-left">
-                                <a href="#">
+                                <Link to="#">
                                     <div
                                         data-initials={
                                             comment.user &&
@@ -23,30 +24,30 @@ export const Comments = (props) => {
                                         src="assets/img/reader_img3.jpg"
                                         data-holder-rendered="true"
                                     /> */}
-                                </a>
+                                </Link>
                             </div>
                             <div className="media-body">
                                 <h2 className="media-heading">
-                                    <a href="#">{comment.user && comment.user.username}</a>
+                                    <Link to="#">{comment.user && comment.user.username}</Link>
                                 </h2>
                                 {comment.comment}
                                 <div className="entity_vote">
-                                    <a href="#">
+                                    <Link to="#">
                                         <i className="fa fa-thumbs-o-up" aria-hidden="true" />
-                                    </a>
-                                    <a href="#">
+                                    </Link>
+                                    <Link to="#">
                                         <i className="fa fa-thumbs-o-down" aria-hidden="true" />
-                                    </a>
-                                    <a href="#">
+                                    </Link>
+                                    <Link to="#">
                                         <span className="reply_ic">Reply </span>
-                                    </a>
+                                    </Link>
                                 </div>
                                 {comment.replies &&
                                     comment.replies.map((reply) => {
                                         return (
                                             <div className="media" key={reply.id}>
                                                 <div className="media-left">
-                                                    <a href="#">
+                                                    <Link to="#">
                                                         {/* <img
                                                             alt="64x64"
                                                             className="media-object"
@@ -55,26 +56,26 @@ export const Comments = (props) => {
                                                             data-holder-rendered="true"
                                                         /> */}
                                                         <i class="fa fa-user"></i>
-                                                    </a>
+                                                    </Link>
                                                 </div>
                                                 <div className="media-body">
                                                     <h2 className="media-heading">
-                                                        <a href="#">{reply.user.username}</a>
+                                                        <Link to="#">{reply.user.username}</Link>
                                                     </h2>
 
                                                     <div className="entity_vote">
-                                                        <a href="#">
+                                                        <Link to="#">
                                                             <i
                                                                 className="fa fa-thumbs-o-up"
                                                                 aria-hidden="true"
                                                             />
-                                                        </a>
-                                                        <a href="#">
+                                                        </Link>
+                                                        <Link to="#">
                                                             <i
                                                                 className="fa fa-thumbs-o-down"
                                                                 aria-hidden="true"
                                                             />
-                                                        </a>
+                                                        </Link>
                                                         <span className="reply_ic">Reply </span>
                                                     </div>
                                                 </div>

@@ -1,19 +1,15 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, Fragment } from "react";
+import { useDispatch} from "react-redux";
 import { createtNewsComment} from "../../redux/actions/NewsComment";
-import { Loading } from "./Loading";
-import { LOADING_REQUEST } from "../../redux/actions/actionTypes";
-import { Comments } from "./Comments";
-import { toast } from "react-toastify";
+
 
 export const CommentForm = (props) => {
-    const { news, slug } = props;
+    const { news } = props;
     const [data, setData] = useState({
         post: "",
         comment: "",
     });
-    // const {isCreated} = useSelector(state => state.newCommentReducer)
-    // console.log(isCreated);
+
     const dispatch = useDispatch();
 
     const onChangeComment = (e) => {

@@ -1,12 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 import { GetSingleCategoryData } from "../redux/actions/News";
 import { GetSidebarData } from "../redux/actions/News";
 import { NewsCard } from "../components/skeletons/NewsCard";
 import { Sidebar } from "./Sidebar";
-import moment from "moment";
 import { Loading } from "../components/includes/Loading";
 
 class Category extends Component {
@@ -59,9 +57,7 @@ class Category extends Component {
                             <div class="col-md-8">
                                 <div class="entity_title header_purple">
                                     <h1>
-                                        <a href="" target="_blank">
-                                            {category && category.name}
-                                        </a>
+                                        {category && category.name}
                                     </h1>
                                 </div>
                                 <div class="row">

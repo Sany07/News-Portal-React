@@ -3,15 +3,10 @@ import { connect } from "react-redux";
 import { Sidebar } from "./Sidebar";
 import { FeatureNewsCard } from "./HomePage/FeatureNewsCard";
 import { Loading } from "../components/includes/Loading";
-import { VideoSection } from "../components/includes/VideoSection";
 import { NewsLetter } from "../components/includes/NewsLetter";
 import NewsListCard from "./HomePage/NewsListCard";
 import { GetSidebarData } from "../redux/actions/News";
 import { getHomepageData, emailNewsLetterSubscription } from "../redux/actions/Homepage";
-import { beginTheBar, endTheBar } from "../services/topLoadingBar";
-import LoadingBar from "react-top-loading-bar";
-import { TopLoadingBarProgress } from "../redux/actions/topLoadingBarProgress";
-import store from "../store";
 
 class index extends Component {
     componentDidMount() {
@@ -20,17 +15,6 @@ class index extends Component {
     }
 
     render() {
-        const { isLoading } = this.props;
-        const { loadingProgress } = store.getState().topProgressBar;
-        // if (isLoading === true) {
-        //     return (
-        //         <>
-        //             <Loading />
-        //             {/* <VideoSection /> */}
-        //             <NewsLetter emailSubscription={this.props.emailNewsLetterSubscription} />
-        //         </>
-        //     );
-        // } else {
         return (
             <>
                 {/* <LoadingBar

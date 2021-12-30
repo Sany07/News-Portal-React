@@ -10,9 +10,9 @@ import { Loading } from "../components/includes/Loading";
 import { Comments } from "../components/includes/Comments";
 import { CommentForm } from "../components/includes/CommentForm";
 import { toast } from "react-toastify";
-import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import { beginTheBar } from "../services/topLoadingBar";
 import { Link } from "react-router-dom";
-import _ from "lodash";
+
 
 class NewsDetail extends Component {
     state = {
@@ -48,7 +48,7 @@ class NewsDetail extends Component {
 
         } else if (news.total_comment_count > 0 && isLoading === false && comments === null) {
             this.props.getNewsComments(news.id);
-        } else if (new_comment.comments != null && new_comment.isCreated == true) {
+        } else if (new_comment.comments != null && new_comment.isCreated === true) {
             toast.success("Your comment has been successfully submitted.")
             this.props.getNewsComments(news.id);
         }
@@ -77,12 +77,12 @@ class NewsDetail extends Component {
                                             <div className="entity_social">
                                                 <span>
                                                     <i className="fa fa-share-alt" />
-                                                    424 <a href="#">Shares</a>
+                                                    424 Shares
                                                 </span>
                                                 <span>
                                                     <i className="fa fa-comments-o" />
                                                     {news.total_comment_count}
-                                                    <a href="#">Comments</a>
+                                                    Comments
                                                 </span>
                                             </div>
                                             {/* entity_social */}

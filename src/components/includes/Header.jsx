@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { logoutUser } from "../../redux/actions/Auth";
 import { authVerify } from "../../services/authVerify";
-import { useHistory } from "react-router-dom";
 import { LOGOUT_RESET } from "../../redux/actions/actionTypes";
 import { toast } from "react-toastify";
 import moment from "moment";
@@ -12,7 +11,6 @@ export const Header = () => {
     const { isAuthenticated, user } = useSelector((state) => state.loginReducer);
     const { success } = useSelector((state) => state.logOutReducer);
 
-    const history = useHistory();
     const dispatch = useDispatch();
     useEffect(() => {
         authVerify();

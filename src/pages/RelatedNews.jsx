@@ -11,7 +11,6 @@ export const RelatedNews = (props) => {
                         <div className="col-md-6 s" key={news.id}>
                             <div className="media">
                                 <div className="media-left">
-                                    <a href="#">
                                         <img
                                             style={{
                                                 height: 118,
@@ -27,9 +26,8 @@ export const RelatedNews = (props) => {
                                                     ? `http://localhost:8000${news.thumbnail}`
                                                     : `http://localhost:8000/media/${news.thumbnail}`
                                             }
-                                            alt="Generic placeholder image"
+                                            alt="{news.title}"
                                         />
-                                    </a>
                                 </div>
                                 <div className="media-body">
                                     <span className="tag purple">
@@ -48,11 +46,9 @@ export const RelatedNews = (props) => {
                                         </Link>
                                     </h3>
                                     <span className="media-date">
-                                        <a href="#">
-                                            {moment(news.timestamp).format(
-                                                "Do MMM  YYYY"
-                                            )}
-                                        </a>
+                                        {moment(news.timestamp).format(
+                                            "Do MMM  YYYY"
+                                        )}
                                         {/* , by:{" "}
                                         {/* <a href="#">
                                             {news.author &&
@@ -61,18 +57,14 @@ export const RelatedNews = (props) => {
                                     </span>
                                     <div className="media_social">
                                         <span>
-                                            <a href="#">
+                                        
                                                 <i className="fa fa-share-alt" />
                                                 424
-                                            </a>{" "}
+                                          
                                             Shares
                                         </span>
                                         <span>
-                                            <a href="#">
-                                                <i className="fa fa-comments-o" />
-                                                {news.total_comment_count}
-                                            </a>{" "}
-                                            Comments
+                                            {news.total_comment_count} Comments
                                         </span>
                                     </div>
                                 </div>

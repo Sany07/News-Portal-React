@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { emailNewsLetterSubscription } from "../../redux/actions/Homepage";
 import { EMAIL_SUBMIT_RESET } from "../../redux/actions/actionTypes";
+import "react-toastify/dist/ReactToastify.css";
 
 export const NewsLetter = () => {
-    // const { emailSubscription, isLoading } = props;
     const [email, setEmail] = useState("");
     const dispatch = useDispatch();
-    const { isLoading, success, data } = useSelector((state) => state.emailNewsLetterReducer);
-    // console.log("use", isLoading, success, data);
+    const { success } = useSelector((state) => state.emailNewsLetterReducer);
+
     useEffect(() => {
         if (success) {
             toast.success("success");
@@ -21,7 +20,7 @@ export const NewsLetter = () => {
         //     toast.error(error);
         //     dispatch(clearErrors())
         // }
-    }, [success]);
+    }, [dispatch, success]);
 
     const onChangeEmail = (e) => {
         setEmail(e.target.value);

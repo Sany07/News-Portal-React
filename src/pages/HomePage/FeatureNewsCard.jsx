@@ -43,16 +43,13 @@ export const FeatureNewsCard = (props) => {
                                     {/* <!-- feature_article_title --> */}
 
                                     <div className="feature_article_date">
-                                        <a href="#" target="_self">
+                                        <Link to="#">
                                             {hot_news.author &&
                                                 hot_news.author.user.username}
-                                        </a>
-                                        ,{"         "}
-                                        <a>
-                                            {moment(hot_news.timestamp).format(
+                                        </Link>
+                                        ,{moment(hot_news.timestamp).format(
                                                 "Do MMM  YYYY"
                                             )}
-                                        </a>
                                     </div>
                                     {/* <!-- feature_article_date --> */}
 
@@ -65,13 +62,11 @@ export const FeatureNewsCard = (props) => {
                                     <div className="article_social">
                                         <span>
                                             <i className="fa fa-share-alt"></i>
-                                            <a href="#">424</a>Shares
+                                            424 Shares
                                         </span>
                                         <span>
                                             <i className="fa fa-comments-o"></i>
-                                            <a href="#">
                                                 {hot_news.total_comment_count}
-                                            </a>
                                             Comments
                                         </span>
                                     </div>
@@ -124,17 +119,15 @@ export const FeatureNewsCard = (props) => {
                                     {/* <!-- feature_article_title --> */}
 
                                     <div className="feature_article_date">
-                                        <a href="#" target="_self">
+                                        <Link href="#">
                                             {trending_new.author &&
                                                 trending_new.author.user
                                                     .username}
-                                        </a>
+                                        </Link>
                                         ,
-                                        <a href="#" target="_self">
-                                            {moment(
+                                        {moment(
                                                 trending_new.timestamp
                                             ).format("Do MMM  YYYY")}
-                                        </a>
                                     </div>
                                     {/* <!-- feature_article_date --> */}
 
@@ -150,15 +143,13 @@ export const FeatureNewsCard = (props) => {
                                     <div className="article_social">
                                         <span>
                                             <i className="fa fa-share-alt"></i>
-                                            <a href="#">424</a>Shares
+                                            424 Shares
                                         </span>
                                         <span>
                                             <i className="fa fa-comments-o"></i>
-                                            <a href="#">
-                                                {
+                                            {
                                                     trending_new.total_comment_count
                                                 }
-                                            </a>
                                             Comments
                                         </span>
                                     </div>
@@ -212,17 +203,15 @@ export const FeatureNewsCard = (props) => {
                                     {/* <!-- feature_article_title --> */}
 
                                     <div className="feature_article_date">
-                                        <a href="#" target="_self">
+                                        <Link href="#" target="_self">
                                             {editor_choice.author &&
                                                 editor_choice.author.user
                                                     .username}
-                                        </a>
+                                        </Link>
                                         ,
-                                        <a href="#" target="_self">
-                                            {moment(
+                                        {moment(
                                                 editor_choice.timestamp
                                             ).format("Do MMM  YYYY")}
-                                        </a>
                                     </div>
                                     {/* <!-- feature_article_date --> */}
 
@@ -238,15 +227,13 @@ export const FeatureNewsCard = (props) => {
                                     <div className="article_social">
                                         <span>
                                             <i className="fa fa-share-alt"></i>
-                                            <a href="#">424</a>Shares
+                                            424 Shares
                                         </span>
                                         <span>
                                             <i className="fa fa-comments-o"></i>
-                                            <a href="#">
-                                                {
-                                                    editor_choice.total_comment_count
-                                                }
-                                            </a>
+                                            {
+                                                editor_choice.total_comment_count
+                                            }
                                             Comments
                                         </span>
                                     </div>
