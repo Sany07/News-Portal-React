@@ -2,7 +2,7 @@ import { FETCH_SINGLE_TAG_DATA, LOADING_REQUEST } from "../actions/actionTypes";
 
 const data = { isLoading: true };
 
-export default (news = data, action) => {
+export const tagReducer = (news = data, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {

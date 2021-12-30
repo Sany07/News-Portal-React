@@ -2,7 +2,7 @@ import { FETCH_SIDEBAR_DATA } from "../actions/actionTypes";
 
 const data = { isLoading: true, news: {}, single_news: {} };
 
-export default (news = data, action) => {
+export const sidebarReducer = (news = data, action) => {
     switch (action.type) {
         case FETCH_SIDEBAR_DATA:
             return {

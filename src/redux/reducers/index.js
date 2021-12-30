@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import newsReducer from "./newsReducer";
 import HomePageReducer from "./HomePageReducer";
-import sidebarReducer from "./sidebarReducer";
-import categoryReducer from "./categoryReducer.";
-import tagReducer from "./tagReducer";
-import commentReducer from "./commentReducer";
+import {newsReducer} from "./newsReducer";
+import {sidebarReducer} from "./sidebarReducer";
+import {categoryReducer} from "./categoryReducer.";
+import {tagReducer} from "./tagReducer";
+import {commentReducer} from "./commentReducer";
 import { newCommentReducer } from "./commentReducer";
 import emailNewsLetterReducer from "./emailNewsLetterReducer";
 import { registerReducer, loginReducer,logOutReducer } from "./authReducer";

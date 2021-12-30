@@ -8,7 +8,6 @@ import { NewsCard } from "../components/skeletons/NewsCard";
 import { Sidebar } from "./Sidebar";
 import { Loading } from "../components/includes/Loading";
 import { beginTheBar } from "../services/topLoadingBar";
-import moment from "moment";
 
 export class Tag extends Component {
     componentDidMount() {

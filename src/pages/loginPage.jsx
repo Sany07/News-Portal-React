@@ -1,13 +1,12 @@
-import React, { useState, useEffect, Fragment } from "react";
-import { registerUser, loginUser } from "../redux/actions/Auth";
+import React, { useState, useEffect } from "react";
+import { loginUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
-import { Loading } from "../components/includes/Loading";
-import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
+import { AUTH_RESET } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 import { beginTheBar, endTheBar } from "../services/topLoadingBar";
+import "react-toastify/dist/ReactToastify.css";
 
 export const LoginPage = () => {
     const [userData, setUser] = useState({
@@ -18,9 +17,9 @@ export const LoginPage = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const { isLoading, success, error } = useSelector((state) => state.loginReducer);
-    //  const { success } = useSelector((state) => state.logOutReducer);
-    console.log(success);
+    const { success, error } = useSelector((state) => state.loginReducer);
+ 
+
     useEffect(() => {
         beginTheBar()
         if (success) {
@@ -37,11 +36,10 @@ export const LoginPage = () => {
             toast.error("Something went wrong");
             // toast.error(error.password[0]);
             // toast.error(error.email);
-
             dispatch({ type: AUTH_RESET });
         }
         endTheBar()
-    }, [success, error]);
+    }, [dispatch,history, success, error]);
 
     const handleSubmit = (e) => {
         e.preventDefault();

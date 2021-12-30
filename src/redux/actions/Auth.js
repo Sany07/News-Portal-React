@@ -2,7 +2,6 @@ import {
     LOADING_REQUEST,
     REGISTER_SUCCESS,
     REGISTER_FAIL,
-    LOGIN_FAIL,
     LOGIN_SUCCESS,
     LOGOUT,
 } from "./actionTypes";
@@ -10,12 +9,7 @@ import {
 import * as api from "../../apis/AuthApi";
 import jwt_decode from "jwt-decode";
 import setAuthTokenToHeader from "../../services/setAuthToken";
-import { createBrowserHistory } from "history";
-const history = createBrowserHistory();
 
-// import {useHistory} from "react-router-dom";
-
-// const history = useHistory();
 
 export const registerUser = (data) => async (dispatch) => {
     try {

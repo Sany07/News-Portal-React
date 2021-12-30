@@ -1,9 +1,8 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { registerUser } from "../redux/actions/Auth";
 import { useSelector, useDispatch } from "react-redux";
-import { Loading } from "../components/includes/Loading";
 import { Link } from "react-router-dom";
-import { AUTH_RESET, LOADING_REQUEST } from "../redux/actions/actionTypes";
+import { AUTH_RESET } from "../redux/actions/actionTypes";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { beginTheBar, endTheBar } from "../services/topLoadingBar";

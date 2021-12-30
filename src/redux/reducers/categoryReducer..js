@@ -5,7 +5,7 @@ import {
 
 const data = { isLoading: true, news: {}, single_category_news: {} };
 
-export default (news = data, action) => {
+export const categoryReducer = (news = data, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {

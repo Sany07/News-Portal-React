@@ -2,7 +2,7 @@ import { LOADING_REQUEST, FETCH_SINGLE_NEWS } from "../actions/actionTypes";
 
 const data = { isLoading: true, news: {}, single_news: {} };
 
-export default (news = data, action) => {
+export const newsReducer = (news = data, action) => {
     switch (action.type) {
         case LOADING_REQUEST:
             return {

@@ -7,19 +7,7 @@ import {
 } from "./actionTypes";
 import * as api from "../../apis/NewsApi";
 import _ from "lodash";
-import { beginTheBar, endTheBar } from "../../services/topLoadingBar";
-// export const getSingleNews = (slug) => async (dispatch) => {
-//     console.log('slugggg--', slug);
-
-//     try {
-//         const response = await api.fetchSingleNews(slug);
-//         dispatch({ type: FETCH_SINGLE_NEWS, payload: response });
-//     }
-//     catch (error) {
-//       console.log(error);
-//     }
-
-// };
+import { endTheBar } from "../../services/topLoadingBar";
 
 export const getSingleNews = (slug) => (dispatch) => {
     _fetchSingleNews(slug, dispatch);

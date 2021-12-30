@@ -7,7 +7,7 @@ import {
 
 const data = { isLoading: true, comments: null };
 
-export default (state = data, action) => {
+export const commentReducer = (state = data, action) => {
     switch (action.type) {
         case FETCH_NEWS_COMMENT:
             return {
