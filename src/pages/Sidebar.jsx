@@ -19,14 +19,13 @@ export const Sidebar = (props) => {
                                 <div className="media" key={popular_news.id}>
                                     <div className="media-left">
                                         <Link
-                                            onClick={
+                                            onClick={() =>
                                                 setSlug
-                                                    ? () =>
-                                                          setSlug(
-                                                              popular_news.slug,
-                                                              popular_news.id
-                                                          )
-                                                    : "ss"
+                                                    ? setSlug(
+                                                        popular_news.slug,
+                                                        popular_news.id
+                                                      )
+                                                    : ""
                                             }
                                             to={`/post/${popular_news.slug}`}
                                         >
@@ -45,7 +44,7 @@ export const Sidebar = (props) => {
                                                         ? `http://localhost:8000${popular_news.thumbnail}`
                                                         : `http://localhost:8000/media/${popular_news.thumbnail}`
                                                 }
-                                                alt=""
+                                                alt="i"
                                             />
                                         </Link>
                                     </div>
@@ -65,7 +64,7 @@ export const Sidebar = (props) => {
                                             >
                                                 {popular_news.title}
                                             </Link>
-                                        </h3>{" "}
+                                        </h3>
                                         <span className="media-date">
                                             {moment(
                                                 popular_news.timestamp
@@ -91,15 +90,11 @@ export const Sidebar = (props) => {
                                                 Shares
                                             </span>
                                             <span>
-                                                <a
-                                                    href="single.html"
-                                                    target="_self"
-                                                >
-                                                    <i className="fa fa-comments-o"></i>
+                                                <i className="fa fa-comments-o"></i>
                                                     {
                                                         popular_news.total_comment_count
                                                     }
-                                                </a>{" "}
+                                                
                                                 Comments
                                             </span>
                                         </div>

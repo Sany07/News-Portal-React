@@ -30,11 +30,11 @@ export const RelatedNews = (props) => {
                                         />
                                 </div>
                                 <div className="media-body">
-                                    <span className="tag purple">
-                                        <a href="category.html" target="_self">
+                                    {/* <span className="tag purple">
+                                        <Link href="category.html">
                                             Mobile
-                                        </a>
-                                    </span>
+                                        </Link>
+                                    </span> */}
                                     <h3 className="media-heading">
                                         <Link
                                             onClick={() =>
