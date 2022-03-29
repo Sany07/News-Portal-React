@@ -4,7 +4,7 @@
 
 News-Portal-React-django rest framework.    
 
-Django Version Github  ![Click Here](https://github.com/Sany07/News-Portal-Django) 
+Django Version/api Github  ![Click Here](https://github.com/Sany07/News-Portal-Django) 
 
 React Version Live Demo ![Click Here](https://itech-9b147.web.app/) 
 
